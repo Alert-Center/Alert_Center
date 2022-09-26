@@ -1,7 +1,7 @@
 /* CABECALHO / MENU  */
 .header {
   width: 100%;
-  background-color: #160E59;
+  background-color: #0c0644;
 }
 
 .container {
@@ -44,7 +44,7 @@
   height: 2px;
   display: block;
   background-color: aliceblue;
-  transform: translate(0, 20px);
+  transform: translate(0, 5px);
   transition: 0.4s;
 }
   /*  */
@@ -53,7 +53,7 @@
 /* BANNER / PRIMERIA SESSÃO DO SITE  */
 .banner {
   width: 100%;
-  background-image: url('/img/Background.jpg');
+  background-image: url('../img/Background.jpg');
   background-size: cover;
   padding: 30px 0;
 }
@@ -68,7 +68,7 @@
 
   /* EFEITO DA IMAGEM DO NOTEBOOK SEM MEXER  */
 .content-img img:hover {
-  transform: translate(0, -20px);
+  transform: translate(0, -10px);
   transition: 1s;
   
 }
@@ -110,8 +110,15 @@
 }
 
 /* EFEITO DE SUMIR A COR DO BOTÃO */
+/* EFEITO DE AUMENTAR A ESCALA DO BOTÃO */
 .btn:hover {
-  background: none;
+ background-color: #4c0989;
+ transform: scale(1.05, 1.05);
+}
+
+/* EFEITO DE DIMINUIR A ESCALA DO BOTÃO AO CLICAR */
+.btn:active {
+  transform: scale(0.95, 0.95);
 }
 /*  */
 
@@ -121,7 +128,7 @@
 .quem-somos {
   width: 100%;
   padding: 60px 0;
-  background-image: url("/img/Background2.jpg");
+  background-image: url("../img/Background2.jpg");
   background-size: cover;
 }
 
