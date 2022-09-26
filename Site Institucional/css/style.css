@@ -37,7 +37,7 @@
 .list-items li:hover::after {
   width: 100%;
 }
-  
+
 .list-items li::after {
   content: '';
   width: 0;
@@ -48,7 +48,7 @@
   transition: 0.4s;
 }
   /*  */
-/*FIM CABECALHO / NAVBAR  */
+  /*FIM CABECALHO / NAVBAR  */
 
 /* BANNER / PRIMERIA SESSÃO DO SITE  */
 .banner {
@@ -70,12 +70,14 @@
 .content-img img:hover {
   transform: translate(0, -20px);
   transition: 1s;
+  
 }
   /*  */
 
 .content-img img {
   transition: 1s;
   width: 600px;
+  margin: auto;
 }
 
 .content-text {
@@ -114,3 +116,34 @@
 /*  */
 
 /* FIM PRIMEIRA SESSÃO */
+
+/* Quem somos  */
+.quem-somos {
+  width: 100%;
+  padding: 60px 0;
+  background-image: url("/img/Background2.jpg");
+  background-size: cover;
+}
+
+.quem-somos .container {
+  flex-wrap: wrap;
+}
+
+.quem-somos .content-text {
+  flex: 1;
+  min-height: 550px;
+  max-height: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.quem-somos .content-img {
+  flex: 1;
+}
+
+.quem-somos .content-img img {
+  width: 500px;
+}
+
+/*Fim quem somos  */
+
