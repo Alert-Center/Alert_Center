@@ -1,4 +1,4 @@
--- Criação da base de dados do projeto AlertCenter.
+-- Criação da banco de dados do projeto AlertCenter.
 
 CREATE DATABASE AlertCenter;
 USE AlertCenter;
@@ -21,7 +21,7 @@ CONSTRAINT chkEmail CHECK (email LIKE '%@%.%' AND email NOT LIKE '@%' and email 
 senha VARCHAR(45)
 );
 
--- Atributo Endereco composto com mais de 2 itens 
+-- Atributo Endereço composto com mais de 2 itens 
 -- Entidade Fraca (depende da Empresa)
 CREATE TABLE Endereco (
 idEndereco INT,
@@ -79,7 +79,7 @@ INSERT INTO Empresa VALUES
 
 INSERT INTO Endereco VALUES 
 (1,1,'Rua Haddock Lobo','Consolação','595','01414000','Prédio'),
-(1,2,'Rua WAShinton Luis','Toronto','1000B','92847189','Empresa'),
+(1,2,'Rua Washinton Luis','Toronto','1000B','92847189','Empresa'),
 (1,3,'Rua Microsoft Silva','New Yeah','1235','02938173','Empresa');
 
 -- Dois Data Center para Facebook e Microsoft, mostrando que uma empresa pode ter um ou mais.
@@ -122,3 +122,86 @@ INSERT INTO METRICA VALUES
 (2,8,20.9,29.2,'2022-12-12 04:25:00'),
 (1,9,03.5,19.1,'2022-11-11 03:26:00'),
 (2,9,12.5,09.1,'2022-12-14 02:27:00');
+
+
+-- Comandos de Consulta
+
+-- Consultar as tabelas separadamente 
+SELECT * FROM Empresa;
+SELECT * FROM DataCenter;
+SELECT * FROM Dispositivo;
+SELECT * FROM Endereco;
+SELECT * FROM Metrica;
+
+-- Consulta de Tabelas Relacionadas
+
+-- Consultar as empresas e seus respectivos endereços.
+SELECT  empresa.nome AS Empresa, 
+		endereco.rua,
+        endereco.bairro,
+        endereco.numero,
+        endereco.cep,
+        endereco.complemento
+			FROM Empresa AS empresa JOIN Endereco AS endereco
+				ON endereco.fkEmpresa = empresa.idEmpresa;
+                
+-- Consultar informações dos Data Centers e suas respectivas Empresas.
+SELECT  e.nome AS Empresa, 
+		dc.idDataCenter,
+		dc.descricao,
+		dc.tier,
+        dc.andar,
+        dc.qtdRack
+			FROM Empresa AS e JOIN DataCenter AS dc
+				ON dc.fkEmpresa = e.idEmpresa;
+
+-- Consultar todos os dispositivos presentes nos Data Centers de suas respectivas empresas.
+SELECT  e.nome AS Empresa,
+		dc.idDataCenter,
+		dc.descricao AS 'DataCenter Descrição',
+		dc.qtdRack,
+		dis.idDispositivo,
+		dis.numeroSerie AS 'Numero Serie do Dispositivo',
+		dis.descricao AS 'Nome Dispositivo'
+			FROM Empresa AS e 
+				JOIN DataCenter AS dc
+					ON dc.fkEmpresa = e.idEmpresa
+				JOIN Dispositivo AS dis
+					ON dis.fkDataCenter = dc.idDataCenter AND dis.fkEmpresa = dc.fkEmpresa;
+                    
+-- Consultar os Dispositivos e suas Métricas.
+SELECT  dis.idDispositivo,
+		dis.numeroSerie,
+		dis.descricao,
+		m.temperatura,
+		m.umidade,
+		m.dtMetrica
+			FROM Dispositivo AS dis JOIN Metrica AS m
+				ON m.fkDispositivo = dis.idDispositivo;
+                
+-- Consultar quantos dispositivos tem em uma determinada Empresa.
+SELECT  e.nome AS Empresa,
+		dis.idDispositivo,
+		dis.numeroSerie,
+		dis.descricao
+			FROM Empresa AS e
+				JOIN DataCenter AS dc
+					ON dc.fkEmpresa = e.idEmpresa
+				JOIN Dispositivo AS dis
+					ON dis.fkDataCenter = dc.idDataCenter AND dis.fkEmpresa = dc.fkEmpresa
+			WHERE e.nome = 'Facebook';
+
+-- Consulta do nome das Empresas, seu endereço (somente o CEP e número), 
+-- a descrição dos seus respectivos Data Centers e o numero de série dos dispositivos.
+SELECT  empresa.nome AS Empresa,
+		endereco.cep AS CEP,
+		endereco.numero,
+        dc.descricao AS 'Data Center',
+        dis.numeroSerie AS Dispositivo
+			FROM Empresa AS empresa
+				JOIN Endereco AS endereco 
+					ON endereco.fkEmpresa = empresa.idEmpresa
+				JOIN DataCenter AS dc
+					ON dc.fkEmpresa = empresa.idEmpresa
+				JOIN Dispositivo AS dis
+					ON dis.fkDataCenter = dc.idDatacenter AND dis.fkEmpresa = dc.fkEmpresa;
