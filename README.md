@@ -1,7 +1,7 @@
 # Alert Center
 
 ## Regras do projeto 
-1. Escutar o outro **e depois falar
+1. Escutar o outro e depois falar
 2. Abrir quais são as minhas dificuldades e pedir ajuda aos outros
 3. Se comunicar para maximizar a produtividade e mitigar conflitos e/ou atrasos 
 4. Deixar claro o que está acontecendo para não ocorrer interpretações errôneas
@@ -9,7 +9,7 @@
 6. Estar atualizado com as ferramentas utilizadas no projeto
 7. Cada um assumirá a responsabilidade de organizar uma frente do projeto
 8. Terei um foco principal, mas trabalharei junto com os outros nas frentes que não sou responsável por
-9. Sempre revisar aquilo que fiz antes de 'commitar' e solicitar para que uma pessoa externa a atividade possa revisar
+9. Sempre revisar aquilo que fiz antes de 'commitar' e, depois de subir para o GitHub, solicitar para que uma pessoa externa a atividade possa revisar
 10. Acionar, primeiramente, o Scrum Master para ser meu par caso haja alguma dificuldade 
 11. Mandar mensagem pelo WhatsApp para melhor comunicação e utilizar o Discord como ambiente para resoluções rápidas
 12. Sempre que for atualizar o repositório, realizar um 'git pull'
