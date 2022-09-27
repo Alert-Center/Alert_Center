@@ -44,7 +44,6 @@
   height: 2px;
   display: block;
   background-color: aliceblue;
-  transform: translate(0, 5px);
   transition: 0.4s;
 }
   /*  */
@@ -154,3 +153,47 @@
 
 /*Fim quem somos  */
 
+footer{
+  background-color: #0B0333;
+  padding: 20px 0;
+}
+
+.content-footer{
+  margin: auto;
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 250px;
+}
+
+.content-footer img{
+  width: 90px;
+}
+
+.links h2{
+  font-size: 1.5em;
+margin-bottom: 10px;
+}
+
+.links li{
+  margin-bottom: 8px;
+  font-size: 0.90em;
+}
+.social-media h2{
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.social-media h3{
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+.social-img img{
+width: 50px;
+}
+
+.direitos p{
+  font-size: 0.80em;
+  text-align: center;
+}
