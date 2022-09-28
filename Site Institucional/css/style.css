@@ -13,7 +13,6 @@
 }
 
 .header .container {
-  width: 90%;
   padding: 10px 50px;
 }
 
@@ -30,23 +29,24 @@
 }
 
 .list-items li a {
-  font-size: 1.5rem;
-}
-
-  /* TRANSIÇÃO NOS ITEMS DA NAVBAR */
-.list-items li:hover::after {
-  width: 100%;
+  font-size: 1.2rem;
 }
 
 .list-items li::after {
   content: '';
   width: 0;
-  height: 2px;
+  height: 1px;
   display: block;
   background-color: aliceblue;
   transition: 0.4s;
 }
-  /*  */
+
+/* TRANSIÇÃO NOS ITEMS DA NAVBAR */
+.list-items li:hover::after {
+width: 100%;
+}
+
+/*  */
   /*FIM CABECALHO / NAVBAR  */
 
 /* BANNER / PRIMERIA SESSÃO DO SITE  */
@@ -102,7 +102,6 @@
   font-size: 1rem;
   padding: 15px 20px;
   background-color: #5B0EA2;
-  border: 1px solid #5B0EA2;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
@@ -173,7 +172,7 @@ footer{
 
 .links h2{
   font-size: 1.5em;
-margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .links li{
