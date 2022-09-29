@@ -1,0 +1,184 @@
+.cadastro {
+    background-image: url('../img/Background2.jpg');
+    background-size: cover;
+    padding: 30px 0 50px;
+}
+
+.form * {
+    color: black;
+}
+
+.form {
+    background-color: #fff;
+    width: 65%;
+    padding: 1.9rem 2.5rem 1rem 2rem;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: -12px 13px 7px 1px rgba(0, 0, 0, 0.817);
+}
+
+
+.form h1,
+.subtitulo p,
+label {
+    width: max-content;
+    flex-wrap: wrap;
+}
+
+.subtitulo {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form h1 {
+    font-size: 1.4rem;
+}
+
+.form label {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.box {
+    display: flex;
+    width: max-content;
+}
+
+.form .boxes {
+    margin-top: 20px;
+
+}
+
+.form .box {
+    margin-top: 15px;
+    flex-direction: column;
+
+}
+
+.form input {
+    background-color: #dbdbdb;
+    border-radius: 5px;
+    width: max-content;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+}
+
+.form input::placeholder {
+    font-size: 0.55rem;
+}
+
+
+.empresa input {
+    width: 12.5rem;
+
+}
+
+.CNPJ input {
+    width: 12.5rem;
+
+}
+
+.tipo input {
+    width: 12.5rem;
+}
+
+.cep input {
+    width: 9rem;
+}
+
+.Logradouro input {
+    padding-right: 30px;
+}
+
+.numero input {
+    width: 5rem;
+}
+
+.bairro input {
+    padding-right: 0px;
+}
+
+.cidade input {
+    width: 10rem;
+}
+
+.complemento input {
+    width: 8.5rem;
+}
+
+.telefone input {
+    width: 9rem;
+}
+
+.celular input {
+    width: 9rem;
+}
+
+.e-mail input {
+    width: 12.5rem;
+}
+
+.senha input {
+    width: 12.5rem;
+}
+
+.confirmar_senha input {
+    width: 12.5rem;
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.check .boxes {
+    flex: 1;
+}
+
+.check .box {
+    flex-direction: row;
+    width: max-content;
+    align-items: center;
+}
+
+.check label {
+    margin-left: 10px;
+}
+
+.check input {
+    width: 20px;
+    height: 20px;
+}
+
+.check input:checked+label {
+    color: green;
+}
+
+.check button {
+    background-color: #2d3192;
+    width: max-content;
+    height: max-content;
+    font-size: 1.3rem;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.5rem 1.9rem;
+    border-radius: 5px;
+}
+
+.entrar {
+    margin-top: 20px;
+    width: max-content;
+    margin: 20px auto 0 auto;
+}
+
+.entrar a {
+    font-size: 0.6rem;
+
+}
