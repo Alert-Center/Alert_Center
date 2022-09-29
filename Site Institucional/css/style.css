@@ -1,7 +1,7 @@
 /* CABECALHO / MENU  */
 .header {
   width: 100%;
-  background-color: #0c0644;
+  background-color: #070330;
 }
 
 .container {
@@ -80,14 +80,14 @@ width: 100%;
 }
 
 .content-text {
-  flex: 2;
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 .content-text h2 {
   font-size: 3rem;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   font-weight: 500;
 }
 
@@ -189,10 +189,15 @@ footer{
   margin: 10px 0;
 }
 .social-img img{
-width: 50px;
+width: 30px;
+margin-bottom: 20px;
 }
 
 .direitos p{
   font-size: 0.80em;
   text-align: center;
+}
+
+.a-destaque {
+  font-weight: bold;
 }
