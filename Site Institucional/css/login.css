@@ -69,16 +69,21 @@
     background-color: #DBDBDB;
 }
 
+.campo #msg_email, #msg_senha {
+    font-size: 12px;
+    color: red;
+    padding: 5px 15px;
+}
+
 .caixa-formulario button {
-    width: 120px;
-    height: 38px;
+    width: max-content;
     color: #FFFFFF;
     background-color: #2e3192;
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: 550;
     border: none;
-    border-radius: 5px;
+    border-radius: 12px;
     cursor: pointer;
 }
 
