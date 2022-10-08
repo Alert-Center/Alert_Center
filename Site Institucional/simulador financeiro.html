@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
     <!-- CABEÇALHO / NAVBAR  -->
     <header class="header">
         <div class="container">
@@ -32,32 +31,69 @@
     </header>
     <!-- FIM CABEÇALHO / NAVBAR  -->
 
-    <!-- COMEÇO DA SESSÃO QUEM SOMOS ? -->
+    <!-- COMEÇO DA SESSÃO DO SIMULADOR FINANCEIRO ? -->
     <section class="simulador-financeiro">
-        <div class="container">
+        <div class="container" id="container">
             <div class="content-img">
                 <img src="img/Celular simulador.png" alt="Imagem de Data Centers">
             </div>
-            <div class="content-text">
+            <div class="content-text inicial">
                 <h2>Orçamento</h2>
-                <label for="in_racks" id="label-simulador">Quantos racks possui seu DataCenter:</label>
-                <input placeholder="Quantos racks possui seu DataCenter?" type="Number" class="content-input"
-                    id="in_racks">
-                <label for="sel_tier" id="label-simulador">Quantos racks possui seu DataCenter:</label>
-                <select id="sel_tier" class="content-select">
-                    <option class="op-tier" value="">-- Escolha o tier do seu rack --</option>
-                    <option class="op-tier" value="">1</option>
-                    <option class="op-tier" value="">2</option>
-                    <option class="op-tier" value="">3</option>
-                    <option class="op-tier" value="">4</option>
-                </select>
-                <button onclick="" class="btn-simulador">Calcular finanças</button>
-                <div class="content-simulador">
-                    
+                <div class="progress">
+                    <div class="circle-1" id="circle_1">1</div>
+                    <div class="linha" id="linha"></div>
+                    <div class="circle-2" id="circle_2">2</div>
+                </div>
+                <form class="form-1" id="form_1">
+                    <div class="campos">
+                        <div class="campo">
+                            <label for="in_racks" id="label-simulador">O core da sua empresa é data center ?</label>
+                            <select id="in_core">
+                                <option value="true">Sim</option>
+                                <option value="false">Não</option>
+                            </select>
+                        </div>
+
+                        <div class="campo">
+                            <label for="in_racks" id="label-simulador">Informe o faturamento anual da sua
+                                empresa</label>
+                            <input placeholder="Informe o faturamento anual da sua empresa" type="Number" id="in_faturamento">
+                        </div>
+                    </div>
+                    <div class="campos">
+                        <div class="campo">
+                            <label for="in_racks" id="label-simulador">Tempo de inatividade do data center no
+                                ano</label>
+                            <input placeholder="Informe o tempo em minutos" type="Number" id="in_inatividade">
+                        </div>
+
+                        <div class="campo">
+                            <label for="in_racks" id="label-simulador">Informe a quantidade de Racks DC</label>
+                            <input placeholder="Informe a quantidade de racks " type="Number" id="in_racks">
+                        </div>
+                    </div>
+                </form>
+                <div class="form-2" id="form_2">
+                    <div class="campos">
+                        <div class="campo">
+                            <label for="in_racks" id="label-simulador"> Informe o tier do seu Data Center</label>
+                            <select name="" id="sel_tier">
+                                <option value="">Informe o Tier</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="btns" id="btns">
+                    <button class="btn" onclick="avancarEtapa()">Avançar Etapa</but>
                 </div>
             </div>
+        </div>
     </section>
-    <!-- FIM DA SESSÃO QUEM SOMOS ? -->
+    <!-- FIM DA SESSÃO SIMUALADOR ? -->
 
     <footer>
         <div class="content-footer">
@@ -90,7 +126,8 @@
         </div>
     </footer>
     <!-- FINAL DO RODAPÉ -->
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
