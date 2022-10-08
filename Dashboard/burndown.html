@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            margin: 60px;
+        }
+
+        #myChart {
+            border: black solid;
+            position: relative; 
+            height: 55vh; 
+            width: 55vw;
+            padding: 30px;
+        }
+    </style>
+    <title>Burndown - Sprint Backlog</title>
+</head>
+<body>
+    
+    <div id="div_canvas">
+        <canvas id="myChart"></canvas>
+    </div>
+
+
+</body>
+</html>
+
+<script>
+    const labels = [
+        "Total",
+        "Sprint 1",
+        "Sprint 2",
+        "Sprint 3",
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: "Story Points",
+            backgroundColor: '#36a2eb',
+            borderColor: '#36a2eb',
+            data: [96, 65, 28, 0] // Estimativas: SP1 - 31pt | SP2 - 37pt | SP3 - 28pt | Total - 96pt|
+        }]
+    };
+
+    const config = {
+        type: "line",
+        data: data,
+        oprtions: {}
+    };
+
+    const myChart = new Chart(
+        document.getElementById("myChart"),
+        config
+    )
+
+</script>

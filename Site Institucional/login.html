@@ -40,16 +40,19 @@
             <div class="campo">
                 <div class="campo1">
                     <label for="in_email">E-mail</label>
-                    <input placeholder="Digite seu e-mail" type="email" id="in_email">
+                    <input placeholder="Digite seu e-mail" type="email" id="in_email" onkeyup="analisar_email()">
+                    <p id="msg_email"></p>
                 </div>
     
                 <div class="campo2">
                     <label for=in_senha">Senha</label>
-                    <input placeholder="Digite sua senha" type="password" id="in_senha">
+                    <input placeholder="Digite sua senha" type="password" id="in_senha" onkeyup="analisar_senha()">
+                    <p id="msg_senha"></p>
                 </div>
             </div>
-            
-            <button onclick="entrar()">Entrar</button>
+
+            <!-- Substituir o "#" do "href" pelo link da página do Dashboard -->
+            <a href="#"><button class="btn" onclick="entrar()">Entrar</button></a>
 
             <div class="text-login">
                 <p><a href="#">Esqueci minha senha</a></p>
@@ -96,9 +99,4 @@
 </body>
 </html>
 
-<script>
-    function entrar() {
-
-    }
-
-</script>
+<script src="js/script.js"></script>

@@ -43,7 +43,7 @@
 
 /* TRANSIÇÃO NOS ITEMS DA NAVBAR */
 .list-items li:hover::after {
-width: 100%;
+  width: 100%;
 }
 
 /*  */
@@ -68,10 +68,8 @@ width: 100%;
   /* EFEITO DA IMAGEM DO NOTEBOOK SEM MEXER  */
 .content-img img:hover {
   transform: translate(0, -10px);
-  transition: 1s;
-  
+  transition: 1s; 
 }
-  /*  */
 
 .content-img img {
   transition: 1s;
@@ -101,7 +99,7 @@ width: 100%;
   width: max-content;
   font-size: 1rem;
   padding: 15px 20px;
-  background-color: #5B0EA2;
+  background-color: #2e3192;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
@@ -110,15 +108,14 @@ width: 100%;
 /* EFEITO DE SUMIR A COR DO BOTÃO */
 /* EFEITO DE AUMENTAR A ESCALA DO BOTÃO */
 .btn:hover {
- background-color: #4c0989;
- transform: scale(1.05, 1.05);
+  background-color: #2e3192;
+  transform: scale(1.05, 1.05);
 }
 
 /* EFEITO DE DIMINUIR A ESCALA DO BOTÃO AO CLICAR */
 .btn:active {
   transform: scale(0.95, 0.95);
 }
-/*  */
 
 /* FIM PRIMEIRA SESSÃO */
 
@@ -150,8 +147,9 @@ width: 100%;
   width: 500px;
 }
 
-/*Fim quem somos  */
+/* FIM DOQUEM SOMOS */
 
+/* INÍCIO DO FOOTER */
 footer{
   background-color: #0B0333;
   padding: 20px 0;
@@ -189,8 +187,8 @@ footer{
   margin: 10px 0;
 }
 .social-img img{
-width: 30px;
-margin-bottom: 20px;
+  width: 30px;
+  margin-bottom: 20px;
 }
 
 .direitos p{
