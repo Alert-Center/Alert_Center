@@ -41,76 +41,76 @@
           <p>Ao se cadastrar no nosso site você poderá saber mais sobre nossos serviços e preços</p>
         </div>
         <div class="boxes">
-          <div class="box empresa">
-            <label for="">Nome da Empresa</label>
-            <input type="text" placeholder="Digite o nome da empresa">
+          <div id="div_empresa" class="box empresa">
+            <label for="in_form_nome">Nome da Empresa</label>
+            <input type="text" id="in_form_nome" placeholder="Digite o nome da empresa">
           </div>
           <div class="box CNPJ">
-            <label for="">CNPJ da Empresa</label>
-            <input type="text" placeholder="Digite o CNPJ da empresa">
+            <label for="in_form_CNPJ">CNPJ da Empresa</label>
+            <input type="text" id="in_form_CNPJ" placeholder="Digite o CNPJ da empresa">
           </div>
           <div class="box tipo">
-            <label for="">Tipo da Empresa</label>
-            <input type="text" placeholder="Digite o tipo da empresa (filial / matriz)">
+            <label for="in_form_tipo">Tipo da Empresa</label>
+            <input type="text" id="in_form_tipo" placeholder="Digite o tipo da empresa (filial / matriz)">
           </div>
           <div class="box cep">
-            <label for="">CEP</label>
-            <input type="text" placeholder="_____-___">
+            <label for="in_form_cep">CEP</label>
+            <input type="text" id="in_form_cep" placeholder="_____-___">
           </div>
           <div class="box Logradouro">
-            <label for="">Logradouro</label>
-            <input type="text" placeholder="Digite o Logradouro">
+            <label for="in_form_logradouro">Logradouro</label>
+            <input type="text" id="in_form_logradouro" placeholder="Digite o Logradouro">
           </div>
           <div class="box numero">
-            <label for="">Número</label>
-            <input type="text" placeholder="Número">
+            <label for="in_form_numero">Número</label>
+            <input type="text" id="in_form_numero" placeholder="Número">
           </div>
           <div class="box bairro">
-            <label for="">Bairro</label>
-            <input type="text" placeholder="Digite o bairro">
+            <label for="in_form_bairro">Bairro</label>
+            <input type="text" id="in_form_bairro" placeholder="Digite o bairro">
           </div>
           <div class="box cidade">
-            <label for="">Cidade</label>
-            <input type="text" placeholder="Digite a cidade">
+            <label for="in_form_cidade">Cidade</label>
+            <input type="text" id="in_form_cidade" placeholder="Digite a cidade">
           </div>
           <div class="box complemento">
-            <label for="">Complemento</label>
-            <input type="text" placeholder="Digite o complemento">
+            <label for="in_form_complemento">Complemento</label>
+            <input type="text" id="in_form_complemento" placeholder="Digite o complemento">
           </div>
           <div class="box telefone">
-            <label for="">Telefone</label>
-            <input type="text" placeholder="Digite seu Telefone">
+            <label for="in_form_telefone">Telefone</label>
+            <input type="text" id="in_form_telefone" placeholder="Digite seu Telefone">
           </div>
           <div class="box celular">
-            <label for="">Celular</label>
-            <input type="text" placeholder="Digite seu Celular">
+            <label for="in_form_celular">Celular</label>
+            <input type="text" id="in_form_celular" placeholder="Digite seu Celular">
           </div>
           <div class="box e-mail">
-            <label for="">E-mail</label>
-            <input type="text" placeholder="Digite o seu e-mail">
+            <label for="in_form_email">E-mail</label>
+            <input type="text" id="in_form_email" placeholder="Digite o seu e-mail">
           </div>
           <div class="box senha">
-            <label for="">Senha</label>
-            <input type="text" placeholder="Digite sua senha">
+            <label for="in_form_senha">Senha</label>
+            <input type="text" id="in_form_senha" placeholder="Digite sua senha">
           </div>
           <div class="box confirmar_senha">
-            <label for="">Confirmar Senha</label>
-            <input type="text" placeholder="Confirme sua senha">
+            <label for="in_form_confirmarSenha">Confirmar Senha</label>
+            <input type="text" id="in_form_confirmarSenha" placeholder="Confirme sua senha">
           </div>
         </div>
         <div class="check">
           <div class="boxes">
             <div class="box">
-              <input type="checkbox">
-              <label for="">Concordo com os Termos de Política e Privacidade</label>
+              <input type="checkbox" id="in_form_termos">
+              <label for="in_form_termos">Concordo com os Termos de Política e Privacidade</label>
             </div>
             <div class="box">
-              <input type="checkbox">
-              <label for="">Desejo receber notificações sobre os serviços no e-mail</label>
+              <input type="checkbox" id="in_form_notificacao">
+              <label for="in_form_notificacao">Desejo receber notificações sobre os serviços no e-mail</label>
             </div>
           </div>
           <div class="box">
-            <button>Cadastrar-se</button>
+            <button class="btn" onclick="cadastrar()">Cadastrar-se</button>
           </div>
         </div>
         <p class="entrar"><a href="login.html"> Já possui conta? Entrar</a></p>
@@ -155,3 +155,4 @@
 </body>
 
 </html>
+<script src="js/cadastro.js"></script>
