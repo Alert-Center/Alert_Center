@@ -33,37 +33,7 @@ function entrar() {
     in_senha.value = ``
 }
 
-// Função para avançar uma etapa do formulario
-function avancarEtapa() {
-    // Código para mudar cor das bolinhas aonde aparece o progresso do formulário
-    linha.style.background = "blue";
-    circle_2.style.background = "blue";
-    circle_2.style.color = "white";
 
-    // Função para exibir a outra parte do formulário com os botões do para criar a simulação e voltar a etapa anterior 
-    form_2.style.display = "block";
-    form_1.style.display = "none";
-    form_1.style.color = "";
-    btns.innerHTML = `
-  <button  class="btn" onclick="criarSimulacao()">  Fazer Simulação</button>
-  <button class="btn" onclick="diminuirEtapa()">Voltar ao anterior</button>`;
-}
-
-
-// Função para voltar uma etapa do formulário 
-function diminuirEtapa() {
-
-    // Código para mudar cor das bolinhas aonde aparece o progresso do formulário
-    circle_2.style.background = "white";
-    circle_1.style.background = "blue";
-    linha.style.background = "white";
-    circle_2.style.color = "black";
-
-    // Função para exibir a outra parte inicial do formulário sem o botão de voltar 
-    form_1.style.display = "block";
-    form_2.style.display = "none";
-    btns.innerHTML = `<button class="btn" onclick="avancarEtapa()">Avançar Etapa</button>`;
-}
 
 // Função para Criar Simulação de acordo com os valores que o usuario inseriu
 function criarSimulacao() {
