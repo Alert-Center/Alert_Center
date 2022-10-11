@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/racks-dashboard.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <title>Dashboard - Racks</title>
+</head>
+
+<body>
+    <!-- CABEÇALHO / NAVBAR  -->
+    <header class="header">
+        <div class="container">
+            <a href="">
+                <img src="img/logo.png" alt="">
+            </a>
+            <nav class="navbar">
+            </nav>
+        </div>
+    </header>
+    <!-- FIM CABEÇALHO / NAVBAR  -->
+
+    <!-- COMEÇO DA SESSÃO DO SIMULADOR FINANCEIRO ? -->
+    <section class="quem-somos">
+        <div class="container">
+            <div class="header-dash">
+                <div class="user">
+                    <h2>Olá, Pedro</h2>
+                    <p>Vamos analisar as métricas do seu Data Center</p>
+                </div>
+                <div class="indicadores">
+                    <div class="square">
+                        Umidade minimal ideal: 40%
+                        <br>
+                        <br>
+                        <span>28%</span>
+                        <br>umidade minima atual <br> 05/10/2022
+                        <br> Data Center 1 | Rack 3</div>
+                    <div class="square">Umidade minimal ideal: 40%
+                        <br>
+                        <br>
+                        <span>28%</span>
+                        <br>umidade minima atual <br> 05/10/2022
+                        <br> Data Center 1 | Rack 3</div>
+                    <div class="square">Umidade minimal ideal: 40%
+                        <br>
+                        <br>
+                        <span>28%</span>
+                        <br>umidade minima atual <br> 05/10/2022
+                        <br> Data Center 1 | Rack 3</div>
+                    <div class="square">Umidade minimal ideal: 40%
+                        <br>
+                        <br>
+                        <span>28%</span>
+                        <br>umidade minima atual <br> 05/10/2022
+                        <br> Data Center 1 | Rack 3</div>
+                </div>
+            </div>
+
+            <div class="metricas-racks">
+                <div class="square-rack">
+                    <div class="description-square">RACK 1</div>
+                    <div class="rack">
+                        <canvas id="rack1">
+
+                        </canvas>
+                    </div>
+                </div>
+                <div class="square-rack">
+                    <div class="description-square">RACK 2</div>
+                    <div  class="rack">
+                        <canvas id="rack2">
+
+                        </canvas>
+                    </div>
+                </div>
+
+                <div class="square-rack">
+                    <div class="description-square">RACK 3</div>
+                    <div  class="rack">
+                        <canvas id="rack3">
+
+                        </canvas>
+                    </div>
+                </div>
+
+                <div class="square-rack">
+                    <div class="description-square">RACK 4</div>
+                    <div class="rack">
+                        <canvas id="rack4">
+
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FIM DA SESSÃO SIMUALADOR ? -->
+
+
+    <!-- FINAL DO RODAPÉ -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/dashbord-rack.js"></script>
+</body>
+
+</html>
