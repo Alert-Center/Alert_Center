@@ -27,10 +27,16 @@ function analisar_senha() {
     }
 }
 
-// Função provisória para limpar os campos do input
+// Função para validar pseudo-login e criar alert para falar que a conta ainda não foi cadastrada 
 function entrar() {
-    in_email.value = ``
-    in_senha.value = ``
+    var email = in_email.value
+    var senha = in_senha.value
+    
+    if (email == "admin@sptech.school" && senha == "@Sptech2022") {
+        windown.location.href="dashboard-geral.html"
+    } else {
+        alert(`Conta ainda não cadastrada!`)
+    }
 }
 
 // Função para avançar uma etapa do formulario
