@@ -22,7 +22,7 @@
 }
 
 
-/* /Estillização da parte de progresso do formulario  */
+/* /Estillização da parte de progresso do formulario 
 
 .progress {
     display: flex;
@@ -60,44 +60,40 @@
     background-color: white;
     color: black;
 }
-
-
-/*  */
+ */
 
 
 /* Estilização dos campos do input  */
 
 .campos {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 30px;
     column-gap: 15px;
     justify-content: center;
+    align-items: center;
 }
 
 .campo {
     display: flex;
     flex-direction: column;
-    width: 280px;
+    width: 350px;
+    margin-bottom: 25px;
 }
 
-#label-simulador {
-    font-size: 1.3em;
-    margin-bottom: 20px;
+.label-simulador {
+    font-size: 1em;
+    margin-bottom: 10px;
 }
 
-select,
+
 input {
     background-color: rgb(247, 244, 244);
-    border-radius: 12px;
-    padding: 12px 12px;
+    border-radius: 07px;
+    padding: 07px 12px;
     color: black;
 }
 
-select option {
-    color: #222;
-    font-weight: bold;
-}
 
 
 /*  */
@@ -109,19 +105,9 @@ select option {
     display: block;
 }
 
-.form-2 {
-    display: none;
-}
-
-.btns {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    margin-top: 40px;
-}
-
-.btns .btn {
-    margin: 0 !important;
+.form-1 .btn {
+    padding: 10px 25px;
+    margin-top: 10px;
 }
 
 
@@ -140,14 +126,14 @@ select option {
 .indicadores {
     display: flex;
     flex-direction: column;
-    ;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     align-items: center;
     flex: 1;
 }
 
 .indicador {
-    width: 80%;
+    width: max-content;
     padding: 20px;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, .7)
@@ -180,25 +166,8 @@ select option {
 /*  */
 
 
-/* Estilização da div onde está o gráfico do chart js */
-
-.grafic {
-    flex: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#myChart {
-    width: 90% !important;
-    height: 80% !important;
-}
-
-
-/*  */
-
-.container .btn {
-    margin: 50px auto auto auto;
+#container_simulador .btn-refazer {
+    margin: 30px auto auto auto;
 }
 
 
