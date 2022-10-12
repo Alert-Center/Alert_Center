@@ -1,0 +1,96 @@
+.quem-somos .container {
+    flex-direction: column;
+    background-color: rgba(4,5,36,1);
+    padding: 30px;
+ 
+}
+
+.header-dash {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 20px;
+}
+
+.user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #1F1B3F;
+    height: max-content;
+    padding: 30px 20px;
+    border-radius: 10px;
+}
+
+.user h2{
+    font-size: 2em;
+}
+
+.user p {
+    font-size: 1em;
+}
+.indicadores {
+    display: flex;
+    flex: 2;
+    justify-content: flex-end;
+    column-gap: 37px;
+    background-color:#1F1B3F ;
+    max-width: max-content;
+    padding: 20px;
+    border: 10px solid #212121;
+    border-radius: 20px;
+}
+
+.square {
+    border-radius: 10px;
+    padding: 5px 25px;
+    font-size: 0.6em;
+    text-align: center;
+    line-height: 12px;
+
+}
+
+.square span{
+    font-size: 4em;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+.metricas-racks{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 20px;
+    column-gap: 50px;
+    width: 100%;
+    
+}
+
+.square-rack{
+    border-radius: 10px;
+    background-color: #1F1B3F;
+}
+
+.description-square{
+    border-radius: 10px 10px 0 0;
+    font-size: 1.3em;
+    padding: 10px;
+    border-bottom: 1px solid black;
+    background-color: #212121;
+}
+
+.rack{
+    padding: 20px;
+}
+
+
+.rack canva{
+   width: 100px !important;
+   height: 5vh !important;
+   background-color: #1F1B3F;   
+}
+
+
+
