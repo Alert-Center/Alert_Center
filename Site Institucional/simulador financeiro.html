@@ -33,58 +33,42 @@
 
     <!-- COMEÇO DA SESSÃO DO SIMULADOR FINANCEIRO ? -->
     <section class="simulador-financeiro">
-        <div class="container" id="container">
+        <div class="container" id="container_simulador">
             <div class="content-img">
                 <img src="img/Celular simulador.png" alt="Imagem de Data Centers">
             </div>
             <div class="content-text inicial">
-                <h2>Orçamento</h2>
                 <form class="form-1" id="form_1">
+                    <h2>Orçamento</h2>
                     <div class="campos">
                         <div class="campo">
-                            <label for="in_racks" id="label-simulador">O core da sua empresa é data center ?</label>
-                            <select id="in_core">
-                                <option value="true">Sim</option>
-                                <option value="false">Não</option>
-                            </select>
-                        </div>
-
-                        <div class="campo">
-                            <label for="in_racks" id="label-simulador">Informe o faturamento anual da sua
+                            <label for="in_receita" class="label-simulador">Informe a receita anual da sua
                                 empresa</label>
-                            <input placeholder="Informe o faturamento anual da sua empresa" type="Number" id="in_faturamento">
+                            <input placeholder="Digite a receita anual bruta da sua empresa" type="Number" id="in_receita">
                         </div>
-                    </div>
-                    <div class="campos">
                         <div class="campo">
-                            <label for="in_racks" id="label-simulador">Tempo de inatividade do data center no
+                            <label for="in_inatividade" class="label-simulador">Tempo de inatividade do data center no
                                 ano</label>
-                            <input placeholder="Informe o tempo em minutos" type="Number" id="in_inatividade">
+                            <input placeholder="Digite o tempo em horas" type="Number" id="in_inatividade">
                         </div>
 
                         <div class="campo">
-                            <label for="in_racks" id="label-simulador">Informe a quantidade de Racks DC</label>
-                            <input placeholder="Informe a quantidade de racks " type="Number" id="in_racks">
+                            <label for="in_racks" class="label-simulador">Informe a quantidade de Racks DC</label>
+                            <input placeholder="Digite a quantidade de racks " type="Number" id="in_racks">
                         </div>
+                        <div class="campo">
+                            <label for="in_qtdFuncionario" class="label-simulador">Informe a quantidade de funcionários
+                                afetados</label>
+                            <input placeholder="Digite quantos funcionarios são afetados" type="Number" id="in_qtdFuncionario">
+                        </div>
+                        <div class="campo">
+                            <label for="in_custoFuncionario" class="label-simulador">Informe o custo por hora do
+                                Funcionario</label>
+                            <input placeholder="Digite o custo por hora do funcionario afetado" type="Number" id="in_custoFuncionario">
+                        </div>
+                        <button class="btn" onclick="criarSimulacao()">Fazer Simulação</but>
                     </div>
                 </form>
-                <div class="form-2" id="form_2">
-                    <div class="campos">
-                        <div class="campo">
-                            <label for="in_racks" id="label-simulador"> Informe o tier do seu Data Center</label>
-                            <select name="" id="sel_tier">
-                                <option value="">Informe o Tier</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="btns" id="btns">
-                    <button class="btn" onclick="criarSimulacao()">Fazer Simulação</but>
-                </div>
             </div>
         </div>
     </section>
