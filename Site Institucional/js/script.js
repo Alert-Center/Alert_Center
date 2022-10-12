@@ -37,74 +37,116 @@ function entrar() {
 
 // Função para Criar Simulação de acordo com os valores que o usuario inseriu
 function criarSimulacao() {
-    // Código para inserir a div com o resultado da conta do simulador
-    container.innerHTML = `<div class="content-simulador" >
-  <div class="indicadores">
-      <div class="indicador">
-          <div class="title">
-              <h2>Prejuizo</h2>
-              <img src="../img/bx_trending-down.png">
-          </div>
-          <div class="number">R$ 1220</div>
 
-      </div>
-      <div class="indicador">
-          <div class="title">
-              <h2>Solução</h2>
-              <img src="../img/carbon_idea.png">
-          </div>
-          <div class="number">R$200</div>
-      </div>
-      <div class="indicador">
-          <div class="title">
-              <h2>Economia</h2>
-              <img src="../img/bx_trending-up.png">
-          </div>
-          <div class="number">R$ 3000</div>
-      </div>
-  </div>
-  <div class="grafic">
-      <canvas id="myChart"></canvas>
-  </div>
-  </div>
-  <button class="btn" onclick="refazerSimulacao()">Refazer Simulação</button>`;
+    //Quantidade de racks para definir o custo de instalação
+    var racks = Number(in_racks.value);
 
-    //Código para funcionar o Chart.JS
-    var div = document.getElementById("myChart");
-    const labels = ["January", "February", "March", "April", "May", "June"];
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: "My First dataset",
-            backgroundColor: "rgb(255, 99, 132)",
-            borderColor: "rgb(255, 99, 132)",
-            data: [0, 10, 5, 2, 20, 30, 45],
-        }, ],
-    };
+    //Quantidade de horas de downtime por mes e por ano
+    var inatividadeAnual = Number(in_inatividade.value);
+    var inatividadeMes = inatividadeAnual / 12;
 
-    const config = {
-        type: "bar",
-        data: data,
-        options: {
-            indexAxis: 'y',
-        },
-    };
-    const myChart = new Chart(div, config);
+    //A receita vem em um ano, então informar a receita em uma hora
+    var receitaAnual = Number(in_receita.value);
+    var receitaHora = ((receitaAnual / 12) / 30) / 24;
+
+    // O custo do downtime também leva em conta os salários dos funcionários afetados
+    var qtdFuncionario = Number(in_qtdFuncionario.value);
+    var custoFuncionario = Number(in_custoFuncionario.value);
+    var produtividade = qtdFuncionario * custoFuncionario;
+
+    // O prejuizo é a soma da perda de Receita com a perda produtividade
+    var prejuizoMes = (inatividadeMes * receitaHora) + (inatividadeMes * produtividade);
+    var prejuizoAno = (inatividadeAnual * receitaHora) + (inatividadeAnual * produtividade);;
+
+    //Custo da nossa solução
+    var solucaoinstalacao = racks * 300; //300 reais por Rack (200 equipamento + 100 mão de obra)
+    var solucaoMensal = 600; //Custo do software de 600 reais mensais
+    var pacoteAnual = 600 * 12; //Custo do software em um ano
+    var solucaoAnual = solucaoinstalacao + pacoteAnual; //Custo da solução em um ano; 
+
+    //Economia do Cliente é o quanto ele perde pelo quanto nossa solução custa (ou seja, o quanto ele evita de gastar)
+    var economiaMes1 = prejuizoMes - (solucaoMensal + solucaoinstalacao); //Primeiro mês há o custo da instalação
+    var economiaMeses = prejuizoMes - solucaoMensal; //Demais meses
+    var economiaAno = prejuizoAno - solucaoAnual; //Economia anual
+
+
+
+    if (receitaAnual == "" || inatividadeAnual == "" || racks == "" || qtdFuncionario == "" || custoFuncionario == "") {
+        alert("Preencha todos os campos!");
+    } else {
+
+        // Código para inserir a div com o resultado da conta do simulador
+        container_simulador.innerHTML =
+            `
+        <div class="content-simulador">
+            <div class="indicadores">
+                <h2>Prejuizo</h2>
+                <div class="indicador">
+                    <div class="title">
+                        <h2>Mensal</h2>
+                        <img src="img/bx_trending-down.png">
+                    </div>
+                    <div class="number">R$${prejuizoMes.toFixed(2)}</div>
+                </div>
+                <div class="indicador">
+                    <div class="title">
+                        <h2>Anual</h2>
+                        <img src="img/carbon_idea.png">
+                    </div>
+                    <div class="number">R$${prejuizoAno.toFixed(2)}</div>
+                </div>
+            </div>
+
+            <div class="indicadores">
+                <h2>solucao</h2>
+                <div class="indicador">
+                    <div class="title">
+                        <h2>Instalação</h2>
+                        <img src="img/bx_trending-down.png">
+                    </div>
+                    <div class="number">R$${solucaoinstalacao.toFixed(2)}</div>
+                </div>
+                <div class="indicador">
+                    <div class="title">
+                        <h2>Pacote Anual</h2>
+                        <img src="img/carbon_idea.png">
+                    </div>
+                    <div class="number">R$${pacoteAnual.toFixed(2)}</div>
+                </div>
+            </div>
+
+            <div class="indicadores">
+                <h2>economia</h2>
+                <div class="indicador">
+                    <div class="title">
+                        <h2>1º mes</h2>
+                        <img src="img/bx_trending-down.png">
+                    </div>
+                    <div class="number">R$${economiaMes1.toFixed(2)}</div>
+                </div>
+                <div class="indicador">
+                    <div class="title">
+                        <h2>demais meses</h2>
+                        <img src="img/bx_trending-down.png">
+                    </div>
+                    <div class="number">R$${economiaMeses.toFixed(2)}</div>
+                </div>
+                <div class="indicador">
+                    <div class="title">
+                        <h2>Anual</h2>
+                        <img src="img/carbon_idea.png">
+                    </div>
+                    <div class="number">R$${economiaAno.toFixed(2)}</div>
+                </div>
+            </div>
+        </div>
+
+    <button class="btn btn-refazer" onclick="refazerSimulacao()">Refazer Simulação</button>
+    `;
+    }
 }
-
 
 // Função para voltar a div ao seu estado inicial
 function refazerSimulacao() {
     location.reload();
-}
-
-// Função para realizar o calculo das variáveis 
-function calculoSimulador() {
-
-    // Variaveis que vão ser usadas no calculo
-    var faturamentoEmpresa = Number(in_faturamento.value);
-    var tearDataCenter = Number(sel_tier.value);
-    var tempoInatividadeDataCenter = Number(in_inatividade.value);
-    var coreEmpresa = sel_core.value;
-    var racksDataCenter = Number(in_racks.value);
 }
