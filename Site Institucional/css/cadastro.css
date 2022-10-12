@@ -10,7 +10,7 @@
 
 .form {
     background-color: #fff;
-    width: 65%;
+    width: 750px;
     max-width: 850px;
     padding: 1.9rem 2.5rem 1rem 2rem;
     margin: auto;
@@ -162,6 +162,11 @@ label {
     color: green;
 }
 
+.alerta {
+    font-size: 0.65em;
+    margin-top: 07px;
+    color: red;
+}
 .check button {
     width: max-content;
     height: max-content;
