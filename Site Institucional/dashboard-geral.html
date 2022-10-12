@@ -5,8 +5,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/reset.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>OnData</title>
 </head>
@@ -14,19 +15,12 @@
 <body>
 
   <!-- CABEÇALHO / NAVBAR  -->
-  <!-- <header class="header"> -->
   <div class="container">
     <nav class="navbar">
       <a href="index.html">
         <img src="img/logo.png" alt="" class="logo">
       </a>
-      <ul class="list-items">
-        <li><a class="a-destaque" href="#">Home</a></li>
-        <li><a href="simulador financeiro.html">Simulador Financeiro</a></li>
-        <li><a href="serviços.html">Serviços</a></li>
-        <li><a href="cadastro.html">Cadastro</a></li>
-        <li></li>
-      </ul>
+
       <img class="user-pic" src="img/usuario-de-perfil.png" alt="icone usuario de perfil" onclick="alternarMenu()">
 
       <div class="sub-menu-wrap" id="subMenu">
@@ -39,25 +33,26 @@
           <hr>
 
           <a href="#" class="sub-menu-link ">
-            <img src="img/usuario-de-perfil.png" alt="">
+            <img src="img/edit-user.png" alt="">
             <p>Editar perfil</p>
             <span>></span>
           </a>
 
           <a href="#" class="sub-menu-link ">
-            <img src="img/usuario-de-perfil.png" alt="">
+            <img src="img/settings-profile.png" alt="">
             <p>Configurações</p>
             <span>></span>
           </a>
 
           <a href="#" class="sub-menu-link ">
-            <img src="img/usuario-de-perfil.png" alt="">
+            <img src="img/help.png" alt="">
             <p>Ajuda</p>
             <span>></span>
           </a>
 
-          <a href="#" class="sub-menu-link ">
-            <img src="img/usuario-de-perfil.png" alt="">
+          <!-- Quando clicar no "Sair" será redirecionado para a página de login -->
+          <a href="login.html" class="sub-menu-link ">
+            <img src="img/log-out.png" alt="">
             <p>Sair</p>
             <span>></span>
           </a>
@@ -65,14 +60,13 @@
       </div>
     </nav>
   </div>
-  <!-- </header> -->
   <!-- FIM CABEÇALHO / NAVBAR  -->
 
   <div class="container-1" id="container-1">
     <div class="caixa" id="caixa">
       <div class="cliente" id="cliente">
-        <h1>Olá, cliente</h1>
-        <p>Vamos analisar as métricas do seu data center</p>
+        <h1>Olá, cliente!</h1>
+        <p>Vamos analisar as métricas do seu data center.</p>
       </div>
 
       <div class="relatorio-rack">
@@ -181,16 +175,17 @@
       </div>
 
       <div id="temperatura-geral">
-        <canvas id="chart-temperatura-geral"></canvas>
+        <canvas id="chart-geral-temp"></canvas>
       </div>
-    </div>
 
+      <div id="umidade-geral">
+        <canvas id="chart-geral-umid"></canvas>
+      </div>
+    </div>    
   </div>
-
 </body>
 
 </html>
-
 
 
 <script>
@@ -202,24 +197,24 @@
 
   // Chart.js - 1º Gráfico - Temperatura racks
   const labels_rack = [
-    'Rack 6',
-    'Rack 5',
-    'Rack 4',
-    'Rack 3',
-    'Rack 2',
     'Rack 1',
+    'Rack 2',
+    'Rack 3',
+    'Rack 4',
+    'Rack 5',
+    'Rack 6',
+    'Rack 7',
   ]
 
   const data_rack = {
     labels: labels_rack,
     datasets: [{
       label: 'Temperatura ºC',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [19, 21, 20, 19, 20, 17],
+      backgroundColor:'rgba(75, 192, 192)',
+      borderColor: '#E0211B',
+      data: [19, 21, 20, 19, 20, 17, 23],
     }]
   };
-
 
   const config_rack = {
     type: 'bar',
@@ -235,7 +230,7 @@
           fullSize: false,
           font: {
             size: 22,
-            weight: 800,
+            weight: 600,
             lineHeight: 1.0,
           }
         }
@@ -265,8 +260,8 @@
     labels: labels_downtimes,
     datasets: [{
       label: 'Downtimes',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: '#078BEE',
+      borderColor: '#078BEE',
       data: [5, 8, 6, 10, 3, 9],
     }]
   };
@@ -285,7 +280,7 @@
           fullSize: false,
           font: {
             size: 22,
-            weight: 800,
+            weight: 600,
             lineHeight: 1.0,
           }
         }
@@ -298,6 +293,101 @@
     config_downtimes
   );
 
+  // Chart.js - 3º Gráfico - Gráfico geral de temperatura
+  const labels_geral_temp = [
+    '12:00',
+    '12:10',
+    '12:20',
+    '12:30',
+    '12:40',
+    '12:50',
+    '13:00',
+  ];
 
+  const data_geral_temp = {
+    labels: labels_geral_temp,
+    datasets: [{
+      label: 'Temperatura',
+      backgroundColor: '#E0211B',
+      borderColor: '#E0211B',
+      data: [23, 24, 22, 25, 23, 22, 21],
+    }]
+  };
+
+  const config_geral_temp = {
+    type: 'line',
+    data: data_geral_temp,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Temperatura média do data center 1 no dia 12/10/2022',
+          align: "start",
+          fullSize: false,
+          font: {
+            size: 22,
+            weight: 600,
+            lineHeight: 1.0,
+          }
+        }
+      },
+    }
+  };
+
+  const myChart_geral_temp = new Chart(
+    document.getElementById('chart-geral-temp'),
+    config_geral_temp
+  );
+
+
+  // Chart.js - 4º Gráfico - Gráfico geral de umidade
+  const labels_geral_umid = [
+    '12:00',
+    '12:10',
+    '12:20',
+    '12:30',
+    '12:40',
+    '12:50',
+    '13:00',
+  ];
+
+  const data_geral_umid = {
+    labels: labels_geral_umid,
+    datasets: [{
+      label: 'Umidade',
+      backgroundColor: '#078BEE',
+      borderColor: '#078BEE',
+      data: [62, 58, 60, 55, 57, 56, 61],
+    }]
+  };
+
+  const config_geral_umid = {
+    type: 'line',
+    data: data_geral_umid,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Umidade média do data center 1 no dia 12/10/2022',
+          align: "start",
+          fullSize: false,
+          font: {
+            size: 22,
+            weight: 600,
+            lineHeight: 1.0,
+          }
+        }
+      },
+    }
+  };
+
+  const myChart_geral_umid = new Chart(
+    document.getElementById('chart-geral-umid'),
+    config_geral_umid
+  );
 
 </script>

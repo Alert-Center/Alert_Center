@@ -1,22 +1,14 @@
 /* Início da estilização da navbar */
 @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Oxanium', cursive;
-    box-sizing: border-box;
-}
-
-header {
+.container {
     width: 100%;
-    min-height: 100vh;
-    background-color: orange;
-    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-
-.navbar {
+.container .navbar {
     background-color: #070330;
     width: 100%;
     padding: 10px 10%;
@@ -25,7 +17,6 @@ header {
     justify-content: space-between;
     position: relative;  
 }
-
 
 .container .user-pic {
     width: 30px;
@@ -37,6 +28,7 @@ header {
 .navbar ul {
     width: 100%;
     text-align: right;
+    display: flex;
 }
 
 .navbar ul li {
@@ -46,7 +38,7 @@ header {
 }
 
 .navbar ul li a {
-    color: #FFF;
+    color: #000;
     text-decoration: none;
 }
 
@@ -101,7 +93,7 @@ header {
     align-items: center;
     text-decoration: none;
     color: #000;
-    margin: 12px 0;
+    margin: 12px 12px;
 }
 
 .sub-menu-link img {
@@ -114,11 +106,13 @@ header {
 
 .sub-menu-link p {
     width: 100%;
+    color: #000;
 }
 
 .sub-menu-link span {
     font-size: 22px;
     transition: transform 0.5s;
+    color: #000;
 }
 
 .sub-menu-link:hover span {
@@ -138,8 +132,7 @@ header {
     display: flex;
     padding: 15px 20px;
     justify-content: space-between;
-
-  }
+}
   
 .container-1 {
     flex-wrap: wrap-reverse;
@@ -147,7 +140,7 @@ header {
 
 .caixa {
    width: 381px;
-   height: 850px;
+   height: 1273px;
    row-gap: 30px;
    border-radius: 12px;
    background-color: #040524;
@@ -197,7 +190,6 @@ header {
     padding: 15px;
 }
 
-
 .relatorio-downtime #chart-relatorio-downtime {
     border-radius: 10px;
     color: #FFF;
@@ -206,28 +198,30 @@ header {
 }
 
 .grafico-geral {
-    width: 968px;
-    height: 850px;
+    width: 1068px;
+    height: 1273px;
     border-radius: 12px;
-    color: #FFF;    /* PROVISÓRIO */
     background-color: #040524;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .caixa-kpi {
-    width: 900px;
-    height: 134px;
+    width: 97%;
+    height: auto;
     background-color: #212121;
     border-radius: 12px;
     display: flex;
     justify-content: space-between;
-    margin: 15px 40px;
+    margin: 15px 0;
+    padding: 15px;
 }
 
-.grafico-geral .kpi-temperatura,.kpi-umidade{
-    background-color: #1F1B3F;
-    width: 861px;
-    height: 114px;
+.grafico-geral .kpi-temperatura,.kpi-umidade {
+    width: 100%;
     margin: auto;
+    background-color: #1F1B3F;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
@@ -235,19 +229,14 @@ header {
 }
 
 .indices {
-    width: 180px;
+    width: 25%;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     font-weight: 700;
     font-size: 10px;
-    padding: 0 35px;
-}
-
-.indices h4 {
-    color: #FFF;
-    height: fit-content;
+    padding: 10px 20px;
 }
 
 #p-perigo-min {
@@ -266,7 +255,6 @@ header {
     color: #E0211B;
 }
 
-/* GENERALIZAR AS PROPRIEDADES DE TEMPERATURA PARA UMIDADE */
 .kpi-temperatura .kpi-atual {
     width: 100%;
     display: flex;
@@ -279,8 +267,13 @@ header {
     justify-content: space-around;
 }
 
+.kpi-atual {
+    display: flex;
+    justify-content: space-between;
+}
+
 .kpi-atual #temperatura-minima, #temperatura-alerta, #temperatura-ideal, #temperatura-perigo, #umidade-minima, #umidade-alerta, #umidade-ideal, #umidade-perigo, #umidade-perigo {
-    width: 136px;
+    width: 23%;
     max-width: auto;
     background-color: #212121;
     display: flex;
@@ -291,9 +284,9 @@ header {
     padding: 10px;
 }
 
-.kpi-atual #temperatura-minima, #temperatura-alerta, #temperatura-ideal, #temperatura-perigo, #umidade-minima, #umidade-alerta, #umidade-ideal, #umidade-perigo, #umidade-perigo p {
-    font-weight: 700;
-    font-size: 7px;
+.kpi-atual p {
+    font-weight: 500;
+    font-size: 10px;
 }
 
 .kpi-atual #dado {
@@ -303,20 +296,42 @@ header {
 
 .kpi-atual #temperatura-minima, #umidade-minima {
     border: #078BEE solid 5px;
+}
+
+#temperatura-minima p, #umidade-minima p {
     color: #078BEE;
 }
 
 .kpi-atual #temperatura-alerta, #umidade-alerta {
     border: #E9EE07 solid 5px;
+}
+
+#temperatura-alerta p, #umidade-alerta p {
     color: #E9EE07;
 }
 
 .kpi-atual #temperatura-ideal, #umidade-ideal {
     border: #19EE07 solid 5px;
+}
+
+#temperatura-ideal p, #umidade-ideal p {
     color: #19EE07;
 }
 
 .kpi-atual #temperatura-perigo, #umidade-perigo {
     border: #E0211B solid 5px;
+}
+
+#temperatura-perigo p, #umidade-perigo p {
     color: #E0211B;
+}
+
+#chart-geral-temp, #chart-geral-umid {   
+    height: 389px;
+    width: 1032px;
+    border-radius: 10px;
+    color: #FFF;
+    background-color: #1F1B3F;
+    margin: 15px;
+    padding: 15px;
 }
