@@ -178,7 +178,7 @@ function criarSimulacao() {
 
                 `;
 
-
+            //Trocar quando esconde para quando aparece
             container_simulador.classList.replace("hide", "appear")
 
             // Adicionar uma cor ao número dependendo se a economia for positiva ou negativa
