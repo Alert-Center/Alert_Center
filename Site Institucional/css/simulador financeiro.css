@@ -202,3 +202,15 @@ input {
 
 
 /*Fim simulador financeiro  */
+
+
+.hide {
+    opacity: 0;
+    transition: opacity 500ms ease-out;
+}
+
+.appear {
+    opacity: 1;
+    transition: opacity 500ms ease-out;
+
+}
