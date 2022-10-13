@@ -209,7 +209,6 @@
 
 .caixa-kpi {
     width: 97%;
-    height: auto;
     background-color: #212121;
     border-radius: 12px;
     display: flex;
@@ -218,7 +217,7 @@
     padding: 15px;
 }
 
-.grafico-geral .kpi-temperatura,.kpi-umidade {
+.kpi-temperatura,.kpi-umidade {
     width: 100%;
     margin: auto;
     background-color: #1F1B3F;
