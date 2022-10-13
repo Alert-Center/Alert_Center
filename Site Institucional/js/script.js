@@ -203,8 +203,3 @@ function criarSimulacao() {
 function refazerSimulacao() {
     location.reload();
 }
-
-function teste() {
-
-    container_simulador.classList.replace("hide,appear")
-}

@@ -192,6 +192,17 @@ input {
     font-weight: 800;
 }
 
+ /* transição */
+ .hide {
+    opacity: 0;
+    transition: opacity 500ms ease-out;
+}
+
+.appear {
+    opacity: 1;
+    transition: opacity 500ms ease-out;
+
+}
 
 /*  */
 
@@ -204,13 +215,3 @@ input {
 /*Fim simulador financeiro  */
 
 
-.hide {
-    opacity: 0;
-    transition: opacity 500ms ease-out;
-}
-
-.appear {
-    opacity: 1;
-    transition: opacity 500ms ease-out;
-
-}
