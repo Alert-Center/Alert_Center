@@ -68,17 +68,17 @@ body {
     max-height: 0px;
     overflow: hidden;
     transition: max-height 0.5s;
+    border-radius: 20px;
 }
 
 .sub-menu-wrap.open-menu {
-    max-height: 400px;
+    max-height: 430px;
 }
 
 .sub-menu {
     width: 100%;
     background-color: #FFF;
     padding: 20px;
-    margin: 10px;
     border-radius: 20px;
 }
 
@@ -111,7 +111,7 @@ body {
     align-items: center;
     text-decoration: none;
     color: #000;
-    margin: 12px 12px;
+    margin: 12px 5px;
 }
 
 .sub-menu-link img {
@@ -142,7 +142,7 @@ body {
 } 
 
 
-/* Inicio do Banner */
+/* Inicio dos gráficos e caixas de texto */
 .container-1 {
     width: 100%;
     margin: auto;
