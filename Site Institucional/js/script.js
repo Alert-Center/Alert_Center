@@ -1,3 +1,6 @@
+// Toda vez que eu chamar o submit do formulario do simulador fincanceiro eu chamo a função de criarSimulacao com event por padrão!
+document.getElementById("form_1").addEventListener('submit', criarSimulacao);
+
 // Função para fazer a validação do e-mail
 function analisar_email() {
     var email = in_email.value
@@ -42,7 +45,11 @@ function entrar() {
 
 
 // Função para Criar Simulação de acordo com os valores que o usuario inseriu
-function criarSimulacao() {
+function criarSimulacao(event) {
+
+
+    // Função para evitar de atualizar a pagina
+    event.preventDefault();
 
     //Quantidade de racks para definir o custo de instalação
     var racks = Number(in_racks.value);
@@ -195,8 +202,8 @@ function criarSimulacao() {
 
         }, 500);
 
+        
     }
-
 }
 
 // Função para voltar a div ao seu estado inicial
