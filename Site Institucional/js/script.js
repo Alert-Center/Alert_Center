@@ -33,7 +33,7 @@ function entrar() {
     var senha = in_senha.value
 
     if (email == "admin@sptech.school" && senha == "@Sptech2022") {
-        windown.location.href = "dashboard-geral.html"
+        window.location.href = "dashboard-geral.html"
     } else {
         alert(`Conta ainda não cadastrada!`)
     }
