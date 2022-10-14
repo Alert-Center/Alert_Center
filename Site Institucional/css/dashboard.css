@@ -1,6 +1,11 @@
 /* Início da estilização da navbar */
 @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap');
 
+body {
+    background-image: url('../img/Background-degrade.jpg');
+    background-size: cover;
+}
+
 .container {
     width: 100%;
     display: flex;
@@ -18,11 +23,24 @@
     position: relative;  
 }
 
+.drop-down {
+    background-color: #1F1B3F;
+    border-radius: 30px;
+    padding: 8px 15px;
+    margin: 0 -85px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
 .container .user-pic {
     width: 30px;
     border-radius: 50%;
+}
+
+.drop-down p {
+    padding-left: 8px;
     cursor: pointer;
-    margin-left: 30px;
 }
 
 .navbar ul {
@@ -127,15 +145,11 @@
 /* Inicio do Banner */
 .container-1 {
     width: 100%;
-    background-image: url('../img/Background-degrade.jpg');
-    background-size: cover;
+    margin: auto;
     display: flex;
     padding: 15px 20px;
     justify-content: space-between;
-}
-  
-.container-1 {
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
 }
 
 .caixa {
@@ -172,7 +186,7 @@
 
 .cliente p {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .relatorio-rack{
@@ -235,7 +249,11 @@
     text-align: center;
     font-weight: 700;
     font-size: 10px;
-    padding: 10px 20px;
+    padding: 10px 10px;
+}
+
+.indices p {
+    padding: 3px;
 }
 
 #p-perigo-min {
@@ -264,16 +282,12 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-}
-
-.kpi-atual {
-    display: flex;
-    justify-content: space-between;
+    align-items: center;
+    text-align: center;
 }
 
 .kpi-atual #temperatura-minima, #temperatura-alerta, #temperatura-ideal, #temperatura-perigo, #umidade-minima, #umidade-alerta, #umidade-ideal, #umidade-perigo, #umidade-perigo {
     width: 23%;
-    max-width: auto;
     background-color: #212121;
     display: flex;
     flex-direction: column;
@@ -284,8 +298,9 @@
 }
 
 .kpi-atual p {
-    font-weight: 500;
-    font-size: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
 }
 
 .kpi-atual #dado {
@@ -326,7 +341,7 @@
 }
 
 #chart-geral-temp, #chart-geral-umid {   
-    height: 389px;
+    height: 369px;
     width: 1032px;
     border-radius: 10px;
     color: #FFF;
