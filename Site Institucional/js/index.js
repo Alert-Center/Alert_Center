@@ -1,3 +1,8 @@
-function redirecionar() {
-    window.location.href = "simulador financeiro.html"
+window.addEventListener("scroll",()=>{
+  if(window.scrollY!=0){
+    header.style.position="fixed";
   }
+  else{
+    header.style.position="relative";
+  }
+})
