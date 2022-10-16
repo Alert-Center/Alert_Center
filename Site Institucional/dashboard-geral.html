@@ -8,7 +8,11 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/reset.css">
+  <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Adicionando plugin "Annotation" para linha arbitrária horizonal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.0.1/chartjs-plugin-annotation.min.js" integrity="sha512-LZEOcU8s74hwWva82MJux7GgFNjfeExXG9yZPQrKz567Od4O2D/6UX3oGoZiRDOdbMtH33NBq7vonH4VOUPA/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <title>OnData</title>
 </head>
 
@@ -21,7 +25,10 @@
         <img src="img/logo.png" alt="" class="logo">
       </a>
 
-      <img class="user-pic" src="img/usuario-de-perfil.png" alt="icone usuario de perfil" onclick="alternarMenu()">
+      <div class="drop-down" onclick="alternarMenu()">
+        <img class="user-pic" src="img/usuario-de-perfil.png" alt="icone usuario de perfil">
+        <p>Cliente</p>
+      </div>
 
       <div class="sub-menu-wrap" id="subMenu">
         <div class="sub-menu">
@@ -41,6 +48,18 @@
           <a href="#" class="sub-menu-link ">
             <img src="img/settings-profile.png" alt="">
             <p>Configurações</p>
+            <span>></span>
+          </a>
+
+          <a href="racks-dashboard.html" class="sub-menu-link ">
+            <img src="img/dashboard-especifico.png" alt="">
+            <p>Dashboards específicos</p>
+            <span>></span>
+          </a>
+
+          <a href="#" class="sub-menu-link ">
+            <img src="img/notificacao.png" alt="">
+            <p>Notificações</p>
             <span>></span>
           </a>
 
@@ -92,35 +111,31 @@
 
           <div class="kpi-atual">
             <div id="temperatura-minima">
-              <p>Temperatura mínima ideal: </p>
+              <p>Perigo</p>
               <p id="dado">15ºC</p>
-              <p>Temperatura mínima atual</p>
+              <p>Data Center 1 | Rack 6</p>
               <p>09/10/2022</p>
-              <p>Data Center 1 | Rack 3</p>
             </div>
 
             <div id="temperatura-alerta">
-              <p>Temperatura de alerta: </p>
-              <p id="dado">18ºC</p>
-              <p>Temperatura mínima atual</p>
+              <p>Alerta</p>
+              <p id="dado">19ºC</p>
+              <p>Data Center 3 | Rack 5</p>
               <p>09/10/2022</p>
-              <p>Data Center 1 | Rack 3</p>
             </div>
 
             <div id="temperatura-ideal">
-              <p>Temperatura ideal: </p>
-              <p id="dado">22ºC</p>
-              <p>Temperatura mínima atual</p>
+              <p>Ideal</p>
+              <p id="dado">24ºC</p>
+              <p>Data Center 2 | Rack 8</p>
               <p>09/10/2022</p>
-              <p>Data Center 1 | Rack 3</p>
             </div>
 
             <div id="temperatura-perigo">
-              <p>Temperatura máxima de perigo: </p>
+              <p>Perigo</p>
               <p id="dado">32ºC</p>
-              <p>Temperatura mínima atual</p>
+              <p>Data Center 2 | Rack 3</p>
               <p>09/10/2022</p>
-              <p>Data Center 1 | Rack 3</p>
             </div>
           </div>
         </div>
@@ -139,36 +154,31 @@
 
           <div class="kpi-atual">
             <div id="umidade-minima">
-              <p>Umidade mínima ideal: </p>
+              <p>Perigo</p>
               <p id="dado">29%</p>
-              <p>Umidade mínima atual</p>
-              <p>09/10/2022</p>
               <p>Data Center 2 | Rack 6</p>
+              <p>09/10/2022</p>
             </div>
 
             <div id="umidade-alerta">
-              <p>Umidade de alerta: </p>
+              <p>Alerta</p>
               <p id="dado">32%</p>
-              <p>Umidade mínima atual</p>
-              <p>09/10/2022</p>
               <p>Data Center 3 | Rack 2</p>
+              <p>09/10/2022</p>
             </div>
 
             <div id="umidade-ideal">
-              <p>Umidade ideal: </p>
+              <p>Ideal</p>
               <p id="dado">56%</p>
-              <p>Umidade mínima atual</p>
-              <p>09/10/2022</p>
               <p>Data Center 3 | Rack 5</p>
+              <p>09/10/2022</p>
             </div>
 
             <div id="umidade-perigo">
-              <p>Umidade máxima de perigo: </p>
-              <p id="dado">81
-                %</p>
-              <p>Umidade mínima atual</p>
-              <p>09/10/2022</p>
+              <p>Perigo</p>
+              <p id="dado">81%</p>
               <p>Data Center 3 | Rack 1</p>
+              <p>09/10/2022</p>
             </div>
           </div>
         </div>
@@ -188,211 +198,4 @@
 </html>
 
 
-<script>
-  var subMenu = document.getElementById("subMenu");
-
-  /* Inserir nome do usuário que teve seu login aprovado, 
-  Dados guardados no armazenamento sa sessão(Veja a pagina script.js:45)*/
-  nome1.innerHTML = sessionStorage.getItem(0);
-  nome.innerHTML = sessionStorage.getItem(0);
-  //------------------------------------
-  function alternarMenu() {
-    subMenu.classList.toggle("open-menu")
-  }
-
-  // Chart.js - 1º Gráfico - Temperatura racks
-  const labels_rack = [
-    'Rack 1',
-    'Rack 2',
-    'Rack 3',
-    'Rack 4',
-    'Rack 5',
-    'Rack 6',
-    'Rack 7',
-  ]
-
-  const data_rack = {
-    labels: labels_rack,
-    datasets: [{
-      label: 'Temperatura ºC',
-      backgroundColor: 'rgba(75, 192, 192)',
-      borderColor: '#E0211B',
-      data: [19, 21, 20, 19, 20, 17, 23],
-    }]
-  };
-
-  const config_rack = {
-    type: 'bar',
-    data: data_rack,
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        title: {
-          display: true,
-          text: 'Temperatura dos racks do data center 1 no dia 10/10/2022',
-          align: "start",
-          fullSize: false,
-          font: {
-            size: 22,
-            weight: 600,
-            lineHeight: 1.0,
-          }
-        }
-      },
-      indexAxis: 'y',
-    },
-  };
-
-  const myChart_rack = new Chart(
-    document.getElementById('chart-relatorio-rack'),
-    config_rack
-  );
-
-
-  // Chart.js - 2º Gráfico - Relatório Downtimes 
-  const labels_downtimes = [
-    'Jan',
-    'Fev',
-    'Mar',
-    'Abri',
-    'Mai',
-    'Jun',
-    'Jul',
-  ]
-
-  const data_downtimes = {
-    labels: labels_downtimes,
-    datasets: [{
-      label: 'Downtimes',
-      backgroundColor: '#078BEE',
-      borderColor: '#078BEE',
-      data: [5, 8, 6, 10, 3, 9],
-    }]
-  };
-
-  const config_downtimes = {
-    type: 'bar',
-    data: data_downtimes,
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        title: {
-          display: true,
-          text: 'Ocorrência de downtimes no 1º semestre do ano de 2022',
-          align: "start",
-          fullSize: false,
-          font: {
-            size: 22,
-            weight: 600,
-            lineHeight: 1.0,
-          }
-        }
-      },
-    },
-  };
-
-  const myChart_downtime = new Chart(
-    document.getElementById('chart-relatorio-downtime'),
-    config_downtimes
-  );
-
-  // Chart.js - 3º Gráfico - Gráfico geral de temperatura
-  const labels_geral_temp = [
-    '12:00',
-    '12:10',
-    '12:20',
-    '12:30',
-    '12:40',
-    '12:50',
-    '13:00',
-  ];
-
-  const data_geral_temp = {
-    labels: labels_geral_temp,
-    datasets: [{
-      label: 'Temperatura',
-      backgroundColor: '#E0211B',
-      borderColor: '#E0211B',
-      data: [23, 24, 22, 25, 23, 22, 21],
-    }]
-  };
-
-  const config_geral_temp = {
-    type: 'line',
-    data: data_geral_temp,
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        title: {
-          display: true,
-          text: 'Temperatura média do data center 1 no dia 12/10/2022',
-          align: "start",
-          fullSize: false,
-          font: {
-            size: 22,
-            weight: 600,
-            lineHeight: 1.0,
-          }
-        }
-      },
-    }
-  };
-
-  const myChart_geral_temp = new Chart(
-    document.getElementById('chart-geral-temp'),
-    config_geral_temp
-  );
-
-
-  // Chart.js - 4º Gráfico - Gráfico geral de umidade
-  const labels_geral_umid = [
-    '12:00',
-    '12:10',
-    '12:20',
-    '12:30',
-    '12:40',
-    '12:50',
-    '13:00',
-  ];
-
-  const data_geral_umid = {
-    labels: labels_geral_umid,
-    datasets: [{
-      label: 'Umidade',
-      backgroundColor: '#078BEE',
-      borderColor: '#078BEE',
-      data: [62, 58, 60, 55, 57, 56, 61],
-    }]
-  };
-
-  const config_geral_umid = {
-    type: 'line',
-    data: data_geral_umid,
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        title: {
-          display: true,
-          text: 'Umidade média do data center 1 no dia 12/10/2022',
-          align: "start",
-          fullSize: false,
-          font: {
-            size: 22,
-            weight: 600,
-            lineHeight: 1.0,
-          }
-        }
-      },
-    }
-  };
-
-  const myChart_geral_umid = new Chart(
-    document.getElementById('chart-geral-umid'),
-    config_geral_umid
-  );
-
-</script>
+<script src="js/dashboard-geral.js"></script>
