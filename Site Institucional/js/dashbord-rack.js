@@ -133,3 +133,13 @@ const rack1 = new Chart(document.getElementById('rack1'), config[0]);
 const rack2 = new Chart(document.getElementById('rack2'), config[1]);
 const rack3 = new Chart(document.getElementById('rack3'), config[2]);
 const rack4 = new Chart(document.getElementById('rack4'), config[3]);
+
+  /* Inserir nome do usuário que teve seu login aprovado, 
+  Dados guardados no armazenamento sa sessão(Veja a pagina script.js:45)*/
+  nome1.innerHTML = sessionStorage.getItem(0);
+  nome.innerHTML = sessionStorage.getItem(0);
+//função para criar dropdown
+var subMenu = document.getElementById("subMenu")
+function alternarMenu() {
+  subMenu.classList.toggle("open-menu")
+}
