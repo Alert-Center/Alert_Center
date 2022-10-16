@@ -28,7 +28,7 @@
           <div class="user-info">
             <img src="img/usuario-de-perfil.png" alt="icone usuario de perfil">
             <!-- Adicionar um JS para pegar o nome que a pessoa cadastrou -->
-            <h3>Luiz Nison</h3>
+            <h3 id="nome"></h3>
           </div>
           <hr>
 
@@ -65,7 +65,7 @@
   <div class="container-1" id="container-1">
     <div class="caixa" id="caixa">
       <div class="cliente" id="cliente">
-        <h1>Olá, cliente!</h1>
+        <h1>Olá, <span id="nome1"></span></h1>
         <p>Vamos analisar as métricas do seu data center.</p>
       </div>
 
@@ -181,7 +181,7 @@
       <div id="umidade-geral">
         <canvas id="chart-geral-umid"></canvas>
       </div>
-    </div>    
+    </div>
   </div>
 </body>
 
@@ -189,8 +189,13 @@
 
 
 <script>
-  var subMenu = document.getElementById("subMenu")
+  var subMenu = document.getElementById("subMenu");
 
+  /* Inserir nome do usuário que teve seu login aprovado, 
+  Dados guardados no armazenamento sa sessão(Veja a pagina script.js:45)*/
+  nome1.innerHTML = sessionStorage.getItem(0);
+  nome.innerHTML = sessionStorage.getItem(0);
+  //------------------------------------
   function alternarMenu() {
     subMenu.classList.toggle("open-menu")
   }
@@ -210,7 +215,7 @@
     labels: labels_rack,
     datasets: [{
       label: 'Temperatura ºC',
-      backgroundColor:'rgba(75, 192, 192)',
+      backgroundColor: 'rgba(75, 192, 192)',
       borderColor: '#E0211B',
       data: [19, 21, 20, 19, 20, 17, 23],
     }]
