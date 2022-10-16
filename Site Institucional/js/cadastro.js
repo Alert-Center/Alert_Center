@@ -27,6 +27,10 @@ function cadastrar() {
   var senha = in_form_senha.value;
   var confirmarSenha = in_form_confirmarSenha.value;
   var termos = in_form_termos.checked;
+  
+  // Variavel usada para amrmazenar os dados de nome, email e senha cadastrados usados no login falso
+  var array = [nome,email,senha];
+  //-----------------------------
 
   var campovazio = nome == "" || CNPJ == "" || tipo == "" || cep == "" || logradouro == "" || numero == "" || bairro == "" || cidade == "" || complemento == "" || telefone == "" || celular == "" || email == "" || senha == "" || confirmarSenha == "";
 
@@ -120,16 +124,21 @@ function cadastrar() {
     // Se os termos não forem assinados
   } else if (!termos) {
     // Limpar aviso de confirmar senha. Se passou para essa estapa, é porque a senha confirmou.
-    if (!(document.getElementById("ErroConfirmarSenha") == null)) {
+      if (!(document.getElementById("ErroConfirmarSenha") == null)) {
       document.getElementById("ErroConfirmarSenha").remove(); // remove() exclui um elemento
-    }
-    alert("Por favor, aceite os Termos de Política e Privacidade antes de seguir.");
-    //Se não estiver checked, a cor ficará vermelha
-    checkTermos();
+      }
+      alert("Por favor, aceite os Termos de Política e Privacidade antes de seguir.");
+      //Se não estiver checked, a cor ficará vermelha
+      checkTermos();
   } else {
-    // Usuário Cadastrado!!
-    alert(`Usuário ${nome} cadastrado com sucesso!`)
-    window.location.href = "login.html"; //redirecionar a página para o login
+      // Usuário Cadastrado!!
+      alert(`Usuário ${nome} cadastrado com sucesso!`);
+      /* Guardar o as informações do usuario no banco de dados fake. Função stringify 
+      usada para converter um array em um string já que
+      não é possivel guardar arrays no Local Storage-----------------*/
+      localStorage.setItem(localStorage.length,JSON.stringify(array));
+      // ------------------------------------------------------------
+      window.location.href = "login.html"; //redirecionar a página para o login
   }
 }
 
