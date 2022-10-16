@@ -20,7 +20,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;  
+    position: relative;
 }
 
 .drop-down {
@@ -139,29 +139,35 @@ body {
 
 .sub-menu-link:hover p {
     font-weight: 600;
-} 
+}
 
 
 /* Inicio dos gráficos e caixas de texto */
 .container-1 {
+    max-width: 1900px;
+    column-gap: 50px;
     width: 100%;
     margin: auto;
     display: flex;
     padding: 15px 20px;
     justify-content: space-between;
     flex-wrap: wrap;
+
+
+
 }
 
 .caixa {
-   width: 381px;
-   height: 1273px;
-   row-gap: 30px;
-   border-radius: 12px;
-   background-color: #040524;
-   padding: 15px 15px;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
+    width: 380px;
+    height: 1273px;
+    row-gap: 30px;
+    border-radius: 12px;
+    background-color: #040524;
+    padding: 15px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
 }
 
 .cliente {
@@ -172,7 +178,8 @@ body {
     background-color: #1F1B3F;
 }
 
-.cliente h1, .cliente p {
+.cliente h1,
+.cliente p {
     padding: 10px 0 0 10px;
     display: flex;
     justify-content: start;
@@ -189,7 +196,7 @@ body {
     font-size: 14px;
 }
 
-.relatorio-rack{
+.relatorio-rack {
     flex: 1;
 }
 
@@ -197,7 +204,7 @@ body {
     flex: 1;
 }
 
-.relatorio-rack #chart-relatorio-rack {   
+.relatorio-rack #chart-relatorio-rack {
     border-radius: 10px;
     color: #FFF;
     background-color: #1F1B3F;
@@ -212,48 +219,57 @@ body {
 }
 
 .grafico-geral {
-    width: 1068px;
-    height: 1273px;
+    padding: 0 20px;
+    width: 100%;
     border-radius: 12px;
     background-color: #040524;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    flex: 5;
 }
 
 .caixa-kpi {
-    width: 97%;
+    width: 100%;
     background-color: #212121;
     border-radius: 12px;
     display: flex;
     justify-content: space-between;
     margin: 15px 0;
     padding: 15px;
+    transition: 1s;
+
 }
 
-.kpi-temperatura,.kpi-umidade {
+.kpi-temperatura,
+.kpi-umidade {
     width: 100%;
     margin: auto;
     background-color: #1F1B3F;
     border-radius: 10px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+
+
+
 }
 
 .indices {
-    width: 25%;
+    column-gap: 10px;
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    text-align: center;
     font-weight: 700;
     font-size: 10px;
-    padding: 10px 10px;
+    padding: 10px;
 }
 
 .indices p {
     padding: 3px;
+
 }
 
 #p-perigo-min {
@@ -286,7 +302,15 @@ body {
     text-align: center;
 }
 
-.kpi-atual #temperatura-minima, #temperatura-alerta, #temperatura-ideal, #temperatura-perigo, #umidade-minima, #umidade-alerta, #umidade-ideal, #umidade-perigo, #umidade-perigo {
+.kpi-atual #temperatura-minima,
+#temperatura-alerta,
+#temperatura-ideal,
+#temperatura-perigo,
+#umidade-minima,
+#umidade-alerta,
+#umidade-ideal,
+#umidade-perigo,
+#umidade-perigo {
     width: 23%;
     background-color: #212121;
     display: flex;
@@ -295,54 +319,108 @@ body {
     justify-content: center;
     border-radius: 10px;
     padding: 10px;
+    text-align: center;
 }
 
+
+
 .kpi-atual p {
+    position: absolute;
+    opacity: 0;
     font-weight: 700;
     font-size: 14px;
     text-align: center;
+
+}
+
+.caixa-kpi {
+    animation: 1s animation all;
+}
+
+.caixa-kpi:hover .kpi-atual p {
+    position: relative;
+    opacity: 1;
+    transition: 1s;
+}
+
+.animation {
+    height: 90px;
+    transition: 0.8s;
+}
+
+.caixa-kpi:hover .animation {
+    height: 150px;
+    transition: 0.8s;
 }
 
 .kpi-atual #dado {
     font-weight: 700;
     font-size: 32px;
+
 }
 
-.kpi-atual #temperatura-minima, #umidade-minima {
+.kpi-atual #temperatura-minima,
+#umidade-minima {
     border: #078BEE solid 5px;
+
 }
 
-#temperatura-minima p, #umidade-minima p {
+#temperatura-minima h2,
+#temperatura-minima h3,
+#temperatura-minima p,
+#umidade-minima h2,
+#umidade-minima h3,
+#umidade-minima p {
     color: #078BEE;
 }
 
-.kpi-atual #temperatura-alerta, #umidade-alerta {
+.kpi-atual #temperatura-alerta,
+#umidade-alerta {
     border: #E9EE07 solid 5px;
+
 }
 
-#temperatura-alerta p, #umidade-alerta p {
+#temperatura-alerta h2,
+#temperatura-alerta h3,
+#temperatura-alerta p,
+#umidade-alerta h2,
+#umidade-alerta h3,
+#umidade-alerta p {
     color: #E9EE07;
 }
 
-.kpi-atual #temperatura-ideal, #umidade-ideal {
+.kpi-atual #temperatura-ideal,
+#umidade-ideal {
     border: #19EE07 solid 5px;
 }
 
-#temperatura-ideal p, #umidade-ideal p {
+#temperatura-ideal h2,
+#temperatura-ideal h3,
+#temperatura-ideal p,
+#umidade-ideal h2,
+#umidade-ideal h3,
+#umidade-ideal p {
     color: #19EE07;
 }
 
-.kpi-atual #temperatura-perigo, #umidade-perigo {
+.kpi-atual #temperatura-perigo,
+#umidade-perigo {
     border: #E0211B solid 5px;
 }
 
-#temperatura-perigo p, #umidade-perigo p {
+#temperatura-perigo h2,
+#temperatura-perigo h3,
+#temperatura-perigo p,
+#umidade-perigo h2,
+#umidade-perigo h3,
+#umidade-perigo p {
     color: #E0211B;
 }
 
-#chart-geral-temp, #chart-geral-umid {   
+#chart-geral-temp,
+#chart-geral-umid {
     height: 369px;
-    width: 1032px;
+    width: calc(100vw - 620px);
     border-radius: 10px;
     color: #FFF;
     background-color: #1F1B3F;
