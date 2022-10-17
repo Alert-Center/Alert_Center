@@ -9,7 +9,11 @@
 
 .simulador-financeiro .container {
     flex-wrap: wrap;
-    max-width: 1220px;
+    max-width: 2000px;
+}
+
+.simulador-financeiro .container-solucao {
+    flex-direction: column;
 }
 
 .content-img img {
@@ -22,106 +26,47 @@
 }
 
 
-/* /Estillização da parte de progresso do formulario  */
-
-.progress {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: center;
-}
-
-.progress .linha {
-    order: 2;
-    transition: 1s;
-    content: '';
-    width: 70px;
-    height: 2px;
-    display: block;
-    background-color: aliceblue;
-}
-
-.circle-1,
-.circle-2 {
-    order: 1;
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: blue;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.4s;
-}
-
-.circle-2 {
-    order: 3;
-    background-color: white;
-    color: black;
-}
-
-
-/*  */
-
-
 /* Estilização dos campos do input  */
 
 .campos {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 30px;
     column-gap: 15px;
     justify-content: center;
+    align-items: center;
 }
 
 .campo {
     display: flex;
     flex-direction: column;
-    width: 280px;
+    width: 350px;
+    margin-bottom: 25px;
 }
 
-#label-simulador {
-    font-size: 1.3em;
-    margin-bottom: 20px;
+.label-simulador {
+    font-size: 1em;
+    margin-bottom: 10px;
 }
 
-select,
+
 input {
     background-color: rgb(247, 244, 244);
-    border-radius: 12px;
-    padding: 12px 12px;
+    border-radius: 07px;
+    padding: 07px 12px;
     color: black;
-}
-
-select option {
-    color: #222;
-    font-weight: bold;
 }
 
 
 /*  */
 
-
-/* divs criadas para fazer a troca para a segunda parte do formulario  */
-
 .form-1 {
     display: block;
 }
 
-.form-2 {
-    display: none;
-}
-
-.btns {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    margin-top: 40px;
-}
-
-.btns .btn {
-    margin: 0 !important;
+.form-1 .btn {
+    padding: 10px 25px;
+    margin-top: 10px;
 }
 
 
@@ -130,32 +75,75 @@ select option {
 .content-simulador {
     margin: auto;
     display: flex;
-    width: 90%;
+    width: 80%;
     min-height: 500px;
-    max-height: auto;
-    background-color: rgba(0, 0, 0, .2);
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.content-simulador .container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: max-content;
 }
 
 .indicadores {
     display: flex;
     flex-direction: column;
-    ;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     align-items: center;
     flex: 1;
+    min-height: 500px;
+}
+
+.indicadores h1 {
+    background-color: #252527;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    padding: 0.3rem 1.2rem;
+    margin-top: 15px;
+    font-weight: 600;
+
+}
+
+.legenda {
+    display: flex;
+    align-items: center;
+}
+
+.legenda img {
+    margin-right: 10px;
+    width: 30px;
+}
+
+.prejuizo {
+    color: red;
+}
+
+.economia {
+    color: #3bd42c;
 }
 
 .indicador {
-    width: 80%;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, .7)
+    min-width: 230px;
+    width: max-content;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, .7);
 }
 
 .title {
     display: flex;
     margin-bottom: 10px;
+    justify-content: center;
+}
+
+.title h2 {
+    font-size: 1.2rem;
 }
 
 .title img {
@@ -165,41 +153,65 @@ select option {
 .indicador h2 {
     display: flex;
     align-items: center;
-    margin-right: 10px;
 }
 
 .number {
     padding: 10px;
-    background-color: #1E1E1E;
+    background-color: #252527;
     border-radius: 10px;
-    font-size: 1.7em;
-    font-weight: bold;
+    font-size: 1.4em;
 }
 
 
-/*  */
 
-
-/* Estilização da div onde está o gráfico do chart js */
-
-.grafic {
-    flex: 2;
+.content-legenda {
+    margin: auto;
     display: flex;
+    width: 80%;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, .2);
 }
 
-#myChart {
-    width: 90% !important;
-    height: 80% !important;
+.content-legenda .container {
+    display: flex;
+    width: 80%;
+    margin: 30px auto;
+    align-items: flex-start;
+
 }
 
+.content-legenda .container p {
+    line-height: 1.6;
+    margin: 6px 0;
+}
+
+.content-legenda .container span {
+    font-weight: 800;
+}
+
+ /* transição */
+ .hide {
+    opacity: 0;
+    transition: opacity 500ms ease-out;
+}
+
+.appear {
+    opacity: 1;
+    transition: opacity 500ms ease-out;
+
+}
 
 /*  */
 
-.container .btn {
-    margin: 50px auto auto auto;
+
+#container_simulador .btn-refazer {
+    margin: 30px auto auto auto;
 }
 
 
 /*Fim simulador financeiro  */
+
+

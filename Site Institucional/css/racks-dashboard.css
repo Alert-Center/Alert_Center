@@ -1,96 +1,96 @@
+/* REAPROVEITANDO CLASSE DA STYLE.CSS  */
 .quem-somos .container {
     flex-direction: column;
-    background-color: rgba(4,5,36,1);
+    background-color: rgba(4, 5, 36, 1);
+    padding: 10px;
+    width: 90%;
+    max-width: 1440px;
     padding: 30px;
- 
+
 }
 
+
+/* Estilizando cabecalho do dashboard */
 .header-dash {
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+    justify-content: center;
+
+    flex-direction: column;
     column-gap: 20px;
+    row-gap: 20px;
 }
 
-.user{
+.user {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #1F1B3F;
+    justify-content: space-between;
+    align-items: center;
     height: max-content;
     padding: 30px 20px;
     border-radius: 10px;
 }
 
-.user h2{
-    font-size: 2em;
+.mensagem h2 {
+    font-size: 1.4em;
 }
 
-.user p {
-    font-size: 1em;
-}
-.indicadores {
-    display: flex;
-    flex: 2;
-    justify-content: flex-end;
-    column-gap: 37px;
-    background-color:#1F1B3F ;
-    max-width: max-content;
-    padding: 20px;
-    border: 10px solid #212121;
-    border-radius: 20px;
+.mensagem p {
+    font-size: 0.8em;
 }
 
-.square {
-    border-radius: 10px;
-    padding: 5px 25px;
-    font-size: 0.6em;
+.return img{
+    width: 40px;
+    vertical-align: middle;
+}
+
+/* Reutilizando classes que foram criadas na dasboard.css  */
+.kpi-temperatura-umidade {
     text-align: center;
-    line-height: 12px;
-
+    width: 100%;
 }
 
-.square span{
-    font-size: 4em;
-    font-weight: bold;
-    line-height: 30px;
+.caixa-kpi {
+    width: 100% !important;
+    margin: 0 0 10px 0 !important;
+    
 }
+/*FIM  */
 
-.metricas-racks{
+/* 
+CRIANDO CONTAINER PARA COLOCAR OS GRÁFICOS DE TEMPERATURA E UMIDADE. USANDO PROPRIEDADE PARA DEFINIR ITEMS EM GRADE FACILITANDO COLOCAR OS GRÁFICOS LADO DE DOIS EM DOIS (DISPLAY GRID) */
+
+.metricas-racks {
     margin-top: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 20px;
     column-gap: 50px;
     width: 100%;
-    
 }
 
-.square-rack{
+.square-rack {
     border-radius: 10px;
     background-color: #1F1B3F;
 }
 
-.description-square{
+.square-rack h2 {
+    padding: 15px;
+}
+
+.description-square {
     border-radius: 10px 10px 0 0;
     font-size: 1.3em;
     padding: 10px;
-    border-bottom: 1px solid black;
     background-color: #212121;
 }
 
-.rack{
+.rack {
     padding: 20px;
 }
 
 
-.rack canva{
-   width: 100px !important;
-   height: 5vh !important;
-   background-color: #1F1B3F;   
+.rack canva {
+    width: 100px !important;
+    height: 5vh !important;
+    background-color: #1F1B3F;
 }
-
-
-
