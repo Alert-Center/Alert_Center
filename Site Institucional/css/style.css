@@ -199,3 +199,36 @@ footer{
 .a-destaque {
   font-weight: bold;
 }
+
+/* estilização do Nossos serviços */
+.Nossos-servicos {
+  width: 100%;
+  padding: 60px 0;
+  background-image: url('../img/Background2.jpg');
+  background-size: cover;
+}
+
+
+.Nossos-servicos .content-img img{
+  width: 470px;
+  padding: 40px 0 ;
+  margin: auto;
+  display:block;
+}
+
+.Nossos-servicos .content-text {
+  flex: 1;
+}
+
+.Nossos-servicos .content-text h2 {
+  text-align: center;
+}
+
+.Nossos-servicos .content-text p{
+  font-weight: 200;
+  text-align: justify;
+}
+
+.Nossos-servicos .container{
+  flex-wrap: wrap;
+}
