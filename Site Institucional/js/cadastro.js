@@ -17,9 +17,6 @@ in_form_logradouro.parentElement.innerHTML += '<div class="alerta" style="displa
 in_form_numero.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_numero">Digite seu numero</div>';
 in_form_bairro.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_bairro">Digite seu bairro</div>';
 in_form_cidade.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_cidade">Digite sua cidade</div>';
-in_form_complemento.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_complemento">Digite seu complemento</div>';
-in_form_telefone.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_telefone">Digite seu telefone</div>';
-in_form_celular.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_celular">Digite seu celular</div>';
 in_form_email.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_email">Digite seu email</div>';
 in_form_email.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_emailErrado">Insira seu email neste formato:<br> nome@exemplo.com</div>';
 in_form_senha.parentElement.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_senha">Digite sua senha</div>';
@@ -68,7 +65,7 @@ function cadastrar() {
   //-----------------------------
 
   // variável booleana para verificar se há campos vazios
-  var campovazio = nome == "" || CNPJ == "" || tipo == "" || cep == "" || logradouro == "" || numero == "" || bairro == "" || cidade == "" || complemento == "" || telefone == "" || celular == "" || email == "" || senha == "" || confirmarSenha == "";
+  var campovazio = nome == "" || CNPJ == "" || tipo == "" || cep == "" || logradouro == "" || numero == "" || bairro == "" || cidade == "" || email == "" || senha == "" || confirmarSenha == "";
 
 
   // A função ".match()" serve para pesquisar na string a expressão supracitada
@@ -119,15 +116,6 @@ function cadastrar() {
       }
       if (cidade == "") {
         alert_cidade.style.display = "block"
-      }
-      if (complemento == "") {
-        alert_complemento.style.display = "block"
-      }
-      if (telefone == "") {
-        alert_telefone.style.display = "block"
-      }
-      if (celular == "") {
-        alert_celular.style.display = "block"
       }
       if (email == "") {
         alert_emailErrado.style.display = "none"
@@ -225,15 +213,6 @@ function completado() {
   }
   if (cidade != "") {
     alert_cidade.style.display = "none"
-  }
-  if (complemento != "") {
-    alert_complemento.style.display = "none"
-  }
-  if (telefone != "") {
-    alert_telefone.style.display = "none"
-  }
-  if (celular != "") {
-    alert_celular.style.display = "none"
   }
   if (email != "") {
     alert_email.style.display = "none"
