@@ -193,7 +193,11 @@ button {
     font-size: 0.65em;
     margin-top: 07px;
     color: red;
+}
+
+.alerta [id="alert_senhaErrada"] {
     max-width: fit-content;
+
 }
 
 .check button {
