@@ -73,6 +73,7 @@ body {
 
 .sub-menu-wrap.open-menu {
     max-height: 430px;
+    z-index: 999;
 }
 
 .sub-menu {
