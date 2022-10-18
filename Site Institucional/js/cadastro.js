@@ -22,9 +22,26 @@ in_form_complemento.parentElement.innerHTML += '<div class="alerta" style="displ
 in_form_telefone.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_telefone">Digite seu telefone</div>';
 in_form_celular.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_celular">Digite seu celular</div>';
 in_form_email.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_email">Digite seu email</div>';
+in_form_email.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_emailErrado">Insira seu email neste formato:<br> nome@exemplo.com</div>';
 in_form_senha.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_senha">Digite sua senha</div>';
+in_form_senha.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_senhaErrada">A senha deve ter pelo menos 8 caracteres (contendo letras maiúsculas e minúsculas, números e caracteres especiais)</div>';
 in_form_confirmarSenha.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_confirmarSenha">Digite a confirmação da sua senha!</div>';
 // -----------------------------------------------------------//
+
+// Variável para verificar se a string contém no mínimo 1 número, 1 letra minúscula, 1 letra maiúscula, 1 caracter especial, além de conter no mínimo 8 caracteres e no máximo 20
+var senhaCaracteres = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,20}$/;
+// -------------------------------------//
+
+// https://www.horadecodar.com.br/2020/09/13/como-validar-email-com-javascript/
+// Com a regex que está inserida na variável emailPadrao, nós verificamos o seguite:
+// Qualquer tipo de string;
+// Seguida por um caractere @ (que é obrigatório em e-mails);
+// Seguido por algum outro texto, o domínio/provedor;
+// E então temos a presença de um ponto, que também é obrigatório;
+// E por fim mais um texto, validando tanto emails .com quanto .com.br, e outros que tenham terminologias diferentes
+var emailPadrao = /\S+@\S+\.\S+/;
+// --------------------------------------------//
+
 
 //Função para falso cadastro e verificação de campos vazios
 function cadastrar() {
@@ -52,21 +69,33 @@ function cadastrar() {
 
   // variável booleana para verificar se há campos vazios
   var campovazio = nome == "" || CNPJ == "" || tipo == "" || cep == "" || logradouro == "" || numero == "" || bairro == "" || cidade == "" || complemento == "" || telefone == "" || celular == "" || email == "" || senha == "" || confirmarSenha == "";
-  
-  // Se tiver algum campo vazio ou se a senha não estiver igual a confirmar senha
-  if (campovazio || senha != confirmarSenha ) {
 
-    // Se o confirmar senha estiver errado
-    if (senha != confirmarSenha) {
-      alert("Suas senhas estão diferentes!");
-      ErroConfirmarSenha.style.display = "block";
+
+  // A função ".match()" serve para pesquisar na string a expressão supracitada
+  var senhaErrada = senha.match(senhaCaracteres) == null;
+
+  // variável para verificar se o confirmar senha não está igual a senha
+  var confirmarSenhaErrada = senha != confirmarSenha;
+
+  // variável para verificar se o email não está nos padrões
+  var emailErrado = emailPadrao.test(email) == false;
+
+  if (campovazio || confirmarSenhaErrada || emailErrado || senhaErrada) {
+
+    if (emailErrado) {
+      //Se estiver errado, aparecer o alerta com display block
+      alert_emailErrado.style.display = "block"
     }
-    // Se tiver um campo vazio
+
+    if (senhaErrada) {
+      alert_senhaErrada.style.display = "block"
+    }
+
     if (campovazio) {
 
       alert("Por favor, complete todos os campos!");
 
-      // Mesma lógica do confirmar senha
+      //Se estiver vazio, aparecer o alerta com display block
       if (nome == "") {
         alert_nome.style.display = "block"
       }
@@ -101,9 +130,11 @@ function cadastrar() {
         alert_celular.style.display = "block"
       }
       if (email == "") {
+        alert_emailErrado.style.display = "none"
         alert_email.style.display = "block"
       }
       if (senha == "") {
+        alert_senhaErrada.style.display = "none"
         alert_senha.style.display = "block"
       }
       if (confirmarSenha == "") {
@@ -111,12 +142,22 @@ function cadastrar() {
       }
     }
 
-    // Se os termos não forem assinados
-  } else if (!termos) {
+    if (confirmarSenhaErrada) {
+
+      //Limpar mensagem da senha vazia
+      alert_confirmarSenha.style.display = "none"
+
+      //Se estiver errado, aparecer o alerta com display block
+      ErroConfirmarSenha.style.display = "block";
+    }
+
+  }
+  // Se os termos não forem assinados
+  else if (!termos) {
 
     alert("Por favor, aceite os Termos de Política e Privacidade antes de seguir.");
 
-    //Se não estiver checked, a cor ficará vermelha
+    //Função criada abaixo para deixar a cor vermelha
     checkTermos();
   } else {
     // Usuário Cadastrado!!
@@ -156,9 +197,11 @@ function completado() {
   var senha = in_form_senha.value;
   var confirmarSenha = in_form_confirmarSenha.value;
 
-  // Lógica: 
-  // Se o campo for diferente de vazio (ou seja, completado), coloque o display none (sumir a mensagem de alerta)
+  var emailErrado = emailPadrao.test(email) == false;
+  var senhaErrada = senha.match(senhaCaracteres) == null;
 
+
+  // Se o campo for diferente de vazio (ou seja, completado), coloque o display none (sumir a mensagem de alerta)
   if (nome != "") {
     alert_nome.style.display = "none"
   }
@@ -195,8 +238,14 @@ function completado() {
   if (email != "") {
     alert_email.style.display = "none"
   }
+  if (!(emailErrado)) {
+    alert_emailErrado.style.display = "none"
+  }
   if (senha != "") {
     alert_senha.style.display = "none"
+  }
+  if (!(senhaErrada)) {
+    alert_senhaErrada.style.display = "none"
   }
   if (confirmarSenha != "") {
     alert_confirmarSenha.style.display = "none"
@@ -207,3 +256,18 @@ function completado() {
 
 }
 
+function eyes() {
+  if (in_form_senha.type == "password" || in_form_confirmarSenha.type == "password") {
+    in_form_senha.type = "text";
+    img_eye_senha.src = "img/eye.png";
+
+    in_form_confirmarSenha.type = "text";
+    img_eye_confirmar.src = "img/eye.png";
+  } else {
+    in_form_senha.type = "password";
+    img_eye_senha.src = "img/hidden.png";
+
+    in_form_confirmarSenha.type = "password";
+    img_eye_confirmar.src = "img/hidden.png";
+  }
+}
