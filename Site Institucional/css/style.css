@@ -2,6 +2,7 @@
 .header {
   width: 100%;
   background-color: #070330;
+  z-index: 999;
 }
 
 .container {
