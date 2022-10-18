@@ -88,15 +88,19 @@
           </div>
           <div class="box e-mail">
             <label for="in_form_email">E-mail</label>
-            <input type="text" id="in_form_email" placeholder="Digite o seu e-mail">
+            <input type="text" id="in_form_email" placeholder="Digite o seu e-mail" onkeyup="analisar_email()">
           </div>
           <div class="box senha">
             <label for="in_form_senha">Senha</label>
-            <input type="text" id="in_form_senha" placeholder="Digite sua senha">
+            <input type="password" id="in_form_senha" placeholder="Digite sua senha" onkeyup="analisar_senha()">
           </div>
           <div class="box confirmar_senha">
             <label for="in_form_confirmarSenha">Confirmar Senha</label>
-            <input type="text" id="in_form_confirmarSenha" placeholder="Confirme sua senha">
+            <input type="password" id="in_form_confirmarSenha" placeholder="Confirme sua senha" onkeyup="analisar_senha()">
+          </div>
+          <div class="div_msg">
+            <p id="msg_email"></p>
+            <p id="msg_senha"></p>
           </div>
         </div>
         <div class="check">
