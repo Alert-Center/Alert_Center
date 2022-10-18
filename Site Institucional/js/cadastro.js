@@ -8,6 +8,24 @@ for (key of div_campos.children) {
   key.addEventListener('keyup', function () { completado() })
 }
 
+// Adicionar frase de alerta invisível (display: none) //
+in_form_confirmarSenha.parentElement.innerHTML += '<div class="alerta" style="display:none" id="ErroConfirmarSenha">Suas senhas estão diferentes!</div>';
+in_form_nome.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_nome">Digite seu nome</div>';
+in_form_CNPJ.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_CNPJ">Digite seu CNPJ</div>';
+in_form_tipo.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_tipo">Digite seu tipo</div>';
+in_form_cep.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_cep">Digite seu cep</div>';
+in_form_logradouro.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_logradouro">Digite seu logradouro</div>';
+in_form_numero.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_numero">Digite seu numero</div>';
+in_form_bairro.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_bairro">Digite seu bairro</div>';
+in_form_cidade.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_cidade">Digite sua cidade</div>';
+in_form_complemento.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_complemento">Digite seu complemento</div>';
+in_form_telefone.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_telefone">Digite seu telefone</div>';
+in_form_celular.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_celular">Digite seu celular</div>';
+in_form_email.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_email">Digite seu email</div>';
+in_form_senha.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_senha">Digite sua senha</div>';
+in_form_confirmarSenha.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_confirmarSenha">Digite a confirmação da sua senha!</div>';
+// -----------------------------------------------------------//
+
 //Função para falso cadastro e verificação de campos vazios
 function cadastrar() {
 
@@ -27,21 +45,21 @@ function cadastrar() {
   var senha = in_form_senha.value;
   var confirmarSenha = in_form_confirmarSenha.value;
   var termos = in_form_termos.checked;
-  
+
   // Variavel usada para amrmazenar os dados de nome, email e senha cadastrados usados no login falso
-  var array = [nome,email,senha];
+  var array = [nome, email, senha];
   //-----------------------------
 
+  // variável booleana para verificar se há campos vazios
   var campovazio = nome == "" || CNPJ == "" || tipo == "" || cep == "" || logradouro == "" || numero == "" || bairro == "" || cidade == "" || complemento == "" || telefone == "" || celular == "" || email == "" || senha == "" || confirmarSenha == "";
-
+  
   // Se tiver algum campo vazio ou se a senha não estiver igual a confirmar senha
-  if (campovazio || senha != confirmarSenha) {
+  if (campovazio || senha != confirmarSenha ) {
 
     // Se o confirmar senha estiver errado
     if (senha != confirmarSenha) {
-      if (in_form_confirmarSenha.parentElement.lastElementChild == in_form_confirmarSenha) { // Se o elemento filho for o próprio input. Se tirar essa verificação, podem aparecer várias mensagens repetidadas.
-        in_form_confirmarSenha.parentElement.innerHTML += '<div class="alerta" id="ErroConfirmarSenha">Suas senhas estão diferentes!</div>';
-      }
+      alert("Suas senhas estão diferentes!");
+      ErroConfirmarSenha.style.display = "block";
     }
     // Se tiver um campo vazio
     if (campovazio) {
@@ -50,95 +68,65 @@ function cadastrar() {
 
       // Mesma lógica do confirmar senha
       if (nome == "") {
-        if (in_form_nome.parentElement.lastElementChild == in_form_nome) {
-          in_form_nome.parentElement.innerHTML += '<div class="alerta" id="alert_nome">Digite seu nome</div>';
-        }
+        alert_nome.style.display = "block"
       }
       if (CNPJ == "") {
-        if (in_form_CNPJ.parentElement.lastElementChild == in_form_CNPJ) {
-          in_form_CNPJ.parentElement.innerHTML += '<div class="alerta" id="alert_CNPJ">Digite seu CNPJ</div>';
-        }
+        alert_CNPJ.style.display = "block"
       }
       if (tipo == "") {
-        if (in_form_tipo.parentElement.lastElementChild == in_form_tipo) {
-          in_form_tipo.parentElement.innerHTML += '<div class="alerta" id="alert_tipo">Digite seu tipo</div>';
-        }
+        alert_tipo.style.display = "block"
       }
       if (cep == "") {
-        if (in_form_cep.parentElement.lastElementChild == in_form_cep) {
-          in_form_cep.parentElement.innerHTML += '<div class="alerta" id="alert_cep">Digite seu cep</div>';
-        };
+        alert_cep.style.display = "block"
       }
       if (logradouro == "") {
-        if (in_form_logradouro.parentElement.lastElementChild == in_form_logradouro) {
-          in_form_logradouro.parentElement.innerHTML += '<div class="alerta" id="alert_logradouro">Digite seu logradouro</div>';
-        };
+        alert_logradouro.style.display = "block"
       }
       if (numero == "") {
-        if (in_form_numero.parentElement.lastElementChild == in_form_numero) {
-          in_form_numero.parentElement.innerHTML += '<div class="alerta" id="alert_numero">Digite seu numero</div>';
-        };
+        alert_numero.style.display = "block"
       }
       if (bairro == "") {
-        if (in_form_bairro.parentElement.lastElementChild == in_form_bairro) {
-          in_form_bairro.parentElement.innerHTML += '<div class="alerta" id="alert_bairro">Digite seu bairro</div>';
-        };
+        alert_bairro.style.display = "block"
       }
       if (cidade == "") {
-        if (in_form_cidade.parentElement.lastElementChild == in_form_cidade) {
-          in_form_cidade.parentElement.innerHTML += '<div class="alerta" id="alert_cidade">Digite sua cidade</div>';
-        };
+        alert_cidade.style.display = "block"
       }
       if (complemento == "") {
-        if (in_form_complemento.parentElement.lastElementChild == in_form_complemento) {
-          in_form_complemento.parentElement.innerHTML += '<div class="alerta" id="alert_complemento">Digite seu complemento</div>';
-        };
+        alert_complemento.style.display = "block"
       }
       if (telefone == "") {
-        if (in_form_telefone.parentElement.lastElementChild == in_form_telefone) {
-          in_form_telefone.parentElement.innerHTML += '<div class="alerta" id="alert_telefone">Digite seu telefone</div>';
-        };
+        alert_telefone.style.display = "block"
       }
       if (celular == "") {
-        if (in_form_celular.parentElement.lastElementChild == in_form_celular) {
-          in_form_celular.parentElement.innerHTML += '<div class="alerta" id="alert_celular">Digite seu celular</div>';
-        };
+        alert_celular.style.display = "block"
       }
       if (email == "") {
-        if (in_form_email.parentElement.lastElementChild == in_form_email) {
-          in_form_email.parentElement.innerHTML += '<div class="alerta" id="alert_email">Digite seu email</div>';
-        };
+        alert_email.style.display = "block"
       }
       if (senha == "") {
-        if (in_form_senha.parentElement.lastElementChild == in_form_senha) {
-          in_form_senha.parentElement.innerHTML += '<div class="alerta" id="alert_senha">Digite sua senha</div>';
-        };
+        alert_senha.style.display = "block"
       }
       if (confirmarSenha == "") {
-        if (in_form_confirmarSenha.parentElement.lastElementChild == in_form_confirmarSenha) {
-          in_form_confirmarSenha.parentElement.innerHTML += '<div class="alerta" id="alert_confirmarSenha">Digite a confirmação da sua senha!</div>';
-        };
+        alert_confirmarSenha.style.display = "block"
       }
     }
 
     // Se os termos não forem assinados
   } else if (!termos) {
-    // Limpar aviso de confirmar senha. Se passou para essa estapa, é porque a senha confirmou.
-      if (!(document.getElementById("ErroConfirmarSenha") == null)) {
-      document.getElementById("ErroConfirmarSenha").remove(); // remove() exclui um elemento
-      }
-      alert("Por favor, aceite os Termos de Política e Privacidade antes de seguir.");
-      //Se não estiver checked, a cor ficará vermelha
-      checkTermos();
+
+    alert("Por favor, aceite os Termos de Política e Privacidade antes de seguir.");
+
+    //Se não estiver checked, a cor ficará vermelha
+    checkTermos();
   } else {
-      // Usuário Cadastrado!!
-      alert(`Usuário ${nome} cadastrado com sucesso!`);
-      /* Guardar o as informações do usuario no banco de dados fake. Função stringify 
-      usada para converter um array em um string já que
-      não é possivel guardar arrays no Local Storage-----------------*/
-      localStorage.setItem(localStorage.length,JSON.stringify(array));
-      // ------------------------------------------------------------
-      window.location.href = "login.html"; //redirecionar a página para o login
+    // Usuário Cadastrado!!
+    alert(`Usuário ${nome} cadastrado com sucesso!`);
+    /* Guardar o as informações do usuario no banco de dados fake. Função stringify 
+    usada para converter um array em um string já que
+    não é possivel guardar arrays no Local Storage-----------------*/
+    localStorage.setItem(localStorage.length, JSON.stringify(array));
+    // ------------------------------------------------------------
+    window.location.href = "login.html"; //redirecionar a página para o login
   }
 }
 
@@ -169,79 +157,53 @@ function completado() {
   var confirmarSenha = in_form_confirmarSenha.value;
 
   // Lógica: 
-  // Se o campo for diferente de vazio (ou seja, completado), faça:
-  // se existir um ID alerta (Ou seja, se não for nulo. Se não tiver essa verificação, dá erro. Ele seleciona um campo que não existe), faça: 
-  // remova o elemento com ID.
+  // Se o campo for diferente de vazio (ou seja, completado), coloque o display none (sumir a mensagem de alerta)
 
   if (nome != "") {
-    if (!(document.getElementById("alert_nome") == null)) {
-      document.getElementById("alert_nome").remove();
-    }
+    alert_nome.style.display = "none"
   }
   if (CNPJ != "") {
-    if (!(document.getElementById("alert_CNPJ") == null)) {
-      document.getElementById("alert_CNPJ").remove();
-    }
+    alert_CNPJ.style.display = "none"
   }
   if (tipo != "") {
-    if (!(document.getElementById("alert_tipo") == null)) {
-      document.getElementById("alert_tipo").remove();
-    }
+    alert_tipo.style.display = "none"
   }
   if (cep != "") {
-    if (!(document.getElementById("alert_cep") == null)) {
-      document.getElementById("alert_cep").remove();
-    }
+    alert_cep.style.display = "none"
   }
   if (logradouro != "") {
-    if (!(document.getElementById("alert_logradouro") == null)) {
-      document.getElementById("alert_logradouro").remove();
-    }
+    alert_logradouro.style.display = "none"
   }
   if (numero != "") {
-    if (!(document.getElementById("alert_numero") == null)) {
-      document.getElementById("alert_numero").remove();
-    }
+    alert_numero.style.display = "none"
   }
   if (bairro != "") {
-    if (!(document.getElementById("alert_bairro") == null)) {
-      document.getElementById("alert_bairro").remove();
-    }
+    alert_bairro.style.display = "none"
   }
   if (cidade != "") {
-    if (!(document.getElementById("alert_cidade") == null)) {
-      document.getElementById("alert_cidade").remove();
-    }
+    alert_cidade.style.display = "none"
   }
   if (complemento != "") {
-    if (!(document.getElementById("alert_complemento") == null)) {
-      document.getElementById("alert_complemento").remove();
-    }
+    alert_complemento.style.display = "none"
   }
   if (telefone != "") {
-    if (!(document.getElementById("alert_telefone") == null)) {
-      document.getElementById("alert_telefone").remove();
-    }
+    alert_telefone.style.display = "none"
   }
   if (celular != "") {
-    if (!(document.getElementById("alert_celular") == null)) {
-      document.getElementById("alert_celular").remove();
-    }
+    alert_celular.style.display = "none"
   }
   if (email != "") {
-    if (!(document.getElementById("alert_email") == null)) {
-      document.getElementById("alert_email").remove();
-    }
+    alert_email.style.display = "none"
   }
   if (senha != "") {
-    if (!(document.getElementById("alert_senha") == null)) {
-      document.getElementById("alert_senha").remove();
-    }
+    alert_senha.style.display = "none"
   }
   if (confirmarSenha != "") {
-    if (!(document.getElementById("alert_confirmarSenha") == null)) {
-      document.getElementById("alert_confirmarSenha").remove();
-    }
+    alert_confirmarSenha.style.display = "none"
   }
+  if (senha == confirmarSenha) {
+    ErroConfirmarSenha.style.display = "none"
+  }
+
 }
 
