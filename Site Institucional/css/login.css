@@ -2,17 +2,18 @@
     width: 100%;
     background-image: url('../img/Background2.jpg');
     background-size: cover;
-    padding: 80px 0;
+    padding: auto;
 }
 
 .banner .container {
     display: flex;
     justify-content: center;
 }
-  
+
 .caixa-formulario {
     background-color: #F1F0F6;
     width: 480px;
+    height: 450px;
     padding: 30px;
     border-radius: 20px;
     display: flex;
@@ -54,8 +55,7 @@
 }
 
 .campo .campo2 {
-    padding-top: 5px;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
 }
 
 .campo input {
@@ -89,19 +89,31 @@
     border: none;
     border-radius: 12px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .caixa-formulario button:hover { /* o ':hover' faz com que mude as características de um elemento*/
-    opacity: 0.8;
+    background-color: #2e3192;
+    transform: scale(1.05, 1.05);
+}
+
+.caixa-formulario button:active {
+    transform: scale(0.95, 0.95);
 }
 
 .text-login {
     text-align: center;
-    padding-top: 30px;
+    padding-top: 20px;
 } 
 
-.text-login p a{
+.text-login p {
     color: #0B0333;
     padding: 2px 0;
-    font-size: 12px;
+    font-size: 0.6rem;
+}
+
+.text-login p a { 
+    color: #0B0333;
+    text-decoration: underline;
+    font-size: 0.6rem;
 }

@@ -1,5 +1,4 @@
 // Função para validar pseudo-login e criar alert para falar que a conta ainda não foi cadastrada
-// Função para validar pseudo-login e criar alert para falar que a conta ainda não foi cadastrada
 function entrar() {
   var email = in_email.value;
   var senha = in_senha.value;
