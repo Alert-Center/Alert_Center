@@ -24,7 +24,7 @@ const labels_rack = [
 const data_rack = {
   labels: labels_rack,
   datasets: [{
-    label: 'Temperatura ºC',
+    label: 'Temperatura (ºC)',
     backgroundColor:'rgba(75, 192, 192)',
     borderColor: '#E0211B',
     data: [19, 21, 20, 19, 20, 17, 23],
@@ -35,6 +35,23 @@ const config_rack = {
   type: 'bar',
   data: data_rack,
   options: {
+    scales: {
+      y: {
+        ticks: {
+          color: '#FFF'
+        }
+      },
+      x: {
+        beginAtZero: true,
+        type: 'linear',
+        grid: {
+          color: '#FFF'
+        },
+        ticks: {
+          color: '#FFF'
+        }
+      }
+    },
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -42,9 +59,9 @@ const config_rack = {
         display: true,
         text: 'Temperatura dos racks do data center 1 no dia 10/10/2022',
         align: "start",
-        fullSize: false,
+        color: '#FFF',
         font: {
-          size: 22,
+          size: 20,
           weight: 600,
           lineHeight: 1.0,
         }
@@ -77,7 +94,7 @@ const data_downtimes = {
     label: 'Downtimes',
     backgroundColor: '#078BEE',
     borderColor: '#078BEE',
-    data: [5, 8, 6, 10, 3, 9],
+    data: [5, 8, 6, 10, 3, 9, 4],
   }]
 };
 
@@ -85,6 +102,23 @@ const config_downtimes = {
   type: 'bar',
   data: data_downtimes,
   options: {
+    scales: {
+      y: {
+        ticks: {
+          color: '#FFF'
+        },
+        beginAtZero: true,
+        type: 'linear',
+        grid: {
+          color: '#FFF'
+        }
+      },
+      x: {
+        ticks: {
+          color: '#FFF'
+        }
+      }
+    },
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -92,9 +126,9 @@ const config_downtimes = {
         display: true,
         text: 'Ocorrência de downtimes no 1º semestre do ano de 2022',
         align: "start",
-        fullSize: false,
+        color: '#FFF',
         font: {
-          size: 22,
+          size: 20,
           weight: 600,
           lineHeight: 1.0,
         }
@@ -135,8 +169,19 @@ const config_geral_temp = {
   options: {
     scales: {
       y: {
+        ticks: {
+          color: '#FFF'
+        },
         beginAtZero: true,
-        type: 'linear'
+        type: 'linear',
+        grid: {
+          color: '#FFF'
+        }
+      },
+      x: {
+          ticks: {
+            color: '#FFF'
+          },
       }
     },
     responsive: true,
@@ -160,8 +205,9 @@ const config_geral_temp = {
         text: 'Temperatura média do data center 1 no dia 12/10/2022',
         align: 'start',
         fullSize: false,
+        color: '#FFF',
         font: {
-          size: 22,
+          size: 20,
           weight: 600,
           lineHeight: 1.0,
         }
@@ -177,6 +223,7 @@ const myChart_geral_temp = new Chart(
 
 
 // Chart.js - 4º Gráfico - Gráfico geral de umidade
+Chart.defaults.font.color = 'black';
 const labels_geral_umid = ['12:00','12:10','12:20','12:30', '12:40', '12:50', '13:00', '13:10', '13:20', '13:30', '13:40', '13:50', '14:00', '14:10', '14:20', '14:30', '14:40', '14:50', '15:00',
 ];
 
@@ -199,6 +246,15 @@ const data_geral_umid = {
 
 // Linha horizontal de parâmetro
 
+yAxes: [{
+  display: true,
+  gridLines: {
+      color: '#fff'
+  },
+   ticks: {
+    fontColor: 'black' // aqui branco
+   },
+}]
 
 const config_geral_umid = {
   type: 'line',
@@ -206,8 +262,19 @@ const config_geral_umid = {
   options: {
     scales: {
       y: {
+        ticks: {
+          color: '#FFF'
+        },
         beginAtZero: true,
-        type: 'linear'
+        type: 'linear',
+        grid: {
+          color: '#FFF'
+        }
+      },
+      x: {
+          ticks: {
+            color: '#FFF'
+          },
       }
     },
     responsive: true,
@@ -231,8 +298,9 @@ const config_geral_umid = {
         text: 'Umidade média do data center 1 no dia 12/10/2022',
         align: "start",
         fullSize: false,
+        color: '#FFF',
         font: {
-          size: 22,
+          size: 20,
           weight: 600,
           lineHeight: 1.0,
         }

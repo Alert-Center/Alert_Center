@@ -14,14 +14,21 @@ const labels = [
 const rack = {
   labels: labels,
   datasets: [{
-    label: 'Temperatura',
-
-    borderColor: 'rgb(255,0, 0)',
+    label: 'Temperatura (ºC)',
+    backgroundColor: '#E0211B',
+    borderColor: '#E0211B',
+    pointRadius: 5,
+    pointBorderWidth: 1,
+    pointBorderColor: 'white',
     data: [0, 30, 25, 22, 20, 30, 21],
   },
   {
-    label: 'Umidade',
-    borderColor: 'rgb(00, 00, 255)',
+    label: 'Umidade (%)',
+    backgroundColor: '#078BEE',
+    borderColor: '#078BEE',
+    pointRadius: 5,
+    pointBorderWidth: 1,
+    pointBorderColor: 'white',
     data: [0, 60, 70, 89, 55, 90, 100],
   }
   ]
@@ -31,14 +38,21 @@ const rack = {
 const rackTwo = {
   labels: labels,
   datasets: [{
-    label: 'Temperatura',
-
-    borderColor: 'rgb(255,0, 0)',
+    label: 'Temperatura (ºC)',
+    backgroundColor: '#E0211B',
+    borderColor: '#E0211B',
+    pointRadius: 5,
+    pointBorderWidth: 1,
+    pointBorderColor: 'white',
     data: [0, 30, 25, 22, 20, 30, 21],
   },
   {
-    label: 'Umidade',
-    borderColor: 'rgb(00, 00, 255)',
+    label: 'Umidade (%)',
+    backgroundColor: '#078BEE',
+    borderColor: '#078BEE',
+    pointRadius: 5,
+    pointBorderWidth: 1,
+    pointBorderColor: 'white',
     data: [0, 60, 70, 89, 55, 90, 100],
   }
   ]
@@ -48,14 +62,21 @@ const rackTwo = {
 const rackTree = {
   labels: labels,
   datasets: [{
-    label: 'Temperatura',
-
-    borderColor: 'rgb(255,0, 0)',
+    label: 'Temperatura (ºC)',
+    backgroundColor: '#E0211B',
+    borderColor: '#E0211B',
+    pointRadius: 5,
+    pointBorderWidth: 1,
+    pointBorderColor: 'white',
     data: [0, 23, 23, 22, 25, 27, 21],
   },
   {
-    label: 'Umidade',
-    borderColor: 'rgb(00, 00, 255)',
+    label: 'Umidade (%)',
+    backgroundColor: '#078BEE',
+    borderColor: '#078BEE',
+    pointRadius: 5,
+    pointBorderWidth: 1,
+    pointBorderColor: 'white',
     data: [0, 22, 23, 22, 44, 90, 100],
   }
   ]
@@ -65,14 +86,21 @@ const rackTree = {
 const rackFour = {
   labels: labels,
   datasets: [{
-    label: 'Temperatura',
-
-    borderColor: 'rgb(255,0, 0)',
+    label: 'Temperatura (ºC)',
+    backgroundColor: '#E0211B',
+    borderColor: '#E0211B',
+    pointRadius: 5,
+    pointBorderWidth: 1,
+    pointBorderColor: 'white',
     data: [0, 12, 19, 20, 20, 25, 22],
   },
   {
-    label: 'Umidade',
-    borderColor: 'rgb(00, 00, 255)',
+    label: 'Umidade (%)',
+    backgroundColor: '#078BEE',
+    borderColor: '#078BEE',
+    pointRadius: 5,
+    pointBorderWidth: 1,
+    pointBorderColor: 'white',
     data: [0, 50, 30, 29, 45, 80, 100],
   }
   ]
@@ -85,13 +113,19 @@ const options =  {
   x: {
     grid:{
       color:'rgba(255,255,255,.1)'
+    },
+    ticks: {
+      color: '#FFF'
     }
 
   },
   y: {
     grid: {
       color: 'rgba(255,255,255,0.5)'
-    }
+    },
+    ticks: {
+      color: '#FFF'
+    },
   }
 }
 };
