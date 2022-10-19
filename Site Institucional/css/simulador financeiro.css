@@ -98,6 +98,7 @@ input {
     align-items: center;
     flex: 1;
     min-height: 500px;
+    text-align: center;    
 }
 
 .indicadores h1 {
