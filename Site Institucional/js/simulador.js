@@ -132,13 +132,13 @@ var economiaAno = prejuizoAno - solucaoAnual; //Economia anual
                               </div>
                               <div class="legenda">
                                   <img src="img/simulador/carbon_idea.png">
-                                  <p><span>Solução: </span>engloba a análise de infraestutura, instalação de equipamentos e a
+                                  <p><span>Solução: </span>engloba a análise de infraestrutura, instalação de equipamentos e a
                                       licença
                                       anual para acesso do sistema de monitoramento</p>
                               </div>
                               <div class="legenda">
                                   <img src="img/simulador/bx_trending-up.png">
-                                  <p><span>Economia:</span> Representa o montante de gastos que foram poupados.</p>
+                                  <p><span>Economia:</span> representa o montante de gastos que foram poupados.</p>
                               </div>
                               <div class="legenda">
                                   <img src="img/simulador/icons8-ponto-de-exclamação-64.png">
