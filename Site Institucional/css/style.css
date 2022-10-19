@@ -62,6 +62,10 @@
   flex-wrap: wrap-reverse;
 }
 
+.banner .content-text p {
+  text-align: left;
+}
+
 .content-img {
   flex: 1;
 }
@@ -92,7 +96,8 @@
 
 .content-text p {
   font-size: 1.6rem;
-  font-weight: 300;
+  font-weight: 200;
+  text-align: justify;
   margin-bottom: 30px;
 }
 
