@@ -55,7 +55,7 @@
           </div>
           <div class="box cep">
             <label for="in_form_cep">CEP</label>
-            <input type="text" id="in_form_cep" placeholder="_____-___">
+            <input type="text" id="in_form_cep" placeholder="_____-___" maxlength='8' onkeyup="pegarEndereco()">
           </div>
           <div class="box Logradouro">
             <label for="in_form_logradouro">Logradouro</label>
@@ -162,3 +162,4 @@
 
 </html>
 <script src="js/cadastro.js"></script>
+<script src="js/apiCEP.js"></script>
