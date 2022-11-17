@@ -14,6 +14,19 @@
 
 <body>
 
+  <div class="alerta_erro" id="alerta_erro">
+    <div class="card_erro" id="cardErro">
+      <span id="mensagem_erro">
+        <h2>Cadastro realizado com sucesso!</h2>
+      </span>
+      <div class="bolinhas">
+        <div class="bolinha bolinha1"></div>
+        <div class="bolinha bolinha2"></div>
+        <div class="bolinha bolinha3"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- CABEÇALHO / NAVBAR  -->
   <header class="header">
     <div class="container">
@@ -32,8 +45,11 @@
   </header>
   <!-- FIM CABEÇALHO / NAVBAR  -->
 
+
   <!-- SESSÃO CADASTRO -->
   <section class="cadastro">
+
+
     <div class="container">
       <div class="form">
         <h1>Cadastrar-se</h1>
@@ -79,11 +95,11 @@
           </div>
           <div class="box telefone">
             <label for="in_form_telefone">Telefone</label>
-            <input type="text" id="in_form_telefone" placeholder="Digite seu Telefone">
+            <input type="text" id="in_form_telefone" maxlength="11" placeholder="Digite seu Telefone">
           </div>
           <div class="box celular">
             <label for="in_form_celular">Celular</label>
-            <input type="text" id="in_form_celular" placeholder="Digite seu Celular">
+            <input type="text" id="in_form_celular" maxlength="11" placeholder="Digite seu Celular">
           </div>
           <div class="box e-mail">
             <label for="in_form_email">E-mail</label>
@@ -121,6 +137,14 @@
         </div>
         <p class="entrar"><a href="login.html"> Já possui conta? Entrar</a></p>
       </div>
+    </div>
+
+    </div>
+    <div id="div_aguardar" class="loading-div">
+      <img src="" id="loading-gif">
+    </div>
+
+    <div id="div_erros_login">
     </div>
   </section>
   <!-- FIM SESSÃO CADASTRO -->
@@ -163,3 +187,4 @@
 </html>
 <script src="js/cadastro.js"></script>
 <script src="js/apiCEP.js"></script>
+<script src="js/funcoes.js"></script>
