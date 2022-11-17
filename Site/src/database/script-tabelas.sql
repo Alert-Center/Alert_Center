@@ -23,7 +23,7 @@ telefone2 CHAR(11),
 email VARCHAR(45), 
 -- Verificação básica do email e seus parâmetros
 CONSTRAINT chkEmail CHECK (email LIKE '%@%.%' AND email NOT LIKE '@%' and email NOT LIKE '%.'), 
-senha VARCHAR(45),
+senha VARCHAR(45)
 );
 
 -- Atributo composto com mais de 2 itens - Endereço
