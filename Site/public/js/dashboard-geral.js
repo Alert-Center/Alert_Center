@@ -1,7 +1,8 @@
-  /* Inserir nome do usuário que teve seu login aprovado, 
+/* Inserir nome do usuário que teve seu login aprovado, 
   Dados guardados no armazenamento sa sessão(Veja a pagina script.js:45)*/
-  nome1.innerHTML = sessionStorage.getItem(0);
-  nome.innerHTML = sessionStorage.getItem(0);
+  nome1.innerHTML = sessionStorage.NOME_USUARIO;
+  nome.innerHTML = sessionStorage.NOME_USUARIO;
+  clienteEmpresa.innerHTML = sessionStorage.NOME_USUARIO;
 
 // Função para criar navbar dropdown
 var subMenu = document.getElementById("subMenu")
