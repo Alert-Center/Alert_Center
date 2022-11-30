@@ -19,12 +19,8 @@ function obterDadosGrafico(idDataCenter, idRack, idSensor) {
     if (response.ok) {
       response.json().then(function (resposta) {
 
-        // var dataSemFormato = resposta[0].dtMetrica.slice(5, 10);
-        // dataSemFormato = dataSemFormato.split('-');
-
-        // var dataFormatada = `${dataSemFormato[1]} / ${dataSemFormato[0]}`
-
-        // document.getElementById(`rack${idRack}Data`).innerHTML = dataFormatada;
+        document.getElementsByName("rackData")[0].innerHTML = resposta[5].dia;
+        document.getElementsByName("rackData")[1].innerHTML = resposta[5].dia;
 
         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
@@ -163,15 +159,13 @@ function atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myCh
         console.log(`Dados atuais do gráfico:`);
         console.log(dados);
 
-        // document.getElementById("avisoCaptura").innerHTML = ""
-
         if (novoRegistro[0].dtMetrica == dados.labels[dados.labels.length - 1]) {
           console.log("---------------------------------------------------------------")
           console.log("Como não há dados novos para captura, o gráfico não atualizará.")
 
           document.getElementsByName("semDadosNovos")[0].style.display = "block";
           document.getElementsByName("semDadosNovos")[1].style.display = "block";
-          
+
           console.log("Horário do novo dado capturado:")
           console.log(novoRegistro[0].dtMetrica)
           console.log("Horário do último dado capturado:")
@@ -181,6 +175,9 @@ function atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myCh
           document.getElementsByName("semDadosNovos")[0].style.display = "none";
           document.getElementsByName("semDadosNovos")[1].style.display = "none";
 
+          document.getElementsByName("rackData")[0].innerHTML = novoRegistro[0].dia;
+          document.getElementsByName("rackData")[1].innerHTML = novoRegistro[0].dia;
+  
           // tirando e colocando valores no gráfico
           dados.labels.shift(); // apagar o primeiro
           dados.labels.push(novoRegistro[0].dtMetrica); // incluir um novo momento

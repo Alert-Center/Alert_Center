@@ -18,6 +18,7 @@ function buscarUltimasMedidas(idEmpresa, idDataCenter, idRack, idSensor, limite_
         select idRack,
             temperatura,
             umidade, 
+            DATE_FORMAT(dtMetrica,'%d/%m') as dia,
             DATE_FORMAT(dtMetrica,'%H:%i:%s') as dtMetrica 
             from metrica m 
             join sensor s on m.fkSensor = s.idSensor
@@ -53,7 +54,8 @@ function buscarMedidasEmTempoReal(idEmpresa, idDataCenter, idRack, idSensor, cha
             `
         select idRack,
             ${chart == 2 ? 'temperatura + 20 as temperatura ,umidade + 20 as umidade' : 'temperatura,umidade'},
-            DATE_FORMAT(dtMetrica,'%H:%i:%s') as dtMetrica 
+            DATE_FORMAT(dtMetrica,'%H:%i:%s') as dtMetrica,
+            DATE_FORMAT(dtMetrica,'%d/%m') as dia
             from metrica m 
                 join sensor s on m.fkSensor = s.idSensor
                 join rack r on s.fkRack = r.idRack
