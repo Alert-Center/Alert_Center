@@ -7,7 +7,7 @@ router.get("/ultimas/:idEmpresa/:idDataCenter/:idRack/:idSensor", function (req,
     medidaController.buscarUltimasMedidas(req, res);
 });
 
-router.get("/tempo-real/:idAquario", function (req, res) {
+router.get("/tempo-real/:idEmpresa/:idDataCenter/:idRack/:idSensor/:chart", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 

@@ -80,54 +80,49 @@ umidade DOUBLE,
 dtMetrica DATETIME
 );
 
+
+-- --------------------------------------------------------------
+-- Nossa empresa irá até o DataCenter para cadastrar os dispositivos no sistema:
+insert into datacenter values (1,'South-Murilo','1',1);
+
+insert into rack values 
+(1,1,'A','aberto',1);
+
+insert into sensor values 
+(1,'0001MD','DHT-11',1);
+-- --------------------------------------------------------------
+
+-- Metricas inicias para o LIMIT 6
+insert into metrica values
+(null,1,25.0,50.0,now()),
+(null,1,25.0,50.0,now()),
+(null,1,25.0,50.0,now()),
+(null,1,25.0,50.0,now()),
+(null,1,25.0,50.0,now()),
+(null,1,25.0,50.0,now());
+
+-- Agora, só ir atualizando as métricas conforme o Arduino ;), faça o teste! 
+-- OBS: mude APENAS a temperatura e umidade! na lógica o mesmo sensor está plotando em dois gráficos para fins didáticos.
+insert into Metrica values
+(null,1,35.0,20.0,now());
+
+
 /*
 comando para sql server - banco remoto - ambiente de produção
 */
-
-CREATE TABLE usuario (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-);
-
-CREATE TABLE aviso (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT FOREIGN KEY REFERENCES usuario(id)
-);
-
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY IDENTITY(1,1),
-	descricao VARCHAR(300)
-);
-
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-CREATE TABLE medida (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT FOREIGN KEY REFERENCES aquario(id)
-);
+-- A FAZER
 
 /*
 comandos para criar usuário em banco de dados azure, sqlserver,
 com permissão de insert + update + delete + select
 */
 
-CREATE USER [usuarioParaAPIWebDataViz_datawriter_datareader]
-WITH PASSWORD = '#Gf_senhaParaAPIWebDataViz',
-DEFAULT_SCHEMA = dbo;
+-- CREATE USER [usuarioParaAPIWebDataViz_datawriter_datareader]
+-- WITH PASSWORD = '#Gf_senhaParaAPIWebDataViz',
+-- DEFAULT_SCHEMA = dbo;
 
-EXEC sys.sp_addrolemember @rolename = N'db_datawriter',
-@membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
+-- EXEC sys.sp_addrolemember @rolename = N'db_datawriter',
+-- @membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
 
-EXEC sys.sp_addrolemember @rolename = N'db_datareader',
-@membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
+-- EXEC sys.sp_addrolemember @rolename = N'db_datareader',
+-- @membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';

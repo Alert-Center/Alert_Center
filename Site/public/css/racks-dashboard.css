@@ -38,7 +38,7 @@
     font-size: 0.8em;
 }
 
-.return img{
+.return img {
     width: 40px;
     vertical-align: middle;
 }
@@ -52,8 +52,9 @@
 .caixa-kpi {
     width: 100% !important;
     margin: 0 0 10px 0 !important;
-    
+
 }
+
 /*FIM  */
 
 /* 
@@ -93,4 +94,16 @@ CRIANDO CONTAINER PARA COLOCAR OS GRÁFICOS DE TEMPERATURA E UMIDADE. USANDO PRO
     width: 100px !important;
     height: 5vh !important;
     background-color: #1F1B3F;
+}
+
+.semDadosNovos {
+    display: none;
+    margin-top: 20px;
+    animation: aparecerSemDados 1s ease-in-out;
+}
+
+@keyframes aparecerSemDados {
+    0% {
+        opacity: 0;
+    }
 }

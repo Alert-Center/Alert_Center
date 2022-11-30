@@ -27,11 +27,16 @@ function buscarUltimasMedidas(req, res) {
 
 function buscarMedidasEmTempoReal(req, res) {
 
-    var idAquario = req.params.idAquario;
+    var idEmpresa = req.params.idEmpresa;
+    var idDataCenter = req.params.idDataCenter;
+    var idRack = req.params.idRack;
+    var idSensor = req.params.idSensor;
+    var chart = req.params.chart;
 
+    console.log(chart,'-------------------');
     console.log(`Recuperando medidas em tempo real`);
 
-    medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
+    medidaModel.buscarMedidasEmTempoReal(idEmpresa, idDataCenter, idRack, idSensor,chart).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
