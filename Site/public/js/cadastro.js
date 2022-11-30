@@ -148,14 +148,7 @@ function cadastrar() {
     //Função criada abaixo para deixar a cor vermelha
     checkTermos();
   } else {
-    // Usuário Cadastrado!!
-    alert(`Usuário ${nome} cadastrado com sucesso!`);
-    /* Guardar o as informações do usuario no banco de dados fake. Função stringify 
-    usada para converter um array em um string já que
-    não é possivel guardar arrays no Local Storage-----------------*/
-    localStorage.setItem(localStorage.length, JSON.stringify(array));
-    // ------------------------------------------------------------
-    window.location.href = "login.html"; //redirecionar a página para o login
+    cadastrarBanco();
   }
 }
 
@@ -251,7 +244,7 @@ function eyes() {
   }
 }
 
-function cadastrar() {
+function cadastrarBanco() {
   aguardar();
 
   //Recupere o valor da nova input pelo nome do id

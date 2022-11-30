@@ -2,13 +2,16 @@ var medidaModel = require("../models/medidaModel");
 
 function buscarUltimasMedidas(req, res) {
 
-    const limite_linhas = 7;
+    const limite_linhas = 6;
 
-    var idAquario = req.params.idAquario;
+    var idEmpresa = req.params.idEmpresa;
+    var idDataCenter = req.params.idDataCenter;
+    var idRack = req.params.idRack;
+    var idSensor = req.params.idSensor;
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    medidaModel.buscarUltimasMedidas(idAquario, limite_linhas).then(function (resultado) {
+    medidaModel.buscarUltimasMedidas(idEmpresa, idDataCenter, idRack, idSensor, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
