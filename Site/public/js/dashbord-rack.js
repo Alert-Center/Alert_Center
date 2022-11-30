@@ -1,13 +1,11 @@
 // /* Inserir nome do usuário que teve seu login aprovado, 
-// Dados guardados no armazenamento sa sessão(Veja a pagina script.js:45)*/
 nome.innerHTML = sessionStorage.NOME_USUARIO;
 nome1.innerHTML = sessionStorage.NOME_USUARIO;
 
-var grafico = 1
 
 let proximaAtualizacao;
 
-function obterDadosGrafico(idDataCenter, idRack, idSensor) {
+function obterDadosGrafico(idDataCenter, idRack, idSensor, grafico) {
 
   if (proximaAtualizacao != undefined) {
     clearTimeout(proximaAtualizacao);
@@ -15,16 +13,17 @@ function obterDadosGrafico(idDataCenter, idRack, idSensor) {
 
   var idEmpresa = sessionStorage.ID_EMPRESA;
 
-  fetch(`/medidas/ultimas/${idEmpresa}/${idDataCenter}/${idRack}/${idSensor}`, { cache: 'no-store' }).then(function (response) {
+  fetch(`/medidas/ultimas/${idEmpresa}/${idDataCenter}/${idRack}/${idSensor}/${grafico}`, { cache: 'no-store' }).then(function (response) {
     if (response.ok) {
       response.json().then(function (resposta) {
 
-        document.getElementsByName("rackData")[0].innerHTML = resposta[5].dia;
-        document.getElementsByName("rackData")[1].innerHTML = resposta[5].dia;
+        //Adicionando dia atual ao título do gráfico
+        document.getElementsByName("rackData")[0].innerHTML = resposta[0].dia;
+        document.getElementsByName("rackData")[1].innerHTML = resposta[0].dia;
 
         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-        plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor);
+        plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor, grafico);
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');
@@ -35,9 +34,9 @@ function obterDadosGrafico(idDataCenter, idRack, idSensor) {
     });
 }
 
-function plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor) {
+function plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor, grafico) {
   console.log('iniciando plotagem do gráfico...');
-  console.log(resposta);
+
   // Criando estrutura para plotar gráfico - labels
   let labels = [];
 
@@ -70,13 +69,12 @@ function plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor) {
   console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
   console.log(resposta)
 
+  // reverter a resposta por causa do LIMIT
+  resposta.reverse();
+
   // Inserindo valores recebidos em estrutura para plotar o gráfico
   for (i = 0; i < resposta.length; i++) {
     var registro = resposta[i];
-    if (chart == 2) {
-      registro.temperatura += 20;
-      registro.umidade += 20;
-    }
 
     labels.push(registro.dtMetrica);
 
@@ -86,7 +84,7 @@ function plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor) {
 
   console.log('----------------------------------------------')
   console.log('O gráfico será plotado com os respectivos valores:')
-  console.log(`RACK : ${idRack}`)
+  console.log(`Gráfico : ${grafico}`)
   console.log('Labels:')
   console.log(labels)
   console.log('Dados:')
@@ -121,37 +119,29 @@ function plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor) {
 
 
   // Criando estrutura para plotar gráfico - config
-  // Inserir dados nos gráficos , informar qual o tipo de gráfico e inserir as labels e os dados definidos acima
   var config = {
     type: 'line',
     data: dados,
     options: options
   };
 
-  // Adicionando gráfico criado em div na tela
-
+  // Adicionando gráfico criado em div na tela 
   let myChart = new Chart(
     document.getElementById(`rack${grafico}`),
     config
   );
 
-  var chart = grafico;
-  setTimeout(() => atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myChart, chart), 2000);
-  console.log(chart, 'CHARTRTTTTTTTT');
-  grafico = 2;
+
+  setTimeout(() => atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myChart, grafico), 2000);
+
 }
 
 
 // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-// buscando a última medida inserida em tabela contendo as capturas,
+// buscando a última medida inserida em tabela contendo as capturas.
 
-//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-//     Para ajustar o "select", ajuste o comando sql em src/models
-
-
-function atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myChart, chart) {
-  console.log(chart, 'CHARTRTTTTTTTT');
-  fetch(`/medidas/tempo-real/${idEmpresa}/${idDataCenter}/${idRack}/${idSensor}/${chart}`, { cache: 'no-store' }).then(function (response) {
+function atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myChart, grafico) {
+  fetch(`/medidas/tempo-real/${idEmpresa}/${idDataCenter}/${idRack}/${idSensor}/${grafico}`, { cache: 'no-store' }).then(function (response) {
     if (response.ok) {
       response.json().then(function (novoRegistro) {
 
@@ -163,6 +153,7 @@ function atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myCh
           console.log("---------------------------------------------------------------")
           console.log("Como não há dados novos para captura, o gráfico não atualizará.")
 
+          //Mostrar a mensagem sem dados novos 
           document.getElementsByName("semDadosNovos")[0].style.display = "block";
           document.getElementsByName("semDadosNovos")[1].style.display = "block";
 
@@ -172,15 +163,18 @@ function atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myCh
           console.log(dados.labels[dados.labels.length - 1])
           console.log("---------------------------------------------------------------")
         } else {
+          
+          //Sumir mensagem sem dados novos
           document.getElementsByName("semDadosNovos")[0].style.display = "none";
           document.getElementsByName("semDadosNovos")[1].style.display = "none";
 
+          //Atualizar data do título do gráfico
           document.getElementsByName("rackData")[0].innerHTML = novoRegistro[0].dia;
           document.getElementsByName("rackData")[1].innerHTML = novoRegistro[0].dia;
-  
+
           // tirando e colocando valores no gráfico
           dados.labels.shift(); // apagar o primeiro
-          dados.labels.push(novoRegistro[0].dtMetrica); // incluir um novo momento
+          dados.labels.push(novoRegistro[0].dtMetrica); // adicionar um novo horario
 
           dados.datasets[1].data.shift();  // apagar o primeiro de umidade
           dados.datasets[1].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
@@ -188,11 +182,11 @@ function atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myCh
           dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
           dados.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
 
-          myChart.update();
+          myChart.update(); //Atualizar o gráfico
         }
 
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myChart, chart), 2000);
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myChart, grafico), 2000);
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');
@@ -212,6 +206,7 @@ function alternarMenu() {
   subMenu.classList.toggle("open-menu")
 }
 
-
-obterDadosGrafico(1, 1, 1);
-obterDadosGrafico(1, 1, 1);
+//Chamar o obter dados gráficos com os parâmetros.
+//É chamado duas vezes para ser dois gráficos
+obterDadosGrafico(1, 1, 1, 1);
+obterDadosGrafico(1, 1, 1, 2);

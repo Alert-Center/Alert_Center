@@ -8,10 +8,11 @@ function buscarUltimasMedidas(req, res) {
     var idDataCenter = req.params.idDataCenter;
     var idRack = req.params.idRack;
     var idSensor = req.params.idSensor;
+    var grafico = req.params.grafico;
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    medidaModel.buscarUltimasMedidas(idEmpresa, idDataCenter, idRack, idSensor, limite_linhas).then(function (resultado) {
+    medidaModel.buscarUltimasMedidas(idEmpresa, idDataCenter, idRack, idSensor, grafico, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -31,12 +32,11 @@ function buscarMedidasEmTempoReal(req, res) {
     var idDataCenter = req.params.idDataCenter;
     var idRack = req.params.idRack;
     var idSensor = req.params.idSensor;
-    var chart = req.params.chart;
+    var grafico = req.params.grafico;
 
-    console.log(chart,'-------------------');
     console.log(`Recuperando medidas em tempo real`);
 
-    medidaModel.buscarMedidasEmTempoReal(idEmpresa, idDataCenter, idRack, idSensor,chart).then(function (resultado) {
+    medidaModel.buscarMedidasEmTempoReal(idEmpresa, idDataCenter, idRack, idSensor, grafico).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
