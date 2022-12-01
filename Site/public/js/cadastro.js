@@ -257,15 +257,12 @@ function cadastrarBanco() {
     setInterval(sumirMensagem, 5000)
   }
 
-  // Enviando o valor da nova input
   fetch("/usuarios/cadastrar", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      // crie um atributo que recebe o valor recuperado aqui
-      // Agora vá para o arquivo routes/usuario.js
       nomeServer: nomeVar,
       cnpjServer: CNPJVar,
       telefone1Server: telefone1Var,
@@ -303,13 +300,10 @@ function sumirMensagem() {
 }
 
 function cadastrarEndereco() {
-
-  //Recupere o valor da nova input pelo nome do id
-  // Agora vá para o método fetch logo abaixo
-  // var fkempresaVar = ;
   var ruaVar = in_form_logradouro.value;
   var bairroVar = in_form_bairro.value;
   var numeroVar = in_form_numero.value;
+  var complementoVar = in_form_complemento.value;
   var cepVar = in_form_cep.value;
 
   if (ruaVar == "" || bairroVar == "" || numeroVar == "" || cepVar == "") {
@@ -323,18 +317,16 @@ function cadastrarEndereco() {
     setInterval(sumirMensagem, 5000)
   }
 
-  // Enviando o valor da nova input
   fetch("/usuarios/cadastrarEndereco", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      // crie um atributo que recebe o valor recuperado aqui
-      // Agora vá para o arquivo routes/usuario.js  
       ruaServer: ruaVar,
       bairroServer: bairroVar,
       numeroServer: numeroVar,
+      complementoServer: complementoVar,
       cepServer: cepVar,
     })
   }).then(function (resposta) {

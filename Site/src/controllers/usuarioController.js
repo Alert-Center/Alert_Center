@@ -60,7 +60,6 @@ function entrar(req, res) {
 
 }
 
-var idEmpresa = 0
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -81,14 +80,10 @@ function cadastrar(req, res) {
         res.status(400).send("Sua senha está undefined!");
     } else {
         
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrar(nome, CNPJ, telefone1, telefone2, email, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
-                    idEmpresa = resultado.insertId
-                    console.log(resultado.insertId);
-                    console.log(idEmpresa);
                 }
             ).catch(
                 function (erro) {
@@ -104,25 +99,23 @@ function cadastrar(req, res) {
 }
 
 function cadastrarEndereco(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var fkEmpresa = idEmpresa;
     var rua = req.body.ruaServer;
     var bairro = req.body.bairroServer;
     var numero = req.body.numeroServer;
     var cep = req.body.cepServer;
     var complemento = req.body.complementoServer;
 
-    // Faça as validações dos valores
     if (rua == undefined) {
         res.status(400).send("Sua rua está undefined!");
     } else if (bairro == undefined) {
         res.status(400).send("Seu bairro está undefined!");
-    } else if (cep == undefined) {
+    }else if (cep == undefined) {
         res.status(400).send("Seu cep está undefined!");
+    } else if (numero == undefined) {
+        res.status(400).send("Seu numero está undefined!");
     } else {
         
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarEndereco(fkEmpresa, rua, bairro, numero, cep, complemento)
+        usuarioModel.cadastrarEndereco(rua, bairro, numero, cep, complemento)
             .then(
                 function (resultado) {
                     res.json(resultado);
