@@ -11,7 +11,6 @@ for (key of div_campos.children) {
 // Adicionar frase de alerta invisível (display: none) //
 in_form_nome.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_nome">Digite seu nome</div>';
 in_form_CNPJ.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_CNPJ">Digite seu CNPJ</div>';
-in_form_tipo.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_tipo">Digite seu tipo</div>';
 in_form_cep.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_cep">Digite seu cep</div>';
 in_form_logradouro.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_logradouro">Digite seu logradouro</div>';
 in_form_numero.parentElement.innerHTML += '<div class="alerta" style="display:none" id="alert_numero">Digite seu numero</div>';
@@ -46,13 +45,11 @@ function cadastrar() {
   // Todos os campos de Cadastrar
   var nome = in_form_nome.value;
   var CNPJ = in_form_CNPJ.value;
-  var tipo = in_form_tipo.value;
   var cep = in_form_cep.value;
   var logradouro = in_form_logradouro.value;
   var numero = in_form_numero.value;
   var bairro = in_form_bairro.value;
   var cidade = in_form_cidade.value;
-  var complemento = in_form_complemento.value;
   var telefone = in_form_telefone.value;
   var celular = in_form_celular.value;
   var email = in_form_email.value;
@@ -65,7 +62,7 @@ function cadastrar() {
   //-----------------------------
 
   // variável booleana para verificar se há campos vazios
-  var campovazio = nome == "" || CNPJ == "" || tipo == "" || cep == "" || logradouro == "" || numero == "" || bairro == "" || cidade == "" || email == "" || senha == "" || confirmarSenha == "";
+  var campovazio = nome == "" || CNPJ == "" || cep == "" || logradouro == "" || numero == "" || bairro == "" || cidade == "" || email == "" || senha == "" || confirmarSenha == "";
 
 
   // A função ".match()" serve para pesquisar na string a expressão supracitada
@@ -98,9 +95,6 @@ function cadastrar() {
       }
       if (CNPJ == "") {
         alert_CNPJ.style.display = "block"
-      }
-      if (tipo == "") {
-        alert_tipo.style.display = "block"
       }
       if (cep == "") {
         alert_cep.style.display = "block"
@@ -165,13 +159,11 @@ function checkTermos() {
 function completado() {
   var nome = in_form_nome.value;
   var CNPJ = in_form_CNPJ.value;
-  var tipo = in_form_tipo.value;
   var cep = in_form_cep.value;
   var logradouro = in_form_logradouro.value;
   var numero = in_form_numero.value;
   var bairro = in_form_bairro.value;
   var cidade = in_form_cidade.value;
-  var complemento = in_form_complemento.value;
   var telefone = in_form_telefone.value;
   var celular = in_form_celular.value;
   var email = in_form_email.value;
@@ -188,9 +180,6 @@ function completado() {
   }
   if (CNPJ != "") {
     alert_CNPJ.style.display = "none"
-  }
-  if (tipo != "") {
-    alert_tipo.style.display = "none"
   }
   if (cep != "") {
     alert_cep.style.display = "none"
@@ -322,7 +311,6 @@ function cadastrarEndereco() {
   var bairroVar = in_form_bairro.value;
   var numeroVar = in_form_numero.value;
   var cepVar = in_form_cep.value;
-  var complementoVar = in_form_complemento.value;
 
   if (ruaVar == "" || bairroVar == "" || numeroVar == "" || cepVar == "") {
     cardErro.style.display = "block"
@@ -348,7 +336,6 @@ function cadastrarEndereco() {
       bairroServer: bairroVar,
       numeroServer: numeroVar,
       cepServer: cepVar,
-      complementoServer: complementoVar,
     })
   }).then(function (resposta) {
 

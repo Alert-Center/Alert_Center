@@ -152,6 +152,12 @@ button {
 
 .confirmar_senha {
     width: 12.5rem;
+    
+}
+
+.div_senhas{
+    display: flex;
+    column-gap: 30px;
 }
 
 .confirmar_senha input {
