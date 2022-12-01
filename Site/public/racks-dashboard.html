@@ -97,39 +97,39 @@
               <div class="indices">
                 <h4>Índices de Temperatura</h4>
                 <p id="p-perigo-min">Perigo: ≤ 18ºC</p>
-                <p id="p-alerta">Alerta: 19ºC - 22ºC</p>
+                <p id="p-alerta-frio">Alerta: 19ºC - 22ºC</p>
                 <p id="p-ideal">Ideal: 23ºC - 26ºC</p>
-                <p id="p-alerta">Alerta: 27ºC - 31ºC</p>
+                <p id="p-alerta-quente">Alerta: 27ºC - 31ºC</p>
                 <p id="p-perigo-max">Perigo: ≥ 32ºC</p>
               </div>
 
               <div class="kpi-atual">
-                <div id="temperatura-minima" class="animation">
+                <div class="perigoMin animation">
                   <h2>Perigo</h2>
-                  <h3 id="dado">15ºC</di>
-                    <p>Data Center 1 | Rack 6</p>
-                    <p>09/10/2022</p>
+                  <h3 class="dado" id="dadoT">--</h3>
+                  <p id="fonteT"></p>
+                  <p id="dateT"></p>
                 </div>
 
-                <div id="temperatura-alerta" class="animation">
+                <div class="alertaMin animation">
                   <h2>Alerta</h2>
-                  <h3 id="dado">19ºC</h3>
-                  <p>Data Center 3 | Rack 5</p>
-                  <p>09/10/2022</p>
+                  <h3 class="dado" id="dadoT">--</h3>
+                  <p id="fonteT"></p>
+                  <p id="dateT"></p>
                 </div>
 
-                <div id="temperatura-ideal" class="animation">
-                  <h2>Ideal</h2>
-                  <h3 id="dado">24ºC</h3>
-                  <p>Data Center 2 | Rack 8</p>
-                  <p>09/10/2022</p>
+                <div class="alertaMax animation">
+                  <h2>Alerta</h2>
+                  <h3 class="dado" id="dadoT">--</h3>
+                  <p id="fonteT"></p>
+                  <p id="dateT"></p>
                 </div>
 
-                <div id="temperatura-perigo" class="animation">
+                <div class="perigoMax animation">
                   <h2>Perigo</h2>
-                  <h3 id="dado">32ºC</h3>
-                  <p>Data Center 2 | Rack 3</p>
-                  <p>09/10/2022</p>
+                  <h3 class="dado" id="dadoT">--</h3>
+                  <p id="fonteT"></p>
+                  <p id="dateT"></p>
                 </div>
               </div>
             </div>
@@ -140,39 +140,39 @@
               <div class="indices">
                 <h4>Índices de Umidade:</h4>
                 <p id="p-perigo-min">Perigo: ≤ 30%</p>
-                <p id="p-alerta">Alerta: 31% - 46%</p>
+                <p id="p-alerta-frio">Alerta: 31% - 46%</p>
                 <p id="p-ideal">Ideal: 47% - 62%</p>
-                <p id="p-alerta">Alerta: 63% - 79%</p>
+                <p id="p-alerta-quente">Alerta: 63% - 79%</p>
                 <p id="p-perigo-max">Perigo: ≥ 80%</p>
               </div>
 
               <div class="kpi-atual">
-                <div id="umidade-minima" class="animation">
+                <div class="perigoMin animation">
                   <h2>Perigo</h2>
-                  <h3 id="dado">29%</h3>
-                  <p>Data Center 2 | Rack 6</p>
-                  <p>09/10/2022</p>
+                  <h3 class="dado" id="dadoU">--</h3>
+                  <p id="fonteU"></p>
+                  <p id="dateU"></p>
                 </div>
 
-                <div id="umidade-alerta" class="animation">
+                <div class="alertaMin animation">
                   <h2>Alerta</h2>
-                  <h3 id="dado">32%</h3>
-                  <p>Data Center 3 | Rack 2</p>
-                  <p>09/10/2022</p>
+                  <h3 class="dado" id="dadoU">--</h3>
+                  <p id="fonteU"></p>
+                  <p id="dateU"></p>
                 </div>
 
-                <div id="umidade-ideal" class="animation">
-                  <h2>Ideal</h2>
-                  <h3 id="dado">56%</h3>
-                  <p>Data Center 3 | Rack 5</p>
-                  <p>09/10/2022</p>
+                <div class="alertaMax animation">
+                  <h2>Alerta</h2>
+                  <h3 class="dado" id="dadoU">--</h3>
+                  <p id="fonteU"></p>
+                  <p id="dateU"></p>
                 </div>
 
-                <div id="umidade-perigo" class="animation">
+                <div class="perigoMax animation">
                   <h2>Perigo</h2>
-                  <h3 id="dado">81%</h3>
-                  <p>Data Center 3 | Rack 1</p>
-                  <p>09/10/2022</p>
+                  <h3 class="dado" id="dadoU">--</h3>
+                  <p id="fonteU"></p>
+                  <p id="dateU"></p>
                 </div>
               </div>
             </div>
@@ -186,7 +186,9 @@
                 <canvas id="rack1">
 
                 </canvas>
-                <div name="semDadosNovos" class="semDadosNovos">Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará.</div>
+                <div name="semDadosNovos" class="semDadosNovos">Foi trazido o dado mais atual capturado pelo sensor.
+                  <br> Como não há dados novos a exibir, o gráfico não atualizará.
+                </div>
               </div>
             </div>
             <div class="square-rack">
@@ -196,7 +198,9 @@
                 <canvas id="rack2">
 
                 </canvas>
-                <div name="semDadosNovos" class="semDadosNovos">Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará.</div>
+                <div name="semDadosNovos" class="semDadosNovos">Foi trazido o dado mais atual capturado pelo sensor.
+                  <br> Como não há dados novos a exibir, o gráfico não atualizará.
+                </div>
               </div>
             </div>
           </div>

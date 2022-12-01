@@ -163,7 +163,7 @@ function atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myCh
           console.log(dados.labels[dados.labels.length - 1])
           console.log("---------------------------------------------------------------")
         } else {
-          
+
           //Sumir mensagem sem dados novos
           document.getElementsByName("semDadosNovos")[0].style.display = "none";
           document.getElementsByName("semDadosNovos")[1].style.display = "none";
@@ -200,6 +200,103 @@ function atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myCh
 
 }
 
+
+function obterKPI(KPI, filtro) {
+  var idEmpresa = sessionStorage.ID_EMPRESA;
+
+  fetch(`/medidas/KPI/${idEmpresa}/${KPI}/${filtro}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+      response.json().then(function (resposta) {
+
+        console.log(" ----------- PESQUISANDO KPI -----------");
+
+        // Temperatura -------------------------------------------------- 
+        if (filtro == 'temperatura <= 18') {
+          if (resposta[0].KPI != null) {
+            document.querySelectorAll("#dadoT")[0].innerHTML = resposta[0].KPI + 'ºC';
+            document.querySelectorAll("#fonteT")[0].innerHTML = `Data Center ${resposta[0].idDataCenter} | Rack  ${resposta[0].idRack}`
+            document.querySelectorAll("#dateT")[0].innerHTML = resposta[0].dtMetrica
+          }
+        }
+        if (filtro == 'temperatura >= 19 and temperatura <= 22') {
+          if (resposta[0].KPI != null) {
+            document.querySelectorAll("#dadoT")[1].innerHTML = resposta[0].KPI + 'ºC';
+            document.querySelectorAll("#fonteT")[1].innerHTML = `Data Center ${resposta[0].idDataCenter} | Rack  ${resposta[0].idRack}`
+            document.querySelectorAll("#dateT")[1].innerHTML = resposta[0].dtMetrica
+          }
+        }
+        if (filtro == 'temperatura >= 27 and temperatura <= 31') {
+          if (resposta[0].KPI != null) {
+            document.querySelectorAll("#dadoT")[2].innerHTML = resposta[0].KPI + 'ºC';
+            document.querySelectorAll("#fonteT")[2].innerHTML = `Data Center ${resposta[0].idDataCenter} | Rack  ${resposta[0].idRack}`
+            document.querySelectorAll("#dateT")[2].innerHTML = resposta[0].dtMetrica
+          }
+        }
+        if (filtro == 'temperatura >= 32') {
+          if (resposta[0].KPI != null) {
+            document.querySelectorAll("#dadoT")[3].innerHTML = resposta[0].KPI + 'ºC';
+            document.querySelectorAll("#fonteT")[3].innerHTML = `Data Center ${resposta[0].idDataCenter} | Rack  ${resposta[0].idRack}`
+            document.querySelectorAll("#dateT")[3].innerHTML = resposta[0].dtMetrica
+          }
+        }
+        //  -------------------------------------------------- 
+
+
+
+        // UMIDADE -------------------------------------------------- 
+        if (filtro == 'umidade <= 30') {
+          if (resposta[0].KPI != null) {
+            document.querySelectorAll("#dadoU")[0].innerHTML = resposta[0].KPI + '%';
+            document.querySelectorAll("#fonteU")[0].innerHTML = `Data Center ${resposta[0].idDataCenter} | Rack  ${resposta[0].idRack}`
+            document.querySelectorAll("#dateU")[0].innerHTML = resposta[0].dtMetrica
+          }
+        }
+        if (filtro == 'umidade >= 31 and umidade <= 46') {
+          if (resposta[0].KPI != null) {
+            document.querySelectorAll("#dadoU")[1].innerHTML = resposta[0].KPI + '%';
+            document.querySelectorAll("#fonteU")[1].innerHTML = `Data Center ${resposta[0].idDataCenter} | Rack  ${resposta[0].idRack}`
+            document.querySelectorAll("#dateU")[1].innerHTML = resposta[0].dtMetrica
+          }
+        }
+        if (filtro == 'umidade >= 63 and umidade <= 79') {
+          if (resposta[0].KPI != null) {
+            document.querySelectorAll("#dadoU")[2].innerHTML = resposta[0].KPI + '%';
+            document.querySelectorAll("#fonteU")[2].innerHTML = `Data Center ${resposta[0].idDataCenter} | Rack  ${resposta[0].idRack}`
+            document.querySelectorAll("#dateU")[2].innerHTML = resposta[0].dtMetrica
+          }
+        }
+        if (filtro == 'umidade >= 80') {
+          if (resposta[0].KPI != null) {
+            document.querySelectorAll("#dadoU")[3].innerHTML = resposta[0].KPI + '%';
+            document.querySelectorAll("#fonteU")[3].innerHTML = `Data Center ${resposta[0].idDataCenter} | Rack  ${resposta[0].idRack}`
+            document.querySelectorAll("#dateU")[3].innerHTML = resposta[0].dtMetrica
+          }
+        }
+        // -------------------------------------------------- 
+
+        setTimeout(() => obterKPI(KPI, filtro), 2000);
+
+      });
+    } else {
+      console.error('Nenhum dado encontrado ou erro na API');
+    }
+  })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+
+// Chamar função para atualizar as KPI's
+obterKPI('min(temperatura)', 'temperatura <= 18');
+obterKPI('min(temperatura)', 'temperatura >= 19 and temperatura <= 22');
+obterKPI('max(temperatura)', 'temperatura >= 27 and temperatura <= 31');
+obterKPI('max(temperatura)', 'temperatura >= 32');
+
+obterKPI('min(umidade)', 'umidade <= 30');
+obterKPI('min(umidade)', 'umidade >= 31 and umidade <= 46');
+obterKPI('max(umidade)', 'umidade >= 63 and umidade <= 79');
+obterKPI('max(umidade)', 'umidade >= 80');
 
 //função para criar dropdown
 function alternarMenu() {

@@ -11,4 +11,8 @@ router.get("/tempo-real/:idEmpresa/:idDataCenter/:idRack/:idSensor/:grafico", fu
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
+router.get("/KPI/:idEmpresa/:KPI/:filtro", function (req, res) {
+    medidaController.buscarKPI(req, res);
+})
+
 module.exports = router;

@@ -274,15 +274,19 @@ body {
 }
 
 #p-perigo-min {
-    color: #078BEE;
+    color: #9bd4ff;
 }
 
-#p-alerta {
-    color: #E9EE07;
+#p-alerta-frio {
+    color: #078BEE;
 }
 
 #p-ideal {
     color: #19EE07;
+}
+
+#p-alerta-quente {
+    color: #eeac07;
 }
 
 #p-perigo-max {
@@ -303,15 +307,7 @@ body {
     text-align: center;
 }
 
-.kpi-atual #temperatura-minima,
-#temperatura-alerta,
-#temperatura-ideal,
-#temperatura-perigo,
-#umidade-minima,
-#umidade-alerta,
-#umidade-ideal,
-#umidade-perigo,
-#umidade-perigo {
+.kpi-atual div {
     width: 23%;
     background-color: #212121;
     display: flex;
@@ -354,67 +350,42 @@ body {
     transition: 0.8s;
 }
 
-.kpi-atual #dado {
+.kpi-atual .dado {
     font-weight: 700;
     font-size: 32px;
 
 }
 
-.kpi-atual #temperatura-minima,
-#umidade-minima {
+.kpi-atual .perigoMin {
+    border: #9bd4ff solid 5px;
+}
+
+.perigoMin * {
+    color: #9bd4ff;
+}
+
+.kpi-atual .alertaMin {
     border: #078BEE solid 5px;
 
 }
 
-#temperatura-minima h2,
-#temperatura-minima h3,
-#temperatura-minima p,
-#umidade-minima h2,
-#umidade-minima h3,
-#umidade-minima p {
+.alertaMin * {
     color: #078BEE;
 }
 
-.kpi-atual #temperatura-alerta,
-#umidade-alerta {
-    border: #E9EE07 solid 5px;
-
+.kpi-atual .alertaMax {
+    border: #eeac07 solid 5px;
 }
 
-#temperatura-alerta h2,
-#temperatura-alerta h3,
-#temperatura-alerta p,
-#umidade-alerta h2,
-#umidade-alerta h3,
-#umidade-alerta p {
-    color: #E9EE07;
+.alertaMax * {
+    color: #eeac07;
 }
 
-.kpi-atual #temperatura-ideal,
-#umidade-ideal {
-    border: #19EE07 solid 5px;
-}
-
-#temperatura-ideal h2,
-#temperatura-ideal h3,
-#temperatura-ideal p,
-#umidade-ideal h2,
-#umidade-ideal h3,
-#umidade-ideal p {
-    color: #19EE07;
-}
-
-.kpi-atual #temperatura-perigo,
-#umidade-perigo {
+.kpi-atual .perigoMax {
     border: #E0211B solid 5px;
 }
 
-#temperatura-perigo h2,
-#temperatura-perigo h3,
-#temperatura-perigo p,
-#umidade-perigo h2,
-#umidade-perigo h3,
-#umidade-perigo p {
+.perigoMax * {
     color: #E0211B;
 }
 
