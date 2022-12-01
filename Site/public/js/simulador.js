@@ -16,16 +16,9 @@ var inatividadeMes = inatividadeAnual / 12;
 var receitaAnual = Number(in_receita.value);
 var receitaHora = receitaAnual / 12 / 30 / 24;
 
-// O custo do downtime também leva em conta os salários dos funcionários afetados
-var qtdFuncionario = Number(in_qtdFuncionario.value);
-var custoFuncionario = Number(in_custoFuncionario.value);
-var produtividade = qtdFuncionario * custoFuncionario;
-
 // O prejuizo é a soma da perda de Receita com a perda produtividade
-var prejuizoMes =
-  inatividadeMes * receitaHora + inatividadeMes * produtividade;
-var prejuizoAno =
-  inatividadeAnual * receitaHora + inatividadeAnual * produtividade;
+var prejuizoMes = inatividadeMes * receitaHora + inatividadeMes;
+var prejuizoAno = inatividadeAnual * receitaHora + inatividadeAnual;
 
 //Custo da nossa solução
 var solucaoinstalacao = racks * 300; //300 reais por Rack (200 equipamento + 100 mão de obra)
@@ -40,7 +33,7 @@ var economiaAno = prejuizoAno - solucaoAnual; //Economia anual
 
 
 
-  if (receitaAnual == "" || inatividadeAnual == "" || racks == "" || qtdFuncionario == "" || custoFuncionario == "") {
+  if (receitaAnual == "" || inatividadeAnual == "" || racks == "") {
       alert("Preencha todos os campos!");
   } else {
 
@@ -48,7 +41,6 @@ var economiaAno = prejuizoAno - solucaoAnual; //Economia anual
       container_simulador.classList.add("hide")
       //Espere 500ms (o tempo da transition hide) para executar o resto da função
       setTimeout(function () {
-
 
           // Configuração para formatar números pelo método Intl.NumberFormat. https://criarprogramas.com/2021/06/05/formatando-numeros-em-javascript-com-intl-numberformat/#:~:text=Usando%20o%20par%C3%A2metro%20options&text=style%3A%20estilo%20do%20formato%20a,o%20padr%C3%A3o%20%C3%A9%20%22decimal%22%20.
           const options = { style: 'currency', currency: 'BRL', minimumFractionDigits: 2, maximumFractionDigits: 2 }
@@ -67,17 +59,16 @@ var economiaAno = prejuizoAno - solucaoAnual; //Economia anual
                                       <div class="title">
                                           <h2>Mensal</h2>
                                       </div>
-                                      <div id="div_prejuizoMes" class="number prejuizo">${formatNumber.format(
-                        prejuizoMes
-                      )}</div>
+
+                                      <div id="div_prejuizoMes" class="number prejuizo">${formatNumber.format(prejuizoMes)}</div>
                                   </div>
+
                                   <div class="indicador">
                                       <div class="title">
                                           <h2>Anual</h2>
                                       </div>
-                                      <div id="div_prejuizoAno" class="number prejuizo">${formatNumber.format(
-                        prejuizoAno
-                      )}</div>
+
+                                      <div id="div_prejuizoAno" class="number prejuizo">${formatNumber.format(prejuizoAno)}</div>
                                   </div>
                               </div>
 
@@ -87,17 +78,16 @@ var economiaAno = prejuizoAno - solucaoAnual; //Economia anual
                                       <div class="title">
                                           <h2>Instalação</h2>
                                       </div>
-                                      <div id="div_solucaoinstalacao" class="number">${formatNumber.format(
-                        solucaoinstalacao
-                      )}</div>
+                                  
+                                      <div id="div_solucaoinstalacao" class="number">${formatNumber.format(solucaoinstalacao)}</div>
                                   </div>
+
                                   <div class="indicador">
                                       <div class="title">
-                                          <h2>licença Anual</h2>
+                                          <h2>Licença Anual</h2>
                                       </div>
-                                      <div id="div_licenca_anual" class="number">${formatNumber.format(
-                        licenca_anual
-                      )}</div>
+
+                                      <div id="div_licenca_anual" class="number">${formatNumber.format(licenca_anual)}</div>
                                   </div>
                               </div>
 
@@ -107,17 +97,16 @@ var economiaAno = prejuizoAno - solucaoAnual; //Economia anual
                                       <div class="title">
                                           <h2>Mensal*</h2>
                                       </div>
-                                      <div id="div_economiaMeses" class="number">${formatNumber.format(
-                        economiaMeses
-                      )}</div>
+
+                                      <div id="div_economiaMeses" class="number">${formatNumber.format(economiaMeses)}</div>
                                   </div>
+
                                   <div class="indicador">
                                       <div class="title">
                                           <h2>Anual</h2>
                                       </div>
-                                      <div id="div_economiaAno" class="number">${formatNumber.format(
-                        economiaAno
-                      )}</div>
+                                  
+                                      <div id="div_economiaAno" class="number">${formatNumber.format(economiaAno)}</div>
                                   </div>
                               </div>
                           </div>
@@ -130,21 +119,22 @@ var economiaAno = prejuizoAno - solucaoAnual; //Economia anual
                                   <p><span>Prejuízo: </span> compreende os gastos advindos dos downtimes.
                                   <p>
                               </div>
+
                               <div class="legenda">
                                   <img src="img/simulador/carbon_idea.png">
                                   <p><span>Solução: </span>engloba a análise de infraestrutura, instalação de equipamentos e a
                                       licença
                                       anual para acesso do sistema de monitoramento</p>
                               </div>
+                              
                               <div class="legenda">
                                   <img src="img/simulador/bx_trending-up.png">
                                   <p><span>Economia:</span> representa o montante de gastos que foram poupados.</p>
                               </div>
+                              
                               <div class="legenda">
                                   <img src="img/simulador/icons8-ponto-de-exclamação-64.png">
-                                  <p><span> * No 1º mês</span> o valor será de ${formatNumber.format(
-                    economiaMes1
-                  )} por incluir o preço da instalação.
+                                  <p><span> * No 1º mês</span> o valor será de ${formatNumber.format(economiaMes1)} por incluir o preço da instalação.
                                   </p>
                               </div>
                           </div>
@@ -152,7 +142,6 @@ var economiaAno = prejuizoAno - solucaoAnual; //Economia anual
 
                       <button class="btn btn-refazer" onclick="refazerSimulacao()">Refazer Simulação</button>
                   </div>
-
               `;
 
           //Trocar quando esconde para quando aparece
@@ -169,14 +158,11 @@ var economiaAno = prejuizoAno - solucaoAnual; //Economia anual
           } else {
               div_economiaAno.classList.add("economia");
           }
-
       }, 500);
-
-      
   }
 }
 
 // Função para voltar a div ao seu estado inicial
 function refazerSimulacao() {
-location.reload();
+    location.reload();
 }

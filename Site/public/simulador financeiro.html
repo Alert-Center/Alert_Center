@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script defer src="js/simulador.js"></script>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/simulador financeiro.css">
     <link rel="stylesheet" href="css/reset.css">
@@ -19,6 +22,7 @@
             <a href="index.html">
                 <img src="img/logo.png" alt="">
             </a>
+
             <nav class="navbar">
                 <ul class="list-items">
                     <li><a href="index.html">Home</a></li>
@@ -29,7 +33,6 @@
             </nav>
         </div>
     </header>
-    <!-- FIM CABEÇALHO / NAVBAR  -->
 
     <!-- COMEÇO DA SESSÃO DO SIMULADOR FINANCEIRO ? -->
     <section class="simulador-financeiro">
@@ -37,6 +40,7 @@
             <div class="content-img">
                 <img src="img/Celular simulador.png" alt="Imagem de Data Centers">
             </div>
+
             <div class="content-text inicial">
                 <form class="form-1" id="form_1">
                     <h2>Orçamento</h2>
@@ -46,6 +50,7 @@
                                 empresa</label>
                             <input placeholder="Digite a receita anual bruta da sua empresa" type="Number" id="in_receita">
                         </div>
+
                         <div class="campo">
                             <label for="in_inatividade" class="label-simulador">Tempo de inatividade do data center no
                                 ano</label>
@@ -56,27 +61,18 @@
                             <label for="in_racks" class="label-simulador">Informe a quantidade de Racks DC</label>
                             <input placeholder="Digite a quantidade de racks " type="Number" id="in_racks">
                         </div>
-                        <div class="campo">
-                            <label for="in_qtdFuncionario" class="label-simulador">Informe a quantidade de funcionários
-                                afetados</label>
-                            <input placeholder="Digite quantos funcionários são afetados" type="Number" id="in_qtdFuncionario">
-                        </div>
-                        <div class="campo">
-                            <label for="in_custoFuncionario" class="label-simulador">Informe o custo por hora do
-                                Funcionario</label>
-                            <input placeholder="Digite o custo por hora do funcionário afetado" type="Number" id="in_custoFuncionario">
-                        </div>
+
                         <button type="submit" class="btn" >Fazer Simulação</but>
                     </div>
                 </form>
             </div>
         </div>
     </section>
-    <!-- FIM DA SESSÃO SIMUALADOR ? -->
 
     <footer>
         <div class="content-footer">
           <a href="index.html"><img src="img/Logo-90x90.png" alt="Logo da empresa"></a>
+
           <div class="links">
             <h2>Links</h2>
             <ul>
@@ -95,17 +91,15 @@
               <a href="#"><img src="img/whatsapplogo.png" alt=""></a>
               <a href="#"><img src="img/twitterlogo.png" alt=""></a>
             </div>
+
             <h3>Conheça nosso</h3>
             <a href="simulador financeiro.html">Simulador Financeiro</a>
           </div>
         </div>
+
         <div class="direitos">
           <p>Copyright &copy; 2022 ONDATA - Todos os direitos reservados. Desenvolvido por ONDATA </p>
         </div>
       </footer>
-    <!-- FINAL DO RODAPÉ -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/simulador.js"></script>
 </body>
-
 </html>
