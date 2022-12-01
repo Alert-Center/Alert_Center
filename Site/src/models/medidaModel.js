@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idEmpresa, idDataCenter, idRack, idSensor, grafico, limite_linhas) {
+function buscarUltimasMedidas(idEmpresa, idDataCenter, idRack, idSensor, limite_linhas) {
 
     instrucaoSql = ''
 
@@ -16,7 +16,8 @@ function buscarUltimasMedidas(idEmpresa, idDataCenter, idRack, idSensor, grafico
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
         select idRack,
-        ${grafico == 2 ? 'temperatura + 20 as temperatura ,umidade + 20 as umidade' : 'temperatura,umidade'},
+        temperatura,
+        umidade,
         DATE_FORMAT(dtMetrica,'%d/%m') as dia,
             DATE_FORMAT(dtMetrica,'%H:%i:%s') as dtMetrica 
             from metrica m 
@@ -35,7 +36,7 @@ function buscarUltimasMedidas(idEmpresa, idDataCenter, idRack, idSensor, grafico
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idEmpresa, idDataCenter, idRack, idSensor, grafico) {
+function buscarMedidasEmTempoReal(idEmpresa, idDataCenter, idRack, idSensor) {
 
     instrucaoSql = ''
 
@@ -52,8 +53,9 @@ function buscarMedidasEmTempoReal(idEmpresa, idDataCenter, idRack, idSensor, gra
         instrucaoSql =
             `
         select idRack,
-            ${grafico == 2 ? 'temperatura + 20 as temperatura ,umidade + 20 as umidade' : 'temperatura,umidade'},
-            DATE_FORMAT(dtMetrica,'%H:%i:%s') as dtMetrica,
+        umidade,
+        temperatura,
+        DATE_FORMAT(dtMetrica,'%H:%i:%s') as dtMetrica,
             DATE_FORMAT(dtMetrica,'%d/%m') as dia
             from metrica m 
                 join sensor s on m.fkSensor = s.idSensor

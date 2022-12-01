@@ -5,7 +5,7 @@ nome1.innerHTML = sessionStorage.NOME_USUARIO;
 
 let proximaAtualizacao;
 
-function obterDadosGrafico(idDataCenter, idRack, idSensor, grafico) {
+function obterDadosGrafico(idDataCenter, idRack, idSensor) {
 
   if (proximaAtualizacao != undefined) {
     clearTimeout(proximaAtualizacao);
@@ -13,7 +13,7 @@ function obterDadosGrafico(idDataCenter, idRack, idSensor, grafico) {
 
   var idEmpresa = sessionStorage.ID_EMPRESA;
 
-  fetch(`/medidas/ultimas/${idEmpresa}/${idDataCenter}/${idRack}/${idSensor}/${grafico}`, { cache: 'no-store' }).then(function (response) {
+  fetch(`/medidas/ultimas/${idEmpresa}/${idDataCenter}/${idRack}/${idSensor}`, { cache: 'no-store' }).then(function (response) {
     if (response.ok) {
       response.json().then(function (resposta) {
 
@@ -23,7 +23,7 @@ function obterDadosGrafico(idDataCenter, idRack, idSensor, grafico) {
 
         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-        plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor, grafico);
+        plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor);
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');
@@ -34,7 +34,7 @@ function obterDadosGrafico(idDataCenter, idRack, idSensor, grafico) {
     });
 }
 
-function plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor, grafico) {
+function plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor) {
   console.log('iniciando plotagem do gráfico...');
 
   // Criando estrutura para plotar gráfico - labels
@@ -84,7 +84,6 @@ function plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor, graf
 
   console.log('----------------------------------------------')
   console.log('O gráfico será plotado com os respectivos valores:')
-  console.log(`Gráfico : ${grafico}`)
   console.log('Labels:')
   console.log(labels)
   console.log('Dados:')
@@ -127,12 +126,12 @@ function plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor, graf
 
   // Adicionando gráfico criado em div na tela 
   let myChart = new Chart(
-    document.getElementById(`rack${grafico}`),
+    document.getElementById(`rack${idRack}`),
     config
   );
 
 
-  setTimeout(() => atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myChart, grafico), 2000);
+  setTimeout(() => atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myChart), 2000);
 
 }
 
@@ -140,8 +139,8 @@ function plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor, graf
 // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
 // buscando a última medida inserida em tabela contendo as capturas.
 
-function atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myChart, grafico) {
-  fetch(`/medidas/tempo-real/${idEmpresa}/${idDataCenter}/${idRack}/${idSensor}/${grafico}`, { cache: 'no-store' }).then(function (response) {
+function atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myChart) {
+  fetch(`/medidas/tempo-real/${idEmpresa}/${idDataCenter}/${idRack}/${idSensor}`, { cache: 'no-store' }).then(function (response) {
     if (response.ok) {
       response.json().then(function (novoRegistro) {
 
@@ -186,7 +185,7 @@ function atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myCh
         }
 
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myChart, grafico), 2000);
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myChart), 2000);
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');
@@ -305,5 +304,5 @@ function alternarMenu() {
 
 //Chamar o obter dados gráficos com os parâmetros.
 //É chamado duas vezes para ser dois gráficos
-obterDadosGrafico(1, 1, 1, 1);
-obterDadosGrafico(1, 1, 1, 2);
+obterDadosGrafico(1, 1, 1);
+obterDadosGrafico(1, 2, 2);
