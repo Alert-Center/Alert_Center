@@ -242,3 +242,43 @@ footer{
 .Nossos-servicos .container{
   flex-wrap: wrap;
 }
+
+
+.card{
+opacity: 0;
+  width: 350px;
+  background-color: #ffff;
+  position: absolute;
+  top: 120px;
+  right: 15px;
+  color: #222;
+  background-color: #222;
+  transform: translateY(-500px);
+  transition: 1s;
+
+}
+
+.text{
+  padding: 15px;
+background-color: red;
+text-align: center;
+font-size: 2em ;
+}
+
+.text2{
+padding: 5px;
+font-size: 1em ;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100px;
+
+}
+
+
+
+.card.active{
+  opacity: 1;
+  transform: translateY(0px);
+  transition: 1s;
+}

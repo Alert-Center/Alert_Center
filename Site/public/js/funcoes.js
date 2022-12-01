@@ -41,13 +41,15 @@ function finalizarAguardar(texto) {
 
 
 // modal
-function mostrarModal() {
-    var divModal = document.getElementById("div_modal");
-    divModal.style.display = "flex";
+function mostrarModal(text) {
+    var divModal = document.querySelector(".card");
+    var textModal = document.querySelector(".card .text2");
+    divModal.classList.add("active");
+    textModal.innerHTML=text;
 }
 
 function fecharModal() {
-    var divModal = document.getElementById("div_modal");
-    divModal.style.display = "none";
+    var divModal = document.querySelector(".card");
+    divModal.classList.remove("active");
 }
 

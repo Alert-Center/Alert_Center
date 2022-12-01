@@ -254,7 +254,7 @@ function cadastrarBanco() {
     return false;
   }
   else {
-    setInterval(sumirMensagem, 5000)
+    setInterval(fecharModal, 5000)
   }
 
   fetch("/usuarios/cadastrar", {
@@ -286,18 +286,20 @@ function cadastrarBanco() {
       }, "2000")
 
     } else {
+      mostrarModal("Houve um erro ao tentar realizar o cadastro!");
+      setTimeout(fecharModal,5000)
       throw ("Houve um erro ao tentar realizar o cadastro!");
+      
     }
   }).catch(function (resposta) {
+    mostrarModal("Houve um erro ao tentar realizar o cadastro!");
+    setTimeout(fecharModal,5000)
     console.log(`#ERRO: ${resposta}`);
   });
 
   return false;
 }
 
-function sumirMensagem() {
-  cardErro.style.display = "flex"
-}
 
 function cadastrarEndereco() {
   var ruaVar = in_form_logradouro.value;
@@ -314,7 +316,7 @@ function cadastrarEndereco() {
     return false;
   }
   else {
-    setInterval(sumirMensagem, 5000)
+    setInterval(fecharModal, 5000)
   }
 
   fetch("/usuarios/cadastrarEndereco", {
@@ -334,11 +336,14 @@ function cadastrarEndereco() {
     console.log("resposta: ", resposta);
 
     if (resposta.ok) {
-
-    } else {
+console.log("FOI");
+    } 
+    else {
+      mostrarModal("Houve um erro ao tentar realizar o cadastro!");
       throw ("Houve um erro ao tentar realizar o cadastro!");
     }
   }).catch(function (resposta) {
+    mostrarModal(resposta)
     console.log(`#ERRO: ${resposta}`);
   });
 
