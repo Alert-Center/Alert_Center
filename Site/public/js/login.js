@@ -1,18 +1,16 @@
 function entrar() {
-    aguardar();
 
     var emailVar = in_email.value;
     var senhaVar = in_senha.value;
 
     if (emailVar == "" || senhaVar == "") {
-        cardErro.style.display = "block"
-        mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-        finalizarAguardar();
+        mostrarModal("PREENCHA TODOS OS CAMPOS!");
+                setTimeout(fecharModal,5000)
         return false;
     }
     else {
-        setInterval(sumirMensagem, 5000)
-    }
+        
+    
 
     console.log("FORM LOGIN: ", emailVar);
     console.log("FORM SENHA: ", senhaVar);
@@ -50,23 +48,24 @@ function entrar() {
 
         } else {
 
-            console.log("Houve um erro ao tentar realizar o login!");
+            
 
             resposta.text().then(texto => {
                 console.error(texto);
-                finalizarAguardar(texto);
+                mostrarModal(texto);
+                setTimeout(fecharModal,5000)
             });
         }
 
     }).catch(function (erro) {
+        mostrarModal("Houve um erro ao tentar realizar o login!");
+        setTimeout(fecharModal,5000)
         console.log(erro);
     })
 
     return false;
 }
-
-function sumirMensagem() {
-    cardErro.style.display = "none"
 }
+
 
 
