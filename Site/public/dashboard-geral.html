@@ -12,90 +12,72 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <!-- Adicionando plugin "Annotation" para linha arbitrária horizonal -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.0.1/chartjs-plugin-annotation.min.js" integrity="sha512-LZEOcU8s74hwWva82MJux7GgFNjfeExXG9yZPQrKz567Od4O2D/6UX3oGoZiRDOdbMtH33NBq7vonH4VOUPA/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.0.1/chartjs-plugin-annotation.min.js"
+    integrity="sha512-LZEOcU8s74hwWva82MJux7GgFNjfeExXG9yZPQrKz567Od4O2D/6UX3oGoZiRDOdbMtH33NBq7vonH4VOUPA/Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <title>OnData</title>
 </head>
 
 <body>
+  <div class="caixa" id="caixa">
 
-  <!-- CABEÇALHO / NAVBAR  -->
-  <div class="container">
-    <nav class="navbar">
-      <a href="index.html">
-        <img src="img/logo.png" alt="" class="logo">
-      </a>
+    <img src="img/logo.png" alt="">
 
-      <div class="drop-down" onclick="alternarMenu()">
-        <img class="user-pic" src="img/usuario-de-perfil.png" alt="icone usuario de perfil">
-        <p id="clienteEmpresa">Cliente</p>
-      </div>
+    <div class="cliente" id="cliente">
+      <h1>Olá, <span id="nome1"></span></h1>
+      <p>Vamos analisar as métricas do seu data center.</p>
+    </div>
 
-      <div class="sub-menu-wrap" id="subMenu">
-        <div class="sub-menu">
-          <div class="user-info">
-            <img src="img/usuario-de-perfil.png" alt="icone usuario de perfil">
-            <!-- Adicionar um JS para pegar o nome que a pessoa cadastrou -->
-            <h3 id="nome"></h3>
-          </div>
-          <hr>
+    <ul>
+      <li class="list active">
+        <a href="dashboard-geral.html">
+          <span class="icon">
+            <ion-icon name="stats-chart-outline"></ion-icon>
+          </span>
+          <span class="title">Dashboard Geral</span>
+        </a>
+      </li>
 
-          <a href="#" class="sub-menu-link ">
-            <img src="img/edit-user.png" alt="">
-            <p>Editar perfil</p>
-            <span>></span>
-          </a>
+      <li class="list">
+        <a href="racks-dashboard.html">
+          <span class="icon">
+            <ion-icon name="analytics-outline"></ion-icon>
+          </span>
+          <span class="title">Dashboards Específicos</span>
+        </a>
+      </li>
 
-          <a href="#" class="sub-menu-link ">
-            <img src="img/settings-profile.png" alt="">
-            <p>Configurações</p>
-            <span>></span>
-          </a>
+      <li class="list">
+        <a href="alertas.html">
+          <span class="icon">
+            <ion-icon name="alert-outline"></ion-icon>
+          </span>
+          <span class="title">Alertas</span>
+        </a>
+      </li>
 
-          <a href="racks-dashboard.html" class="sub-menu-link ">
-            <img src="img/dashboard-especifico.png" alt="">
-            <p>Dashboards específicos</p>
-            <span>></span>
-          </a>
+      <li class="list">
+        <a href="">
+          <span class="icon">
+            <ion-icon name="help-circle-outline"></ion-icon>
+          </span>
+          <span class="title">Ajuda</span>
+        </a>
+      </li>
 
-          <a href="#" class="sub-menu-link ">
-            <img src="img/notificacao.png" alt="">
-            <p>Notificações</p>
-            <span>></span>
-          </a>
+      <li class="list" onclick="limparSessao()">
+        <a href="login.html">
+          <span class="icon">
+            <ion-icon name="log-out-outline"></ion-icon>
+          </span>
+          <span class="title">Sair</span>
+        </a>
+      </li>
+    </ul>
 
-          <a href="#" class="sub-menu-link ">
-            <img src="img/help.png" alt="">
-            <p>Ajuda</p>
-            <span>></span>
-          </a>
-
-          <!-- Quando clicar no "Sair" será redirecionado para a página de login -->
-          <a href="login.html" class="sub-menu-link ">
-            <img src="img/log-out.png" alt="">
-            <p>Sair</p>
-            <span>></span>
-          </a>
-        </div>
-      </div>
-    </nav>
   </div>
-  <!-- FIM CABEÇALHO / NAVBAR  -->
 
   <div class="container-1" id="container-1">
-    <div class="caixa" id="caixa">
-      <div class="cliente" id="cliente">
-        <h1>Olá, <span id="nome1"></span></h1>
-        <p>Vamos analisar as métricas do seu data center.</p>
-      </div>
-
-      <div class="relatorio-rack">
-        <canvas id="chart-relatorio-rack"></canvas>
-      </div>
-
-      <div class="relatorio-downtime">
-        <canvas id="chart-relatorio-downtime"></canvas>
-      </div>
-    </div>
 
     <div class="grafico-geral">
       <div class="caixa-kpi">
@@ -110,14 +92,14 @@
           </div>
 
           <div class="kpi-atual">
-            <div id="temperatura-minima"class="animation">
+            <div id="temperatura-minima" class="animation">
               <h2>Perigo</h2>
               <h3 id="dado">15ºC</h3>
               <p>Data Center 1 | Rack 6</p>
               <p>09/10/2022</p>
             </div>
 
-            <div id="temperatura-alerta"class="animation">
+            <div id="temperatura-alerta" class="animation">
               <h2>Alerta</h2>
               <h3 id="dado">19ºC</h3>
               <p>Data Center 3 | Rack 5</p>
@@ -131,7 +113,7 @@
               <p>09/10/2022</p>
             </div>
 
-            <div id="temperatura-perigo"class="animation">
+            <div id="temperatura-perigo" class="animation">
               <h2>Perigo</h2>
               <h3 id="dado">32ºC</h3>
               <p>Data Center 2 | Rack 3</p>
@@ -176,9 +158,9 @@
 
             <div id="umidade-perigo" class="animation">
               <h2>Perigo</h2>
-              <h3 id="dado">81%<h3/h3>
-              <p>Data Center 3 | Rack 1</p>
-              <p>09/10/2022</p>
+              <h3 id="dado">81%<h3 /h3>
+                  <p>Data Center 3 | Rack 1</p>
+                  <p>09/10/2022</p>
             </div>
           </div>
         </div>
@@ -194,5 +176,9 @@
     </div>
   </div>
 </body>
+
 </html>
 <script src="js/dashboard-geral.js"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

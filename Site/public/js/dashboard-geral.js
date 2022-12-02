@@ -1,147 +1,18 @@
 /* Inserir nome do usuário que teve seu login aprovado, 
   Dados guardados no armazenamento sa sessão(Veja a pagina script.js:45)*/
   nome1.innerHTML = sessionStorage.NOME_USUARIO;
-  nome.innerHTML = sessionStorage.NOME_USUARIO;
-  clienteEmpresa.innerHTML = sessionStorage.NOME_USUARIO;
 
-// Função para criar navbar dropdown
-var subMenu = document.getElementById("subMenu")
+// Função para deixar destacado a página atual
+  const list = document.querySelectorAll('.list');
 
-function alternarMenu() {
-  subMenu.classList.toggle("open-menu")
-}
-
-// Chart.js - 1º Gráfico - Temperatura racks
-const labels_rack = [
-  'Rack 1',
-  'Rack 2',
-  'Rack 3',
-  'Rack 4',
-  'Rack 5',
-  'Rack 6',
-  'Rack 7',
-]
-
-const data_rack = {
-  labels: labels_rack,
-  datasets: [{
-    label: 'Temperatura (ºC)',
-    backgroundColor:'rgba(75, 192, 192)',
-    borderColor: '#E0211B',
-    data: [19, 21, 20, 19, 20, 17, 23],
-  }]
-};
-
-const config_rack = {
-  type: 'bar',
-  data: data_rack,
-  options: {
-    scales: {
-      y: {
-        ticks: {
-          color: '#FFF'
-        }
-      },
-      x: {
-        beginAtZero: true,
-        type: 'linear',
-        grid: {
-          color: '#FFF'
-        },
-        ticks: {
-          color: '#FFF'
-        }
-      }
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Temperatura dos racks do data center 1 no dia 10/10/2022',
-        align: "start",
-        color: '#FFF',
-        font: {
-          size: 20,
-          weight: 600,
-          lineHeight: 1.0,
-        }
-      }
-    },
-    indexAxis: 'y',
-  },
-};
-
-const myChart_rack = new Chart(
-  document.getElementById('chart-relatorio-rack'),
-  config_rack
-);
-
-
-// Chart.js - 2º Gráfico - Relatório Downtimes 
-const labels_downtimes = [
-  'Jan',
-  'Fev',
-  'Mar',
-  'Abri',
-  'Mai',
-  'Jun',
-  'Jul',
-]
-
-const data_downtimes = {
-  labels: labels_downtimes,
-  datasets: [{
-    label: 'Downtimes',
-    backgroundColor: '#078BEE',
-    borderColor: '#078BEE',
-    data: [5, 8, 6, 10, 3, 9, 4],
-  }]
-};
-
-const config_downtimes = {
-  type: 'bar',
-  data: data_downtimes,
-  options: {
-    scales: {
-      y: {
-        ticks: {
-          color: '#FFF'
-        },
-        beginAtZero: true,
-        type: 'linear',
-        grid: {
-          color: '#FFF'
-        }
-      },
-      x: {
-        ticks: {
-          color: '#FFF'
-        }
-      }
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Ocorrência de downtimes no 1º semestre do ano de 2022',
-        align: "start",
-        color: '#FFF',
-        font: {
-          size: 20,
-          weight: 600,
-          lineHeight: 1.0,
-        }
-      }
-    },
-  },
-};
-
-const myChart_downtime = new Chart(
-  document.getElementById('chart-relatorio-downtime'),
-  config_downtimes
-);
+  function activeLink() {
+      list.forEach((item) =>
+          item.classList.remove('active'));
+      this.classList.add('active');
+  }
+  
+  list.forEach((item) =>
+      item.addEventListener('click', activeLink));
 
 // Chart.js - 3º Gráfico - Gráfico geral de temperatura
 const labels_geral_temp = ['12:00','12:10','12:20','12:30', '12:40', '12:50', '13:00', '13:10', '13:20', '13:30', '13:40', '13:50', '14:00', '14:10', '14:20', '14:30', '14:40', '14:50', '15:00',

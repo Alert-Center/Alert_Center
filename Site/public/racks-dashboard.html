@@ -15,204 +15,191 @@
 
 <body onload="validarSessao();">
 
-  <!-- CABEÇALHO / NAVBAR  -->
-  <div class="container">
-    <nav class="navbar">
-      <a href="index.html">
-        <img src="img/logo.png" alt="" class="logo">
-      </a>
+  <div class="caixa" id="caixa">
 
-      <div class="drop-down" onclick="alternarMenu()">
-        <img class="user-pic" src="img/usuario-de-perfil.png" alt="icone usuario de perfil">
-        <p id="b_usuario">Cliente</p>
-      </div>
+    <img src="img/logo.png" alt="">
 
-      <div class="sub-menu-wrap" id="subMenu">
-        <div class="sub-menu">
-          <div class="user-info">
-            <img src="img/usuario-de-perfil.png" alt="icone usuario de perfil">
-            <!-- Adicionar um JS para pegar o nome que a pessoa cadastrou -->
-            <h3 id="nome"></h3>
-          </div>
-          <hr>
+    <div class="cliente" id="cliente">
+      <h1>Olá, <span id="nome1"></span></h1>
+      <p>Vamos analisar as métricas do seu data center.</p>
+    </div>
 
-          <a href="#" class="sub-menu-link ">
-            <img src="img/edit-user.png" alt="">
-            <p>Editar perfil</p>
-            <span>></span>
-          </a>
+    <ul>
+      <li class="list">
+        <a href="dashboard-geral.html">
+          <span class="icon">
+            <ion-icon name="stats-chart-outline"></ion-icon>
+          </span>
+          <span class="title">Dashboard Geral</span>
+        </a>
+      </li>
 
-          <a href="#" class="sub-menu-link ">
-            <img src="img/settings-profile.png" alt="">
-            <p>Configurações</p>
-            <span>></span>
-          </a>
+      <li class="list active">
+        <a href="racks-dashboard.html">
+          <span class="icon">
+            <ion-icon name="analytics-outline"></ion-icon>
+          </span>
+          <span class="title">Dashboards Específicos</span>
+        </a>
+      </li>
 
-          <a href="dashboard-geral.html" class="sub-menu-link ">
-            <img src="img/dashboard-especifico.png" alt="">
-            <p>Dashboards gerais</p>
-            <span>></span>
-          </a>
+      <li class="list">
+        <a href="alertas.html">
+          <span class="icon">
+            <ion-icon name="alert-outline"></ion-icon>
+          </span>
+          <span class="title">Alertas</span>
+        </a>
+      </li>
 
-          <a href="#" class="sub-menu-link ">
-            <img src="img/notificacao.png" alt="">
-            <p>Notificações</p>
-            <span>></span>
-          </a>
+      <li class="list">
+        <a href="">
+          <span class="icon">
+            <ion-icon name="help-circle-outline"></ion-icon>
+          </span>
+          <span class="title">Ajuda</span>
+        </a>
+      </li>
 
-          <a href="https://ondata.tomticket.com?account=3824640P16112022101310" class="sub-menu-link ">
-            <img src="img/help.png" alt="">
-            <p>Ajuda</p>
-            <span>></span>
-          </a>
+      <li class="list" onclick="limparSessao()">
+        <a href="login.html">
+          <span class="icon">
+            <ion-icon name="log-out-outline"></ion-icon>
+          </span>
+          <span class="title">Sair</span>
+        </a>
+      </li>
+    </ul>
 
-          <!-- Quando clicar no "Sair" será redirecionado para a página de login -->
-          <a href="login.html" class="sub-menu-link ">
-            <img src="img/log-out.png" alt="">
-            <p>Sair</p>
-            <span>></span>
-          </a>
-        </div>
-      </div>
-    </nav>
   </div>
-  <!-- FIM CABEÇALHO / NAVBAR  -->
 
   <!-- COMEÇO DA SESSÃO DO DASHBOARD-RACKS ? -->
   <section class="quem-somos">
     <div class="container">
-      <div class="header-dash">
-        <div class="user">
-          <div class="mensagem">
-            <h2>Olá, <span id="nome1">Pedro</span></h2>
-            <p>Vamos analisar as métricas do seu Data Center</p>
-          </div>
-
-          <a class="return" href="dashboard-geral.html">Voltar ao Dashboard geral <img
-              src="img/icons8-right-96.png"></a>
-        </div>
-        <div class="kpi-temperatura-umidade">
-          <div class="caixa-kpi">
-            <div class="kpi-temperatura">
-              <div class="indices">
-                <h4>Índices de Temperatura</h4>
-                <p id="p-perigo-min">Perigo: ≤ 18ºC</p>
-                <p id="p-alerta-frio">Alerta: 19ºC - 22ºC</p>
-                <p id="p-ideal">Ideal: 23ºC - 26ºC</p>
-                <p id="p-alerta-quente">Alerta: 27ºC - 31ºC</p>
-                <p id="p-perigo-max">Perigo: ≥ 32ºC</p>
-              </div>
-
-              <div class="kpi-atual">
-                <div class="perigoMin animation">
-                  <h2>Perigo</h2>
-                  <h3 class="dado" id="dadoT">--</h3>
-                  <p id="fonteT"></p>
-                  <p id="dateT"></p>
-                </div>
-
-                <div class="alertaMin animation">
-                  <h2>Alerta</h2>
-                  <h3 class="dado" id="dadoT">--</h3>
-                  <p id="fonteT"></p>
-                  <p id="dateT"></p>
-                </div>
-
-                <div class="alertaMax animation">
-                  <h2>Alerta</h2>
-                  <h3 class="dado" id="dadoT">--</h3>
-                  <p id="fonteT"></p>
-                  <p id="dateT"></p>
-                </div>
-
-                <div class="perigoMax animation">
-                  <h2>Perigo</h2>
-                  <h3 class="dado" id="dadoT">--</h3>
-                  <p id="fonteT"></p>
-                  <p id="dateT"></p>
-                </div>
-              </div>
+      <div class="kpi-temperatura-umidade">
+        <div class="caixa-kpi">
+          <div class="kpi-temperatura">
+            <div class="indices">
+              <h4>Índices de Temperatura</h4>
+              <p id="p-perigo-min">Perigo: ≤ 18ºC</p>
+              <p id="p-alerta-frio">Alerta: 19ºC - 22ºC</p>
+              <p id="p-ideal">Ideal: 23ºC - 26ºC</p>
+              <p id="p-alerta-quente">Alerta: 27ºC - 31ºC</p>
+              <p id="p-perigo-max">Perigo: ≥ 32ºC</p>
             </div>
-          </div>
 
-          <div class="caixa-kpi">
-            <div class="kpi-umidade">
-              <div class="indices">
-                <h4>Índices de Umidade:</h4>
-                <p id="p-perigo-min">Perigo: ≤ 30%</p>
-                <p id="p-alerta-frio">Alerta: 31% - 46%</p>
-                <p id="p-ideal">Ideal: 47% - 62%</p>
-                <p id="p-alerta-quente">Alerta: 63% - 79%</p>
-                <p id="p-perigo-max">Perigo: ≥ 80%</p>
+            <div class="kpi-atual">
+              <div class="perigoMin animation">
+                <h2>Perigo</h2>
+                <h3 class="dado" id="dadoT">--</h3>
+                <p id="fonteT"></p>
+                <p id="dateT"></p>
               </div>
 
-              <div class="kpi-atual">
-                <div class="perigoMin animation">
-                  <h2>Perigo</h2>
-                  <h3 class="dado" id="dadoU">--</h3>
-                  <p id="fonteU"></p>
-                  <p id="dateU"></p>
-                </div>
-
-                <div class="alertaMin animation">
-                  <h2>Alerta</h2>
-                  <h3 class="dado" id="dadoU">--</h3>
-                  <p id="fonteU"></p>
-                  <p id="dateU"></p>
-                </div>
-
-                <div class="alertaMax animation">
-                  <h2>Alerta</h2>
-                  <h3 class="dado" id="dadoU">--</h3>
-                  <p id="fonteU"></p>
-                  <p id="dateU"></p>
-                </div>
-
-                <div class="perigoMax animation">
-                  <h2>Perigo</h2>
-                  <h3 class="dado" id="dadoU">--</h3>
-                  <p id="fonteU"></p>
-                  <p id="dateU"></p>
-                </div>
+              <div class="alertaMin animation">
+                <h2>Alerta</h2>
+                <h3 class="dado" id="dadoT">--</h3>
+                <p id="fonteT"></p>
+                <p id="dateT"></p>
               </div>
-            </div>
-          </div>
 
-          <div class="metricas-racks">
-            <div class="square-rack">
-              <div class="description-square">RACK 1</div>
-              <div class="statusRack">
-                <div name="statusTemp" class="status">TEMPERATURA</div>
-                <div name="statusUmid" class="status">UMIDADE</div>
+              <div class="alertaMax animation">
+                <h2>Alerta</h2>
+                <h3 class="dado" id="dadoT">--</h3>
+                <p id="fonteT"></p>
+                <p id="dateT"></p>
               </div>
-              <h2> Relatório de Temperatura e Umidade do dia <span name="rackData"></span></h2>
-              <div class="rack">
-                <canvas id="rack1">
 
-                </canvas>
-                <div name="semDadosNovos" class="semDadosNovos">Foi trazido o dado mais atual capturado pelo sensor.
-                  <br> Como não há dados novos a exibir, o gráfico não atualizará.
-                </div>
-              </div>
-            </div>
-            <div class="square-rack">
-              <div class="description-square">RACK 2</div>
-              <div class="statusRack">
-                <div name="statusTemp" class="status">TEMPERATURA</div>
-                <div name="statusUmid" class="status">UMIDADE</div>
-              </div>
-              <h2> Relatório de Temperatura e Umidade do dia <span name="rackData"></span></h2>
-              <div class="rack">
-                <canvas id="rack2">
-
-                </canvas>
-                <div name="semDadosNovos" class="semDadosNovos">Foi trazido o dado mais atual capturado pelo sensor.
-                  <br> Como não há dados novos a exibir, o gráfico não atualizará.
-                </div>
+              <div class="perigoMax animation">
+                <h2>Perigo</h2>
+                <h3 class="dado" id="dadoT">--</h3>
+                <p id="fonteT"></p>
+                <p id="dateT"></p>
               </div>
             </div>
           </div>
         </div>
+
+        <div class="caixa-kpi">
+          <div class="kpi-umidade">
+            <div class="indices">
+              <h4>Índices de Umidade:</h4>
+              <p id="p-perigo-min">Perigo: ≤ 30%</p>
+              <p id="p-alerta-frio">Alerta: 31% - 46%</p>
+              <p id="p-ideal">Ideal: 47% - 62%</p>
+              <p id="p-alerta-quente">Alerta: 63% - 79%</p>
+              <p id="p-perigo-max">Perigo: ≥ 80%</p>
+            </div>
+
+            <div class="kpi-atual">
+              <div class="perigoMin animation">
+                <h2>Perigo</h2>
+                <h3 class="dado" id="dadoU">--</h3>
+                <p id="fonteU"></p>
+                <p id="dateU"></p>
+              </div>
+
+              <div class="alertaMin animation">
+                <h2>Alerta</h2>
+                <h3 class="dado" id="dadoU">--</h3>
+                <p id="fonteU"></p>
+                <p id="dateU"></p>
+              </div>
+
+              <div class="alertaMax animation">
+                <h2>Alerta</h2>
+                <h3 class="dado" id="dadoU">--</h3>
+                <p id="fonteU"></p>
+                <p id="dateU"></p>
+              </div>
+
+              <div class="perigoMax animation">
+                <h2>Perigo</h2>
+                <h3 class="dado" id="dadoU">--</h3>
+                <p id="fonteU"></p>
+                <p id="dateU"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="metricas-racks">
+          <div class="square-rack">
+            <div class="description-square">RACK 1</div>
+            <div class="statusRack">
+              <div name="statusTemp" class="status">TEMPERATURA</div>
+              <div name="statusUmid" class="status">UMIDADE</div>
+            </div>
+            <h2> Relatório de Temperatura e Umidade do dia <span name="rackData"></span></h2>
+            <div class="rack">
+              <canvas id="rack1">
+
+              </canvas>
+              <div name="semDadosNovos" class="semDadosNovos">Foi trazido o dado mais atual capturado pelo sensor.
+                <br> Como não há dados novos a exibir, o gráfico não atualizará.
+              </div>
+            </div>
+          </div>
+          <div class="square-rack">
+            <div class="description-square">RACK 2</div>
+            <div class="statusRack">
+              <div name="statusTemp" class="status">TEMPERATURA</div>
+              <div name="statusUmid" class="status">UMIDADE</div>
+            </div>
+            <h2> Relatório de Temperatura e Umidade do dia <span name="rackData"></span></h2>
+            <div class="rack">
+              <canvas id="rack2">
+
+              </canvas>
+              <div name="semDadosNovos" class="semDadosNovos">Foi trazido o dado mais atual capturado pelo sensor.
+                <br> Como não há dados novos a exibir, o gráfico não atualizará.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
   </section>
   <!-- FIM DA DASHBOARD RACKS ? -->
 
@@ -222,6 +209,8 @@
   <script src="js/funcoes.js"></script>
   <script src="js/dashbord-rack.js"></script>
 
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 

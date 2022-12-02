@@ -1,12 +1,15 @@
 /* REAPROVEITANDO CLASSE DA STYLE.CSS  */
+.quem-somos {
+    padding: 0;
+}
+
 .quem-somos .container {
     flex-direction: column;
     background-color: rgba(4, 5, 36, 1);
-    padding: 10px;
-    width: 90%;
-    max-width: 1440px;
-    padding: 30px;
-
+    column-gap: 50px;
+    margin-left: 380px;
+    width: calc(100% - 380px);
+    padding: 15px 20px;
 }
 
 

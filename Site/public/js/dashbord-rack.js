@@ -1,7 +1,18 @@
-// /* Inserir nome do usuário que teve seu login aprovado, 
-nome.innerHTML = sessionStorage.NOME_USUARIO;
-nome1.innerHTML = sessionStorage.NOME_USUARIO;
+/* Inserir nome do usuário que teve seu login aprovado, 
+  Dados guardados no armazenamento sa sessão(Veja a pagina script.js:45)*/
+  nome1.innerHTML = sessionStorage.NOME_USUARIO;
 
+// Função para deixar destacado a página atual
+  const list = document.querySelectorAll('.list');
+
+  function activeLink() {
+      list.forEach((item) =>
+          item.classList.remove('active'));
+      this.classList.add('active');
+  }
+  
+  list.forEach((item) =>
+      item.addEventListener('click', activeLink));
 
 let proximaAtualizacao;
 
