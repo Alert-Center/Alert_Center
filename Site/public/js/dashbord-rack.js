@@ -24,6 +24,44 @@ function obterDadosGrafico(idDataCenter, idRack, idSensor) {
         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
         plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor);
+
+        // Temperatura -------------------------------------------------- 
+        document.getElementsByName('statusTemp')[idRack - 1].style.backgroundColor = '#19EE07';
+
+        if (resposta[resposta.length - 1].temperatura <= 18) {
+          document.getElementsByName('statusTemp')[idRack - 1].style.backgroundColor = '#9bd4ff';
+        }
+        if (resposta[resposta.length - 1].temperatura >= 19 && resposta[resposta.length - 1].temperatura <= 22) {
+          document.getElementsByName('statusTemp')[idRack - 1].style.backgroundColor = '#078BEE';
+        }
+        if (resposta[resposta.length - 1].temperatura >= 27 && resposta[resposta.length - 1].temperatura <= 31) {
+          document.getElementsByName('statusTemp')[idRack - 1].style.backgroundColor = '#eeac07';
+        }
+        if (resposta[resposta.length - 1].temperatura >= 32) {
+          document.getElementsByName('statusTemp')[idRack - 1].style.backgroundColor = '#E0211B';
+        }
+        //  -------------------------------------------------- 
+
+
+
+        // UMIDADE -------------------------------------------------- 
+
+        document.getElementsByName('statusUmid')[idRack - 1].style.backgroundColor = '#19EE07';
+
+        if (resposta[resposta.length - 1].umidade <= 30) {
+          document.getElementsByName('statusUmid')[idRack - 1].style.backgroundColor = '#9bd4ff';
+        }
+        if (resposta[resposta.length - 1].umidade >= 31 && resposta[resposta.length - 1].umidade <= 46) {
+          document.getElementsByName('statusUmid')[idRack - 1].style.backgroundColor = '#078BEE';
+        }
+        if (resposta[resposta.length - 1].umidade >= 63 && resposta[resposta.length - 1].umidade <= 79) {
+          document.getElementsByName('statusUmid')[idRack - 1].style.backgroundColor = '#eeac07';
+        }
+        if (resposta[resposta.length - 1].umidade >= 80) {
+          document.getElementsByName('statusUmid')[idRack - 1].style.backgroundColor = '#E0211B';
+        }
+        // -------------------------------------------------- 
+
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');
@@ -161,7 +199,48 @@ function atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myCh
           console.log("Horário do último dado capturado:")
           console.log(dados.labels[dados.labels.length - 1])
           console.log("---------------------------------------------------------------")
+
         } else {
+
+          //Mudar cor da div Temperatura e umidade do gráfico
+
+          // Temperatura -------------------------------------------------- 
+          document.getElementsByName('statusTemp')[idRack - 1].style.backgroundColor = '#19EE07';
+
+          if (novoRegistro[0].temperatura <= 18) {
+            document.getElementsByName('statusTemp')[idRack - 1].style.backgroundColor = '#9bd4ff';
+          }
+          if (novoRegistro[0].temperatura >= 19 && novoRegistro[0].temperatura <= 22) {
+            document.getElementsByName('statusTemp')[idRack - 1].style.backgroundColor = '#078BEE';
+          }
+          if (novoRegistro[0].temperatura >= 27 && novoRegistro[0].temperatura <= 31) {
+            document.getElementsByName('statusTemp')[idRack - 1].style.backgroundColor = '#eeac07';
+          }
+          if (novoRegistro[0].temperatura >= 32) {
+            document.getElementsByName('statusTemp')[idRack - 1].style.backgroundColor = '#E0211B';
+          }
+          //  -------------------------------------------------- 
+
+
+
+          // UMIDADE -------------------------------------------------- 
+
+          document.getElementsByName('statusUmid')[idRack - 1].style.backgroundColor = '#19EE07';
+
+          if (novoRegistro[0].umidade <= 30) {
+            document.getElementsByName('statusUmid')[idRack - 1].style.backgroundColor = '#9bd4ff';
+          }
+          if (novoRegistro[0].umidade >= 31 && novoRegistro[0].umidade <= 46) {
+            document.getElementsByName('statusUmid')[idRack - 1].style.backgroundColor = '#078BEE';
+          }
+          if (novoRegistro[0].umidade >= 63 && novoRegistro[0].umidade <= 79) {
+            document.getElementsByName('statusUmid')[idRack - 1].style.backgroundColor = '#eeac07';
+          }
+          if (novoRegistro[0].umidade >= 80) {
+            document.getElementsByName('statusUmid')[idRack - 1].style.backgroundColor = '#E0211B';
+          }
+          // -------------------------------------------------- 
+
 
           //Sumir mensagem sem dados novos
           document.getElementsByName("semDadosNovos")[0].style.display = "none";
@@ -247,7 +326,7 @@ function obterKPI(KPI, filtro) {
           if (resposta[0].KPI != null) {
             document.querySelectorAll("#dadoU")[0].innerHTML = resposta[0].KPI + '%';
             document.querySelectorAll("#fonteU")[0].innerHTML = `Data Center ${resposta[0].idDataCenter} | Rack  ${resposta[0].idRack}`
-            document.querySelectorAll("#dateU")[0].innerHTML = resposta[0].dtMetrica
+            document.querySelectorAll("#dateU")[0].innerHTML = resposta[0].dtMetrica;
           }
         }
         if (filtro == 'umidade >= 31 and umidade <= 46') {

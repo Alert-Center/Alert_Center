@@ -107,3 +107,23 @@ CRIANDO CONTAINER PARA COLOCAR OS GRÁFICOS DE TEMPERATURA E UMIDADE. USANDO PRO
         opacity: 0;
     }
 }
+
+.statusRack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.status {
+    width: 50%;
+    padding: 15px 0;
+    transition: 1s;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+}
+
+div[name='statusTemp'] {
+    border-right: #1F1B3F 2px solid;
+}
