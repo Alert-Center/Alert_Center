@@ -5,14 +5,19 @@ function buscarUltimasMedidas(idEmpresa, idDataCenter, idRack, idSensor, limite_
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top ${limite_linhas}
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        momento,
-                        FORMAT(momento, 'HH:mm:ss') as momento_grafico
-                    from medida
-                    where fk_aquario = ${idAquario}
-                    order by id desc`;
+        instrucaoSql = `
+        select top ${limite_linhas}
+        idRack,
+        temperatura,
+        umidade,
+        FORMAT(dtMetrica, 'dd/MM') as dia,
+            FORMAT(dtMetrica, 'HH:mm:ss') as dtMetrica 
+            from metrica m 
+            join sensor s on m.fkSensor = s.idSensor
+            join rack r on s.fkRack = r.idRack
+            join DataCenter d on r.fkDataCenter = d.idDataCenter
+            join empresa e on d.fkEmpresa = e.idEmpresa
+        where e.idEmpresa = ${idEmpresa} and d.idDataCenter = ${idDataCenter} and r.idRack = ${idRack} and s.idSensor = ${idSensor} order by m.dtMetrica desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
         select idRack,
@@ -41,13 +46,21 @@ function buscarMedidasEmTempoReal(idEmpresa, idDataCenter, idRack, idSensor) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        CONVERT(varchar, momento, 108) as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
-                    order by id desc`;
+        instrucaoSql = `
+        select top 1
+        idRack,
+        temperatura,
+        umidade,
+        FORMAT(dtMetrica, 'dd/MM') as dia,
+            FORMAT(dtMetrica, 'HH:mm:ss') as dtMetrica 
+            from metrica m 
+            join sensor s on m.fkSensor = s.idSensor
+            join rack r on s.fkRack = r.idRack
+            join DataCenter d on r.fkDataCenter = d.idDataCenter
+            join empresa e on d.fkEmpresa = e.idEmpresa
+        where e.idEmpresa = ${idEmpresa} and d.idDataCenter = ${idDataCenter} and r.idRack = ${idRack} and s.idSensor = ${idSensor} order by m.dtMetrica desc`;
+
+
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql =
@@ -80,13 +93,22 @@ function buscarKPI(idEmpresa, KPI, filtro) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        CONVERT(varchar, momento, 108) as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
-                    order by id desc`;
+        instrucaoSql = `
+        select top 1 
+        idDataCenter, 
+        ${KPI == 'max(temperatura)' || KPI == 'min(temperatura)' ? 'temperatura': 'umidade' } as KPI,
+        idRack,   
+        FORMAT(dtMetrica, 'dd/MM/yy HH:mm') as dtMetrica
+        from metrica m 
+            join sensor s on m.fkSensor = s.idSensor
+            join rack r on s.fkRack = r.idRack
+            join DataCenter d on r.fkDataCenter = d.idDataCenter
+            join empresa e on d.fkEmpresa = e.idEmpresa
+        where e.idEmpresa = ${idEmpresa} and ${KPI == 'max(temperatura)' || KPI == 'min(temperatura)' ? 'temperatura': 'umidade' } 
+        = (select ${KPI} from metrica where ${filtro})
+        order by dtMetrica desc;
+
+        `;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql =
