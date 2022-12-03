@@ -13,6 +13,65 @@
 </head>
 
 <body>
+
+  <div class="caixa" id="caixa">
+
+    <img src="img/logo.png" alt="">
+
+    <div class="cliente" id="cliente">
+      <h1>Olá, <span id="nome1"></span></h1>
+      <p>Vamos analisar as métricas do seu data center.</p>
+    </div>
+
+    <ul>
+      <li class="list">
+        <a href="dashboard-geral.html">
+          <span class="icon">
+            <ion-icon name="stats-chart-outline"></ion-icon>
+          </span>
+          <span class="title">Dashboard Geral</span>
+        </a>
+      </li>
+
+      <li class="list">
+        <a href="racks-dashboard.html">
+          <span class="icon">
+            <ion-icon name="analytics-outline"></ion-icon>
+          </span>
+          <span class="title">Dashboards Específicos</span>
+        </a>
+      </li>
+
+      <li class="list active">
+        <a href="quadroAlertas.html">
+          <span class="icon">
+            <ion-icon name="alert-outline"></ion-icon>
+          </span>
+          <span class="title">Alertas</span>
+        </a>
+      </li>
+
+      <li class="list">
+        <a href="">
+          <span class="icon">
+            <ion-icon name="help-circle-outline"></ion-icon>
+          </span>
+          <span class="title">Ajuda</span>
+        </a>
+      </li>
+
+      <li class="list" onclick="limparSessao()">
+        <a href="login.html">
+          <span class="icon">
+            <ion-icon name="log-out-outline"></ion-icon>
+          </span>
+          <span class="title">Sair</span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
   <div class="kpi-temperatura-umidade">
     <div class="caixa-kpi">
       <div class="kpi-temperatura">
@@ -41,7 +100,6 @@
       </div>
     </div>
   </div>
-  </div>
   <div class="quadro">
 
     <div class="container">
@@ -62,8 +120,12 @@
       </div>
     </div>
   </div>
+
   <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
   <script src="js/quadroAvisos.js"></script>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

@@ -9,12 +9,20 @@ padding: 20px 0;
 
 }
 
+.caixa {
+  left: 0;
+  top: 0;
+}
+
 .kpi-temperatura-umidade{
-  width: 80%;
+  margin-left: 380px;
+  width: calc(98% - 380px);
   background-color:rgba(4, 5, 36, 1) ;
   display: flex;
   align-items: center;
   flex-direction: column;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .caixa-kpi{
@@ -36,11 +44,13 @@ padding: 20px 0;
   border-color: #fff;
 }
 
-.quadro{
-  width: 80%;
+.quadro {
+  margin-left: 380px;
+  width: calc(98% - 380px);
   height: 80vh;
   background: rgba(4, 5, 36, 1);
-
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .quadro .container{
