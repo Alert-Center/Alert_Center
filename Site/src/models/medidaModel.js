@@ -105,7 +105,7 @@ function buscarKPI(idEmpresa, KPI, filtro) {
             join DataCenter d on r.fkDataCenter = d.idDataCenter
             join empresa e on d.fkEmpresa = e.idEmpresa
         where e.idEmpresa = ${idEmpresa} and ${KPI == 'max(temperatura)' || KPI == 'min(temperatura)' ? 'temperatura': 'umidade' } 
-        = (select ${KPI} from metrica where ${filtro})
+        = (select ${KPI} from metrica where ${filtro}) and FORMAT(dtMetrica, 'dd/MM/yy') like (select top 1 FORMAT(dtMetrica, 'dd/MM/yy') from metrica order by dtMetrica desc)
         order by dtMetrica desc;
 
         `;
