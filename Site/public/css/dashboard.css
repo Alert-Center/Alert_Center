@@ -307,3 +307,15 @@ body {
     margin: 15px;
     padding: 15px;
 }
+
+.semDadosNovos-gerais {
+    display: none;
+    margin-bottom: 30px;
+    animation: aparecerSemDados 1s ease-in-out;
+}
+
+@keyframes aparecerSemDados {
+    0% {
+        opacity: 0;
+    }
+}
