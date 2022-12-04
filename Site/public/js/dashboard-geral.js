@@ -121,6 +121,7 @@ obterKPI('max(umidade)', 'umidade >= 80');
 
 function obterDadosGerais(idDataCenter, metrica) {
 
+
   var idEmpresa = sessionStorage.ID_EMPRESA;
 
   fetch(`/medidas/dadosGerais/${idEmpresa}/${idDataCenter}/${metrica}`, { cache: 'no-store' }).then(function (response) {
@@ -280,14 +281,80 @@ function plotarGrafico(resposta, metrica, idEmpresa, idDataCenter) {
   );
 
 
-  // setTimeout(() => atualizarGrafico(idEmpresa, idDataCenter, idRack, idSensor, dados, myChart), 2000);
+  atualizarGrafico(idEmpresa, idDataCenter, data_geral, metrica, myChart_geral, config_geral);
+  // setTimeout(() => atualizarGrafico(idEmpresa,idDataCenter, data_geral, myChart_geral, config_geral), 2000);
 
 }
 
-obterDadosGerais(1, 'temperatura');
-obterDadosGerais(1, 'umidade');
+
+function atualizarGrafico(idEmpresa, idDataCenter, data_geral, metrica, myChart, config_geral) {
+  console.log('METRICAAAAAA', metrica);
+  fetch(`/medidas/geral-tempo-real/${idEmpresa}/${idDataCenter}/${metrica}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+      response.json().then(function (novoRegistro) {
+
+        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+        console.log(`Dados atuais do gráfico:`);
+        console.log(data_geral);
+
+        if (novoRegistro[0].dtMomento == data_geral.labels[data_geral.labels.length - 1]) {
+          console.log("---------------------------------------------------------------")
+          console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+
+          // //Mostrar a mensagem sem dados novos 
+          if (metrica == 'temperatura') {
+            var element = document.getElementsByClassName("semDadosNovos-gerais")[0];
+          } else {
+            var element = document.getElementsByClassName("semDadosNovos-gerais")[1];
+          }
+          element.innerHTML = "Foi trazido o dado mais atual capturado pelo sensor. Como não há dados novos a exibir, o gráfico não atualizará."
+          element.style.display = "block";
+
+          console.log("Horário do novo dado capturado:")
+          console.log(novoRegistro[0].dtMetrica)
+          console.log("Horário do último dado capturado:")
+          console.log(data_geral.labels[data_geral.labels.length - 1])
+          console.log("---------------------------------------------------------------")
+
+        } else {
+
+          //Sumir mensagem sem dados novos
+          if (metrica == 'temperatura') {
+            var element = document.getElementsByClassName("semDadosNovos-gerais")[0];
+          } else {
+            var element = document.getElementsByClassName("semDadosNovos-gerais")[1];
+          }
+          element.style.display = "none";
+
+          //Atualizar data do título do gráfico
+          config_geral.options.plugins.title.text = `${metrica} do data center ${idDataCenter} no dia ${novoRegistro[0].dtMetrica}`;
 
 
+          // tirando e colocando valores no gráfico
+          data_geral.labels.shift(); // apagar o primeiro
+          data_geral.labels.push(novoRegistro[0].dtMomento); // adicionar um novo horario
+
+          data_geral.datasets[0].data.shift();  // apagar o primeiro de umidade
+          data_geral.datasets[0].data.push(novoRegistro[0].metricaMedia); // incluir uma nova medida de umidade
+
+
+          myChart.update(); //Atualizar o gráfico
+        }
+
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, idDataCenter, data_geral, metrica, myChart, config_geral), 2000);
+      });
+    } else {
+      console.error('Nenhum dado encontrado ou erro na API');
+      // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+      // proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, idDataCenter, data_geral, metrica, myChart, config_geral), 2000);
+    }
+  })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
+}
 
 
 // Integração da ferramenta de Help Desk com o Site (Chat Box)
@@ -303,6 +370,7 @@ ttChatLoaderS.src = 'https://ondata.tomticket.com/scripts-chat/chat.min.js'
   + '&ts=' + new Date().getTime()
   + '&ref=' + encodeURIComponent(document.URL);
 document.body.appendChild(ttChatLoaderS);
-  //]]>
+//]]>
 
-
+obterDadosGerais(1, 'temperatura');
+obterDadosGerais(1, 'umidade');

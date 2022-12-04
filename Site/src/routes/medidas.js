@@ -8,6 +8,10 @@ router.get("/dadosGerais/:idEmpresa/:idDataCenter/:metrica", function (req, res)
     medidaController.dadosGerais(req, res);
 })
 
+router.get("/geral-tempo-real/:idEmpresa/:idDataCenter/:metrica", function (req, res) {
+    medidaController.atualizarDadosGerais(req, res);
+})
+
 router.get("/ultimas/:idEmpresa/:idDataCenter/:idRack/:idSensor", function (req, res) {
     medidaController.buscarUltimasMedidas(req, res);
 });

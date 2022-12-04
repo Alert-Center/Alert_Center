@@ -152,7 +152,36 @@ function dadosGerais(idEmpresa, idDataCenter, metrica, limite_linhas) {
             join rack r on s.fkRack = r.idRack
             join DataCenter d on r.fkDataCenter = d.idDataCenter
             join empresa e on d.fkEmpresa = e.idEmpresa
-        where e.idEmpresa = ${idEmpresa} and idDataCenter = ${idDataCenter} group by dtMetrica,idDataCenter;`;
+        where e.idEmpresa = ${idEmpresa} and idDataCenter = ${idDataCenter} group by dtMetrica,idDataCenter order by m.dtMetrica desc;`;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = ``;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+function atualizarDadosGerais(idEmpresa, idDataCenter, metrica) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `
+        select top 1
+		idDataCenter,
+        cast(avg(${metrica}) as decimal(10,2)) as metricaMedia,   
+        FORMAT(dtMetrica, 'dd/MM/yy') as dtMetrica,
+        FORMAT(dtMetrica, 'HH:mm:ss') as dtMomento
+            from metrica m 
+            join sensor s on m.fkSensor = s.idSensor
+            join rack r on s.fkRack = r.idRack
+            join DataCenter d on r.fkDataCenter = d.idDataCenter
+            join empresa e on d.fkEmpresa = e.idEmpresa
+        where e.idEmpresa = ${idEmpresa} and idDataCenter = ${idDataCenter} group by dtMetrica,idDataCenter order by m.dtMetrica desc;`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = ``;
     } else {
@@ -168,5 +197,6 @@ module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     buscarKPI,
-    dadosGerais
+    dadosGerais,
+    atualizarDadosGerais
 }
