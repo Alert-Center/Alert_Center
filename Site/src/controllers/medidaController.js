@@ -67,8 +67,34 @@ function buscarKPI(req, res) {
         res.status(500).json(erro.sqlMessage);
     });
 }
+
+function dadosGerais(req, res) {
+
+    const limite_linhas = 19;
+
+    var idEmpresa = req.params.idEmpresa;
+    var idDataCenter = req.params.idDataCenter;
+    var metrica = req.params.metrica;
+
+    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+
+    medidaModel.dadosGerais(idEmpresa,idDataCenter,metrica, limite_linhas).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    buscarKPI
+    buscarKPI,
+    dadosGerais
 }
