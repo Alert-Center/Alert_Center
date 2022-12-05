@@ -7,7 +7,8 @@ function listarAvisoController(req,res){
     var filtroTemperaturaMaior = req.body.filtroTemperaturaMaior;
     var filtroUmidadeMenor = req.body.filtroUmidadeMenor;
     var filtroUmidadeMaior = req.body.filtroUmidadeMaior;
-    avisoModel.listarAvisos(filtroTemperaturaMenor,filtroTemperaturaMaior,filtroUmidadeMenor,filtroUmidadeMaior).then((resposta)=>{
+    var idEmpresa = req.body.idEmpresa;
+    avisoModel.listarAvisos(filtroTemperaturaMenor,filtroTemperaturaMaior,filtroUmidadeMenor,filtroUmidadeMaior,idEmpresa).then((resposta)=>{
         res.json(resposta);
     })
     

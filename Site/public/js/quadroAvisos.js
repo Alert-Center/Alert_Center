@@ -15,25 +15,37 @@ list.forEach((item) =>
   item.addEventListener('click', activeLink));
 
 function inserirAlerta(json, quartil, filtroTemperaturaMaior, filtroTemperaturaMenor, filtroUmidadeMaior, filtroUmidadeMenor) {
-  console.log(json)
+  
+  var loadingAlerta = document.querySelectorAll(".loading")[quartil];
+  loadingAlerta.style.display="none";
   var divAlerta = document.querySelectorAll(".quartil")[quartil];
   var validacaoUmidade;
   var validacaoTemperatura;
+  var validacaoMensagemTemperatura;
+  var validacaoMensagemUmidade;
+
+
+
   for (var i = 0; i < json.length; i++) {
     validacaoUmidade = json[i].umidade >= filtroUmidadeMenor && json[i].umidade <= filtroUmidadeMaior;
     validacaoTemperatura = json[i].temperatura >= filtroTemperaturaMenor && json[i].temperatura <= filtroTemperaturaMaior;
-
+    validacaoMensagemTemperatura=json[i].temperatura<=22 ? `AUMENTE SUA TEMPERATURA EM ${(22-json[i].temperatura).toFixed(2)}°C`: `DIMINUA SUA TEMPERATURA EM ${(json[i].temperatura-26).toFixed(2)}°C`;
+    
+    validacaoMensagemUmidade=json[i].umidade<=47 ? `AUMENTE SUA UMIDADE EM ${(47-json[i].umidade).toFixed(2)}%`: `DIMINUA SUA UMIDADE EM ${(json[i].umidade-62).toFixed(2)}%`;
+  
+    
     divAlerta.innerHTML +=
       `<div class="alerta">
-    <div class="title"><h2><iconify-icon icon="ic:outline-warning"></iconify-icon> ALERTA : ${validacaoUmidade ? "UMIDADE" : ""} ${validacaoTemperatura ? "TEMPERATURA" : ""}</h2> <div class="msg">${validacaoUmidade ? "REGULE A UMIDADE DO AMBIENTE DO DATA CENTER" : ""} ${validacaoTemperatura ? "REGULE A TEMPERATURA DO SEU DATA CENTER" : ""}</div></div>
+    <div class="title"><h2><iconify-icon icon="ic:outline-warning"></iconify-icon> ALERTA : ${validacaoUmidade ? "UMIDADE" : ""} ${validacaoTemperatura ? "TEMPERATURA" : ""}</h2> <div class="msg">${validacaoUmidade ? validacaoMensagemUmidade : ""} ${validacaoTemperatura ? validacaoMensagemTemperatura : ""}</div></div>
     <div class="temperatura">RACK ${json[i].identificacao}: ${validacaoTemperatura ? "TEMPERATURA: " + json[i].temperatura + "°C<br>" : ""}
     ${validacaoUmidade ? "UMIDADE:" + json[i].umidade + "%<br>" : ""}
     </div>
     <div class="time">${json[i].data}</div> 
   </div>`
   }
-}
 
+
+  }
 
 
 
@@ -48,10 +60,11 @@ function pegarAlerta(filtroTemperaturaMenor, filtroTemperaturaMaior, filtroUmida
       filtroTemperaturaMaior,
       filtroUmidadeMenor,
       filtroUmidadeMaior,
+      idEmpresa:sessionStorage.ID_EMPRESA,
     })
   })
     .then((resposta) => {
-      resposta.json().then((json) => {
+      resposta.json().then((json) => {  
         inserirAlerta(json, quartil, filtroTemperaturaMaior, filtroTemperaturaMenor, filtroUmidadeMaior, filtroUmidadeMenor);
       }).catch((erro) => {
         console.log(erro)
