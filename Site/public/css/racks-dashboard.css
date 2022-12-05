@@ -1,6 +1,6 @@
 /* REAPROVEITANDO CLASSE DA STYLE.CSS  */
 .quem-somos {
-    padding: 0;
+    padding: 15px;
 }
 
 .quem-somos .container {
@@ -10,6 +10,7 @@
     margin-left: 380px;
     width: calc(100% - 380px);
     padding: 15px 20px;
+    border-radius: 15px;
 }
 
 

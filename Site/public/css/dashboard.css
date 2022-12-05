@@ -35,7 +35,7 @@ body {
 }
 
 .cliente p {
-    padding: 10px 20px 20px 20px;
+    padding: 10px 20px 20px 25px;
     display: flex;
     text-align: start;
     font-weight: 500;
@@ -43,7 +43,7 @@ body {
 }
 
 .cliente h1 {
-    padding: 20px 20px 0 20px;
+    padding: 20px 20px 0 25px;
     font-weight: 500;
     font-size: 32px;
 }
@@ -75,6 +75,8 @@ body {
 }
 
 .caixa ul li a .icon {
+    padding-left: 20px;
+    margin-right: 10px;
     position: relative;
     display: block;
     min-width: 60px;
@@ -304,4 +306,16 @@ body {
     background-color: #1F1B3F;
     margin: 15px;
     padding: 15px;
+}
+
+.semDadosNovos-gerais {
+    display: none;
+    margin-bottom: 30px;
+    animation: aparecerSemDados 1s ease-in-out;
+}
+
+@keyframes aparecerSemDados {
+    0% {
+        opacity: 0;
+    }
 }
