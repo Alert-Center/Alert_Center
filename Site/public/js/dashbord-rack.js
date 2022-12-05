@@ -98,7 +98,6 @@ function plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor) {
       borderColor: '#E0211B',
       pointRadius: 5,
       pointBorderWidth: 1,
-      pointBorderColor: 'white',
       data: [],
     },
     {
@@ -107,7 +106,6 @@ function plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor) {
       borderColor: '#078BEE',
       pointRadius: 5,
       pointBorderWidth: 1,
-      pointBorderColor: 'white',
       data: [],
     }
     ]

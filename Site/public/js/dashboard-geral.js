@@ -101,6 +101,7 @@ function obterKPI(KPI, filtro) {
 
 
 // Chamar função para atualizar as KPI's
+// Chamar função para atualizar as KPI's
 
 setInterval(() => obterKPI('min(temperatura)', 'temperatura <= 18'), 2000);
 setInterval(() => obterKPI('min(temperatura)', 'temperatura >= 19 and temperatura <= 22'), 2000);
@@ -113,10 +114,6 @@ setInterval(() => obterKPI('max(umidade)', 'umidade >= 63 and umidade <= 79'), 2
 setInterval(() => obterKPI('max(umidade)', 'umidade >= 80'), 2000);
 
 // -------------------------------------------------------------------------------------
-
-
-
-
 
 function obterDadosGerais(idDataCenter, metrica) {
 
@@ -157,7 +154,6 @@ function plotarGrafico(resposta, metrica, idEmpresa, idDataCenter) {
       borderColor: '#E0211B',
       pointRadius: 5,
       pointBorderWidth: 1,
-      pointBorderColor: 'white',
       data: [],
     },
     {
