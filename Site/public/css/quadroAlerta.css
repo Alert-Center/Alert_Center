@@ -58,15 +58,37 @@ flex-wrap: wrap;
 grid-template-columns: repeat(2,1fr);
 grid-template-rows: repeat(2,40%);
 row-gap: 30px;
+column-gap: 10px;
+
 width: 100%;  
 height: 100%;
 
+
 }
 .quartil{
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   row-gap: 30px;
+ padding: 20px;
+}
+
+.quartil:nth-child(1){
+border: 1px solid #9bd4ff;
+}
+
+.quartil:nth-child(2){
+  border: 1px solid #078BEE;
+
+}
+
+.quartil:nth-child(3){
+  border: 1px solid #eeac07;
+}
+
+.quartil:nth-child(4){
+  border: 1px solid #E0211B;
 }
 
 .alerta{
@@ -78,6 +100,8 @@ height: 100%;
   margin: auto;
   border-radius: 10px;
   background-color: #fff;
+  border: 5px solid #fff;
+ 
   
   ;
 }
