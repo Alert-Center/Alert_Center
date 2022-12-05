@@ -171,3 +171,14 @@ temperatura DECIMAL(10,2),
 umidade DECIMAL(10,2),
 dtMetrica DATETIME
 );
+
+INSERT INTO datacenter VALUES 
+('SP-1209','6',1);
+
+INSERT INTO rack VALUES 
+(1,'A','Aberto',1),
+(2,'A','Fechado',1);
+
+INSERT INTO sensor VALUES 
+('0001MD','DHT-11',1),
+('0002MD','DHT-11',2);
