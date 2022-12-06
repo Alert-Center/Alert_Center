@@ -75,7 +75,8 @@ CRIANDO CONTAINER PARA COLOCAR OS GRÁFICOS DE TEMPERATURA E UMIDADE. USANDO PRO
 
 .square-rack {
     border-radius: 10px;
-    background-color: #1F1B3F;
+    border: 5px solid #040421;
+    background-color: #0e073c;
 }
 
 .square-rack h2 {

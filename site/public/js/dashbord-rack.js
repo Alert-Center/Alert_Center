@@ -98,7 +98,6 @@ function plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor) {
       borderColor: '#E0211B',
       pointRadius: 5,
       pointBorderWidth: 1,
-      pointBorderColor: 'white',
       data: [],
     },
     {
@@ -107,7 +106,6 @@ function plotarGrafico(resposta, idEmpresa, idDataCenter, idRack, idSensor) {
       borderColor: '#078BEE',
       pointRadius: 5,
       pointBorderWidth: 1,
-      pointBorderColor: 'white',
       data: [],
     }
     ]
@@ -363,8 +361,6 @@ function obterKPI(KPI, filtro) {
         }
         // -------------------------------------------------- 
 
-        setTimeout(() => obterKPI(KPI, filtro), 2000);
-
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');
@@ -375,17 +371,19 @@ function obterKPI(KPI, filtro) {
     });
 }
 
-
 // Chamar função para atualizar as KPI's
-obterKPI('min(temperatura)', 'temperatura <= 18');
-obterKPI('min(temperatura)', 'temperatura >= 19 and temperatura <= 22');
-obterKPI('max(temperatura)', 'temperatura >= 27 and temperatura <= 31');
-obterKPI('max(temperatura)', 'temperatura >= 32');
 
-obterKPI('min(umidade)', 'umidade <= 30');
-obterKPI('min(umidade)', 'umidade >= 31 and umidade <= 46');
-obterKPI('max(umidade)', 'umidade >= 63 and umidade <= 79');
-obterKPI('max(umidade)', 'umidade >= 80');
+setInterval(() => obterKPI('min(temperatura)', 'temperatura <= 18'), 2000);
+setInterval(() => obterKPI('min(temperatura)', 'temperatura >= 19 and temperatura <= 22'), 2000);
+setInterval(() => obterKPI('max(temperatura)', 'temperatura >= 27 and temperatura <= 31'), 2000);
+setInterval(() => obterKPI('max(temperatura)', 'temperatura >= 32'), 2000);
+
+setInterval(() => obterKPI('min(umidade)', 'umidade <= 30'), 2000);
+setInterval(() => obterKPI('min(umidade)', 'umidade >= 31 and umidade <= 46'), 2000);
+setInterval(() => obterKPI('max(umidade)', 'umidade >= 63 and umidade <= 79'), 2000);
+setInterval(() => obterKPI('max(umidade)', 'umidade >= 80'), 2000);
+
+
 
 //função para criar dropdown
 function alternarMenu() {

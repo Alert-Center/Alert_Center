@@ -146,7 +146,7 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 15px 0;
-    padding: 15px;
+    padding: 3px;
     transition: 1s;
 
 }
@@ -155,7 +155,8 @@ body {
 .kpi-umidade {
     width: 100%;
     margin: auto;
-    background-color: #1F1B3F;
+    padding: 10px;
+    background-color: #0e073c;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -302,8 +303,8 @@ body {
     height: 369px;
     width: calc(100vw - 620px);
     border-radius: 10px;
-    color: #FFF;
-    background-color: #1F1B3F;
+    border: 5px solid #040421;
+    background-color: #0e073c;
     margin: 15px;
     padding: 15px;
 }
