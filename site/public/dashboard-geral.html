@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Adicionando plugin "Annotation" para linha arbitrária horizonal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.0.1/chartjs-plugin-annotation.min.js"
+    integrity="sha512-LZEOcU8s74hwWva82MJux7GgFNjfeExXG9yZPQrKz567Od4O2D/6UX3oGoZiRDOdbMtH33NBq7vonH4VOUPA/Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <title>OnData</title>
+</head>
+
+<body>
+  <div class="caixa" id="caixa">
+
+    <img src="img/logo.png" alt="">
+
+    <div class="cliente" id="cliente">
+      <h1>Olá, <span id="nome1"></span></h1>
+      <p>Vamos analisar as métricas do seu data center.</p>
+    </div>
+
+    <ul>
+      <li class="list active">
+        <a href="dashboard-geral.html">
+          <span class="icon">
+            <ion-icon name="stats-chart-outline"></ion-icon>
+          </span>
+          <span class="title">Dashboard Geral</span>
+        </a>
+      </li>
+
+      <li class="list">
+        <a href="racks-dashboard.html">
+          <span class="icon">
+            <ion-icon name="analytics-outline"></ion-icon>
+          </span>
+          <span class="title">Dashboards Específicos</span>
+        </a>
+      </li>
+
+      <li class="list">
+        <a href="quadroAlertas.html">
+          <span class="icon">
+            <ion-icon name="alert-outline"></ion-icon>
+          </span>
+          <span class="title">Alertas</span>
+        </a>
+      </li>
+
+      <li class="list">
+        <a target="blank" href="https://ondata.tomticket.com/?account=3824640P16112022101310">
+          <span class="icon">
+            <ion-icon name="help-circle-outline"></ion-icon>
+          </span>
+          <span class="title">Ajuda</span>
+        </a>
+      </li>
+
+      <li class="list" onclick="limparSessao()">
+        <a href="login.html">
+          <span class="icon">
+            <ion-icon name="log-out-outline"></ion-icon>
+          </span>
+          <span class="title">Sair</span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="container-1" id="container-1">
+
+    <div class="grafico-geral">
+      <div class="kpi-temperatura-umidade">
+        <div class="caixa-kpi">
+          <div class="kpi-temperatura">
+            <div class="indices">
+              <h4>Índices de Temperatura</h4>
+              <p id="p-perigo-min">Perigo: ≤ 18ºC</p>
+              <p id="p-alerta-frio">Alerta: 19ºC - 22ºC</p>
+              <p id="p-ideal">Ideal: 23ºC - 26ºC</p>
+              <p id="p-alerta-quente">Alerta: 27ºC - 31ºC</p>
+              <p id="p-perigo-max">Perigo: ≥ 32ºC</p>
+            </div>
+
+            <div class="kpi-atual">
+              <div class="perigoMin animation">
+                <h2>Perigo</h2>
+                <h3 class="dado" id="dadoT">--</h3>
+                <p id="fonteT"></p>
+                <p id="dateT"></p>
+              </div>
+
+              <div class="alertaMin animation">
+                <h2>Alerta</h2>
+                <h3 class="dado" id="dadoT">--</h3>
+                <p id="fonteT"></p>
+                <p id="dateT"></p>
+              </div>
+
+              <div class="alertaMax animation">
+                <h2>Alerta</h2>
+                <h3 class="dado" id="dadoT">--</h3>
+                <p id="fonteT"></p>
+                <p id="dateT"></p>
+              </div>
+
+              <div class="perigoMax animation">
+                <h2>Perigo</h2>
+                <h3 class="dado" id="dadoT">--</h3>
+                <p id="fonteT"></p>
+                <p id="dateT"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="caixa-kpi">
+          <div class="kpi-umidade">
+            <div class="indices">
+              <h4>Índices de Umidade:</h4>
+              <p id="p-perigo-min">Perigo: ≤ 30%</p>
+              <p id="p-alerta-frio">Alerta: 31% - 46%</p>
+              <p id="p-ideal">Ideal: 47% - 62%</p>
+              <p id="p-alerta-quente">Alerta: 63% - 79%</p>
+              <p id="p-perigo-max">Perigo: ≥ 80%</p>
+            </div>
+
+            <div class="kpi-atual">
+              <div class="perigoMin animation">
+                <h2>Perigo</h2>
+                <h3 class="dado" id="dadoU">--</h3>
+                <p id="fonteU"></p>
+                <p id="dateU"></p>
+              </div>
+
+              <div class="alertaMin animation">
+                <h2>Alerta</h2>
+                <h3 class="dado" id="dadoU">--</h3>
+                <p id="fonteU"></p>
+                <p id="dateU"></p>
+              </div>
+
+              <div class="alertaMax animation">
+                <h2>Alerta</h2>
+                <h3 class="dado" id="dadoU">--</h3>
+                <p id="fonteU"></p>
+                <p id="dateU"></p>
+              </div>
+
+              <div class="perigoMax animation">
+                <h2>Perigo</h2>
+                <h3 class="dado" id="dadoU">--</h3>
+                <p id="fonteU"></p>
+                <p id="dateU"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="temperatura-geral">
+        <canvas id="chart-geral-temp"></canvas>
+      </div>
+      <div class="semDadosNovos-gerais"></div>
+
+      <div id="umidade-geral">
+        <canvas id="chart-geral-umid"></canvas>
+      </div>
+      <div class="semDadosNovos-gerais"></div>
+
+    </div>
+  </div>
+</body>
+
+</html>
+<script src="js/dashboard-geral.js"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script defer src="js/simulador.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/simulador financeiro.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <title>Simulador Financeiro</title>
+</head>
+
+<body>
+    <!-- CABEÇALHO / NAVBAR  -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html">
+                <img src="img/logo.png" alt="">
+            </a>
+
+            <nav class="navbar">
+                <ul class="list-items">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a class="a-destaque" href="#">Simulador Financeiro</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- COMEÇO DA SESSÃO DO SIMULADOR FINANCEIRO ? -->
+    <section class="simulador-financeiro">
+        <div class="container" id="container_simulador">
+            <div class="content-img">
+                <img src="img/Celular simulador.png" alt="Imagem de Data Centers">
+            </div>
+
+            <div class="content-text inicial">
+                <form class="form-1" id="form_1">
+                    <h2>Orçamento</h2>
+                    <div class="campos">
+                        <div class="campo">
+                            <label for="in_receita" class="label-simulador">Informe a receita anual da sua
+                                empresa</label>
+                            <input placeholder="Digite a receita anual bruta da sua empresa" type="Number" id="in_receita">
+                        </div>
+
+                        <div class="campo">
+                            <label for="in_inatividade" class="label-simulador">Tempo de inatividade do data center no
+                                ano</label>
+                            <input placeholder="Digite o tempo em horas" type="Number" id="in_inatividade">
+                        </div>
+
+                        <div class="campo">
+                            <label for="in_racks" class="label-simulador">Informe a quantidade de Racks DC</label>
+                            <input placeholder="Digite a quantidade de racks " type="Number" id="in_racks">
+                        </div>
+
+                        <button type="submit" class="btn" >Fazer Simulação</but>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="content-footer">
+          <a href="index.html"><img src="img/Logo-90x90.png" alt="Logo da empresa"></a>
+
+          <div class="links">
+            <h2>Links</h2>
+            <ul>
+              <li><a href="#">Termos de Serviço</a></li>
+              <li><a href="#">FAQ Perguntas<br> Frequentes</a></li>
+              <li><a href="cadastro.html">Cadastrar-se</a></li>
+              <li><a href="login.html">Login</a></li>
+            </ul>
+          </div>
+    
+          <div class="social-media">
+            <h2>Redes Sociais</h2>
+            <div class="social-img">
+              <a href="#"><img src="img/facebooklogo.png" alt=""></a>
+              <a href="#"><img src="img/instagramlogo.png" alt=""></a>
+              <a href="#"><img src="img/whatsapplogo.png" alt=""></a>
+              <a href="#"><img src="img/twitterlogo.png" alt=""></a>
+            </div>
+
+            <h3>Conheça nosso</h3>
+            <a href="simulador financeiro.html">Simulador Financeiro</a>
+          </div>
+        </div>
+
+        <div class="direitos">
+          <p>Copyright &copy; 2022 ONDATA - Todos os direitos reservados. Desenvolvido por ONDATA </p>
+        </div>
+      </footer>
+</body>
+</html>

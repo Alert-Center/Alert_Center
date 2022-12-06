@@ -1,0 +1,322 @@
+/* Início da estilização da navbar */
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap');
+
+body {
+    background-image: url('../img/Background-degrade.jpg');
+    background-size: cover;
+}
+
+/* Inicio dos gráficos e caixas de texto */
+.container-1 {
+    margin-left: 380px;
+    width: calc(100% - 380px);
+    column-gap: 50px;
+    display: flex;
+    padding: 15px 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.caixa {
+    position: fixed;
+    height: 100%;
+    width: 380px;
+    background-color: #040524;
+    display: flex;
+    flex-direction: column;
+    border-right: 3px solid #040524b1;
+    box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+.caixa img {
+    padding: 30px 0;
+    margin: 0 auto;
+    width: 80px;
+}
+
+.cliente p {
+    padding: 10px 20px 20px 25px;
+    display: flex;
+    text-align: start;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.cliente h1 {
+    padding: 20px 20px 0 25px;
+    font-weight: 500;
+    font-size: 32px;
+}
+
+.caixa ul {
+    width: 100%;
+    padding-top: 40px;
+}
+
+.caixa ul li {
+    list-style: none;
+    width: 100%;
+}
+
+.caixa ul li:last-of-type {
+    position: absolute;
+    bottom: 40px;
+}
+
+.caixa ul li:hover {
+    background-color: rgba(1, 2, 25, 0.5);
+}
+
+.caixa ul li a {
+    position: relative;
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+}
+
+.caixa ul li a .icon {
+    padding-left: 20px;
+    margin-right: 10px;
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 70px;
+}
+
+.caixa ul li a .icon ion-icon {
+    position: relative;
+    font-size: 1.5rem;
+    z-index: 1;
+}
+
+.caixa ul li a .title {
+    position: relative;
+    display: block;
+    padding-left: 10px;
+    height: 60px;
+    line-height: 60px;
+    white-space: nowrap;
+    font-size: 1.2rem;
+}
+
+.caixa ul li.active {
+    background: #010219;
+}
+
+.relatorio-rack {
+    flex: 1;
+}
+
+.relatorio-downtime {
+    flex: 1;
+}
+
+.relatorio-rack #chart-relatorio-rack {
+    border-radius: 10px;
+    color: #FFF;
+    background-color: #1F1B3F;
+    padding: 15px;
+}
+
+.relatorio-downtime #chart-relatorio-downtime {
+    border-radius: 10px;
+    color: #FFF;
+    background-color: #1F1B3F;
+    padding: 15px;
+}
+
+.grafico-geral {
+    padding: 0 20px;
+    width: 100%;
+    border-radius: 12px;
+    background-color: #040524;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 5;
+}
+
+.caixa-kpi {
+    width: 100%;
+    background-color: #212121;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    padding: 3px;
+    transition: 1s;
+
+}
+
+.kpi-temperatura,
+.kpi-umidade {
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+    background-color: #0e073c;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+
+}
+
+.indices {
+    column-gap: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 10px;
+    padding: 10px;
+}
+
+.indices p {
+    padding: 3px;
+
+}
+
+#p-perigo-min {
+    color: #9bd4ff;
+}
+
+#p-alerta-frio {
+    color: #078BEE;
+}
+
+#p-ideal {
+    color: #19EE07;
+}
+
+#p-alerta-quente {
+    color: #eeac07;
+}
+
+#p-perigo-max {
+    color: #E0211B;
+}
+
+.kpi-temperatura .kpi-atual {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.kpi-umidade .kpi-atual {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.kpi-atual div {
+    width: 23%;
+    background-color: #212121;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+
+
+.kpi-atual p {
+    position: absolute;
+    opacity: 0;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+
+}
+
+.caixa-kpi {
+    animation: 1s animation all;
+}
+
+.caixa-kpi:hover .kpi-atual p {
+    position: relative;
+    opacity: 1;
+    transition: 1s;
+}
+
+.animation {
+    height: 90px;
+    transition: 0.8s;
+}
+
+.caixa-kpi:hover .animation {
+    height: 150px;
+    transition: 0.8s;
+}
+
+.kpi-atual .dado {
+    font-weight: 700;
+    font-size: 32px;
+
+}
+
+.kpi-atual .perigoMin {
+    border: #9bd4ff solid 5px;
+}
+
+.perigoMin * {
+    color: #9bd4ff;
+}
+
+.kpi-atual .alertaMin {
+    border: #078BEE solid 5px;
+
+}
+
+.alertaMin * {
+    color: #078BEE;
+}
+
+.kpi-atual .alertaMax {
+    border: #eeac07 solid 5px;
+}
+
+.alertaMax * {
+    color: #eeac07;
+}
+
+.kpi-atual .perigoMax {
+    border: #E0211B solid 5px;
+}
+
+.perigoMax * {
+    color: #E0211B;
+}
+
+#chart-geral-temp,
+#chart-geral-umid {
+    height: 369px;
+    width: calc(100vw - 620px);
+    border-radius: 10px;
+    border: 5px solid #040421;
+    background-color: #0e073c;
+    margin: 15px;
+    padding: 15px;
+}
+
+.semDadosNovos-gerais {
+    display: none;
+    margin-bottom: 30px;
+    animation: aparecerSemDados 1s ease-in-out;
+}
+
+@keyframes aparecerSemDados {
+    0% {
+        opacity: 0;
+    }
+}

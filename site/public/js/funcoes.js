@@ -1,0 +1,55 @@
+// sessão
+function validarSessao() {
+    // aguardar();
+
+    var email = sessionStorage.EMAIL_USUARIO;
+    var nome = sessionStorage.NOME_USUARIO;
+
+    var b_usuario = document.getElementById("b_usuario");
+
+    if (email != null && nome != null) {
+        // window.alert(`Seja bem-vindo, ${nome}!`);
+        b_usuario.innerHTML = nome;
+        // finalizarAguardar();
+    } else {
+        window.location = "../login.html";
+    }
+}
+
+function limparSessao() {
+    // aguardar();
+    sessionStorage.clear();
+    // finalizarAguardar();
+    window.location = "../login.html";
+}
+
+// carregamento (loading)
+function aguardar() {
+    var divAguardar = document.getElementById("div_aguardar");
+    divAguardar.style.display = "none";
+}
+
+function finalizarAguardar(texto) {
+    var divAguardar = document.getElementById("div_aguardar");
+    divAguardar.style.display = "none";
+
+    var divErrosLogin = document.getElementById("div_erros_login");
+    if (texto) {
+        divErrosLogin.innerHTML = texto;
+    }
+}
+
+
+// modal
+function mostrarModal(text) {
+    var divModal = document.querySelector(".card");
+    var textModal = document.querySelector(".card .text2");
+    divModal.classList.add("active");
+    textModal.innerHTML=text;
+}
+
+function fecharModal() {
+    var divModal = document.querySelector(".card");
+    divModal.classList.remove("active");
+}
+
